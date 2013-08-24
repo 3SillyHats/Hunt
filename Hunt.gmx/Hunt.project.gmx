@@ -6,11 +6,14 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sprPlayer1Walk</sprite>
-    <sprite>sprites\sprPlayer2Walk</sprite>
+    <sprite>sprites\sprPlayer1</sprite>
+    <sprite>sprites\sprPlayer2</sprite>
     <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\sprCoinGold</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bgCastle</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scrPlayerMove.gml</script>
@@ -20,9 +23,11 @@
     <object>objects\objPlayer</object>
     <object>objects\objPlayer2</object>
     <object>objects\objWall</object>
+    <object>objects\objBoost</object>
+    <object>objects\objBoostSpawn</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rmGame</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

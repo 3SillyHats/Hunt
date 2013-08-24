@@ -1,5 +1,6 @@
-ax = gamepad_axis_value(gp,gp_axislh)/2;
-ay = gamepad_axis_value(gp,gp_axislv)/2;
+ax = gamepad_axis_value(gp, gp_axislh);
+ay = gamepad_axis_value(gp, gp_axislv);
+var boost = gamepad_button_check_pressed(gp, gp_face1);
 
 var norm = sqrt(ax * ax + ay * ay);
 
@@ -13,9 +14,15 @@ if (norm < 0.2) {
     ay = -0.05*vspeed;
 }
 
-hspeed = hspeed + ax;
-vspeed = vspeed + ay;
-
-hspeed = hspeed - (hspeed * speed * amax / vmax);
-vspeed = vspeed - (vspeed * speed * amax / vmax);
-
+if (boost and boosts > 0) {
+    boosts--
+    hspeed = (ax / norm) * vmax / 20;
+    vspeed = (ay / norm) * vmax / 20;
+} else {
+    hspeed = hspeed + ax / 2;
+    vspeed = vspeed + ay / 2;
+    
+    hspeed = hspeed - (hspeed * speed * amax / vmax);
+    vspeed = vspeed - (vspeed * speed * amax / vmax);
+}
+    
