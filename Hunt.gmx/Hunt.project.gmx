@@ -5,9 +5,25 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprPlayer1Walk</sprite>
+    <sprite>sprites\sprPlayer2Walk</sprite>
+    <sprite>sprites\sprWall</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scrPlayerMove.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\objPlayer1</object>
+    <object>objects\objPlayer</object>
+    <object>objects\objPlayer2</object>
+    <object>objects\objWall</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
