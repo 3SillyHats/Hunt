@@ -199,6 +199,10 @@ audio_play_sound(sndHit, 0, false);
             <string>if (isHunter and other.invulnerability &lt;= 0.0) {
     rumble = 0.5;
     captures++;
+    if (captures &gt;= WIN_THRESHOLD) {
+        global.winner = self;
+        room_goto_next();
+    }
 } else if (other.isHunter and invulnerability &lt;= 0.0) {
     rumble = 0.5;
     dead = true;
