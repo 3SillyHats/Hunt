@@ -15,7 +15,9 @@
     <background>background\bgCastle</background>
   </backgrounds>
   <paths name="paths"/>
-  <fonts name="fonts"/>
+  <scripts name="scripts">
+    <script>scripts\scrSpawn.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\objPlayer</object>
@@ -29,7 +31,7 @@
   <rooms name="rooms">
     <room>rooms\rmGame</room>
   </rooms>
-  <constants number="9">
+  <constants number="10">
     <constant name="ACCELERATION_MAX">0.5</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_MAX">3</constant>
@@ -37,6 +39,7 @@
     <constant name="BOOST_RESPAWN_MIN">10</constant>
     <constant name="DEAD_ZONE">0.2</constant>
     <constant name="FRICTION">0.05</constant>
+    <constant name="INVULNERABLE_FADE">.3</constant>
     <constant name="SPAWN_BOOSTS">1</constant>
     <constant name="SPEED_MAX">40</constant>
   </constants>

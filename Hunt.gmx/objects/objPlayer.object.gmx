@@ -26,9 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>captures = 0;
-boosts = SPAWN_BOOSTS;
-rumble = 0;
+invulnerability = 0.0;
+rumble = 0.0;
 time = 0;
+
+scrSpawn();
 
 </string>
           </argument>
@@ -53,6 +55,13 @@ time = 0;
           <argument>
             <kind>1</kind>
             <string>time += 1/room_speed;
+if (invulnerability &gt; 0) {
+    invulnerability -= 1/room_speed;
+}
+
+if (dead) {
+    scrSpawn();
+}
 
 ax = gamepad_axis_value(gp, gp_axislh);
 ay = gamepad_axis_value(gp, gp_axislv);
@@ -77,6 +86,9 @@ if (boost and boosts &gt; 0) {
     boosts--
     if (norm &lt; 0.2) {
         speed = 0;
+        if (invulnerability &lt; 1.0) {
+            invulnerability = 1.0;
+        }
     } else {
         hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
         vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
@@ -88,7 +100,7 @@ if (boost and boosts &gt; 0) {
     speed -= speed * speed * ACCELERATION_MAX / (SPEED_MAX * SPEED_MAX);
 }
 if (rumble &gt; 0) {
-    rumble--;
+    rumble -= 1/room_speed;
     gamepad_set_vibration(gp, 0.6, 0.6);
 } else {
     gamepad_set_vibration(gp, 0, 0);
@@ -163,14 +175,12 @@ if (rumble &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rumble = 15;
-if (isHunter) {
+            <string>if (isHunter and other.invulnerability &lt;= 0.0) {
+    rumble = 0.5;
     captures++;
-} else {
-    boosts = SPAWN_BOOSTS;
-    speed = 0;
-    x = xstart;
-    y = ystart;
+} else if (other.isHunter and invulnerability &lt;= 0.0) {
+    rumble = 0.5;
+    dead = true;
 }
 
 </string>
@@ -225,7 +235,12 @@ if (isHunter) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>if (invulnerability &lt;= 0.0 or isHunter) {
+    image_alpha = 1
+} else {
+    image_alpha = INVULNERABLE_FADE
+}
+draw_self();
 
 // Draw boosts
 for (i = 0; i &lt; boosts; i++) {
