@@ -233,7 +233,7 @@
     <instance objName="objBoost" x="1015" y="455" name="inst_E4D68099" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoost" x="1015" y="70" name="inst_D815AE80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="1015" y="140" name="inst_E0C50AD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBoost" x="70" y="280" name="inst_14187904" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBoost" x="105" y="315" name="inst_14187904" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="1295" y="350" name="inst_E4D6E9D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="1330" y="350" name="inst_1B63F411" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="1260" y="350" name="inst_A7373869" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

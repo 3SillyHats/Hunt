@@ -28,6 +28,7 @@
             <string>captures = 0;
 boosts = SPAWN_BOOSTS;
 rumble = 0;
+time = 0;
 
 </string>
           </argument>
@@ -51,7 +52,9 @@ rumble = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ax = gamepad_axis_value(gp, gp_axislh);
+            <string>time += 1/room_speed;
+
+ax = gamepad_axis_value(gp, gp_axislh);
 ay = gamepad_axis_value(gp, gp_axislv);
 
 var boost = gamepad_button_check_pressed(gp, gp_face1);
@@ -197,11 +200,41 @@ draw_text(10, 10 + (30 * gp), captures);
 
 // Draw if hunter
 if (isHunter) {
-    draw_circle_color(x+23.5, y+23.5, 23.5, c_red, c_red, true);
+    draw_circle_color(x, y, 23.5, c_red, c_red, true);
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+
 // Draw boosts
-draw_text(x, y, boosts);
+for (i = 0; i &lt; boosts; i++) {
+    var bx = 32 * cos(2*pi/3 * i + pi*time);
+    var by = 32 * sin(2*pi/3 * i + pi*time);
+    draw_set_alpha(.5);
+    draw_circle_color(x + bx, y + by, 4, c_white, c_white, false);
+    draw_set_alpha(1);
+}
 
 </string>
           </argument>

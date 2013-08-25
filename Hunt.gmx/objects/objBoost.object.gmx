@@ -74,10 +74,10 @@ image_alpha = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (active and other.boosts &lt; BOOSTS_MAX) {
+            <string>if (active and other.boosts &lt; BOOST_MAX) {
     other.boosts++;
     active = false;
-    image_alpha = .3;
+    image_alpha = BOOST_FADE;
     alarm[0] = floor(random_range(BOOST_RESPAWN_MIN, BOOST_RESPAWN_MAX)) * room_speed;
 }
 
