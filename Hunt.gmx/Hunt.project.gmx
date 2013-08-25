@@ -15,9 +15,7 @@
     <background>background\bgCastle</background>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts">
-    <script>scripts\scrPlayerMove.gml</script>
-  </scripts>
+  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\objPlayer1</object>
     <object>objects\objPlayer</object>
@@ -25,10 +23,23 @@
     <object>objects\objWall</object>
     <object>objects\objBoost</object>
     <object>objects\objBoostSpawn</object>
+    <object>objects\objTimer</object>
+    <object>objects\objPlayer1Score</object>
+    <object>objects\objPlayer2Score</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGame</room>
   </rooms>
+  <constants number="8">
+    <constant name="ACCELERATION_MAX">0.5</constant>
+    <constant name="BOOST_RESPAWN_MAX">20</constant>
+    <constant name="BOOST_RESPAWN_MIN">10</constant>
+    <constant name="BOOSTS_MAX">3</constant>
+    <constant name="DEAD_ZONE">0.2</constant>
+    <constant name="FRICTION">0.05</constant>
+    <constant name="SPAWN_BOOSTS">1</constant>
+    <constant name="SPEED_MAX">1000</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

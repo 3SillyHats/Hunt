@@ -25,13 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vx = 0;
-vy = 0;
-
-vmax = 1000;
-amax = 0.5;
-
-boosts = 3
+            <string>captures = 0;
+boosts = SPAWN_BOOSTS;
 
 </string>
           </argument>
@@ -41,46 +36,81 @@ boosts = 3
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>9</kind>
-            <script>scrPlayerMove</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>ax = gamepad_axis_value(gp, gp_axislh);
+ay = gamepad_axis_value(gp, gp_axislv);
+
+var boost = gamepad_button_check_pressed(gp, gp_face1);
+
+var norm = sqrt(ax * ax + ay * ay);
+
+if (norm &lt; DEAD_ZONE) {
+    ax = -FRICTION*hspeed;
+    ay = -FRICTION*vspeed;
+} else {
+    if (norm &gt; 1) {
+        ax /= norm;
+        ay /= norm;
+    }
+    ax *= ACCELERATION_MAX;
+    ay *= ACCELERATION_MAX;
+}
+
+if (boost and boosts &gt; 0) {
+    boosts--
+    if (norm &lt; 0.2) {
+        speed = 0;
+    } else {
+        hspeed = (ax / norm) * SPEED_MAX / 20;
+        vspeed = (ay / norm) * SPEED_MAX / 20;
+    }
+} else {
+    hspeed += ax;
+    vspeed += ay;
+    
+    speed -= speed * speed * ACCELERATION_MAX / SPEED_MAX;
+}
+    
+</string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="4" ename="objWall">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>speed *= 0.9
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>115</id>
@@ -109,17 +139,32 @@ boosts = 3
     <event eventtype="4" ename="objPlayer">
       <action>
         <libid>1</libid>
-        <id>223</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_current_room</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (isHunter) {
+    captures++;
+} else {
+    boosts = SPAWN_BOOSTS;
+    speed = 0;
+    x = xstart;
+    y = ystart;
+}
+
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="8" enumb="64">
@@ -140,6 +185,9 @@ boosts = 3
           <argument>
             <kind>1</kind>
             <string>// Draw boosts
+if (isHunter) {
+    draw_circle_color(x+23.5, y+23.5, 23.5, c_red, c_red, true);
+}
 draw_text(x, y, boosts);
 
 </string>

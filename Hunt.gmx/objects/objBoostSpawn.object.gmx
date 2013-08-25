@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = floor(random_range(10, 20)) * room_speed;
+            <string>alarm[0] = floor(random_range(BOOST_RESPAWN_MIN, BOOST_RESPAWN_MAX)) * room_speed;
 
 </string>
           </argument>
