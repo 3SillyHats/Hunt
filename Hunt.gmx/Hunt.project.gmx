@@ -8,6 +8,7 @@
     <sound>sound\sndPickup</sound>
     <sound>sound\sndHit</sound>
     <sound>sound\sndExplosion</sound>
+    <sound>sound\sndMusic</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprPlayer1</sprite>

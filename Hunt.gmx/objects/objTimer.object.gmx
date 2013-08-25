@@ -36,6 +36,8 @@
 global.hunter.isHunter = true;
 global.hunted.isHunter = false;
 
+audio_play_music(sndMusic, false);
+
 alarm[0] = 10*room_speed;
 
 </string>
@@ -70,6 +72,8 @@ if (objPlayer1.isHunter) {
     global.hunter = objPlayer2;
     global.hunted = objPlayer1;
 }
+
+audio_play_music(sndMusic, false);
 
 alarm[0] = 10*room_speed;
 
