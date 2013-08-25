@@ -110,7 +110,7 @@ if (boosted and boosts &gt; 0) {
         vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
     }
 } else if (boosting and boosts &gt; 0) {
-    speed = 0;
+    speed -= speed*0.9;
 } else {
     hspeed += ax;
     vspeed += ay;
