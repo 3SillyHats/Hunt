@@ -102,8 +102,8 @@ if (boosted) {
     boosts--
     if (norm &lt; 0.2) {
         speed = 0;
-        if (invulnerability &lt; 1.0) {
-            invulnerability = 1.0;
+        if (invulnerability &lt; INVULNERABLE_DODGE_TIME) {
+            invulnerability = INVULNERABLE_DODGE_TIME;
         }
     } else {
         hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;

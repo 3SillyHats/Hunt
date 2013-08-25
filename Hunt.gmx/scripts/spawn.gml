@@ -1,6 +1,6 @@
 boosts = SPAWN_BOOSTS;
-if (invulnerability < 1.0) {
-    invulnerability = 1.0;
+if (invulnerability < INVULNERABLE_SPAWN_TIME) {
+    invulnerability = INVULNERABLE_SPAWN_TIME;
 }
 speed = 0;
 x = xstart;

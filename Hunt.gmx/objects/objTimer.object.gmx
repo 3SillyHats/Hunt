@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>global.players[0] = objPlayer1;
 global.players[1] = objPlayer2;
+global.players[2] = objPlayer3;
 
 global.nPlayers = array_length_1d(global.players);
 
