@@ -15,17 +15,14 @@
     <background>background\bgCastle</background>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts"/>
+  <fonts name="fonts"/>
   <objects name="objects">
     <object>objects\objPlayer1</object>
     <object>objects\objPlayer</object>
     <object>objects\objPlayer2</object>
     <object>objects\objWall</object>
     <object>objects\objBoost</object>
-    <object>objects\objBoostSpawn</object>
     <object>objects\objTimer</object>
-    <object>objects\objPlayer1Score</object>
-    <object>objects\objPlayer2Score</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGame</room>

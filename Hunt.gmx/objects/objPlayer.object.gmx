@@ -192,10 +192,15 @@ if (isHunter) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Draw boosts
+            <string>// Draw captures
+draw_text(10, 10 + (30 * gp), captures);
+
+// Draw if hunter
 if (isHunter) {
     draw_circle_color(x+23.5, y+23.5, 23.5, c_red, c_red, true);
 }
+
+// Draw boosts
 draw_text(x, y, boosts);
 
 </string>
