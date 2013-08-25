@@ -79,7 +79,8 @@ if(ax!=0){
     dir = 180;
 }
 
-var boost = gamepad_button_check_pressed(gp, gp_face1);
+var boosting = gamepad_button_check(gp, gp_face1);
+var boosted = gamepad_button_check_released(gp, gp_face1);
 
 var norm = sqrt(ax * ax + ay * ay);
 
@@ -97,7 +98,7 @@ if (norm &lt; DEAD_ZONE) {
     ay *= ACCELERATION_MAX;
 }
 
-if (boost and boosts &gt; 0) {
+if (boosted and boosts &gt; 0) {
     boosts--
     if (norm &lt; 0.2) {
         speed = 0;
@@ -108,6 +109,8 @@ if (boost and boosts &gt; 0) {
         hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
         vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
     }
+} else if (boosting and boosts &gt; 0) {
+    speed = 0;
 } else {
     hspeed += ax;
     vspeed += ay;
