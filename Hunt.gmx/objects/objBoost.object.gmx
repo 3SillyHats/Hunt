@@ -78,6 +78,7 @@ image_alpha = true;
     other.boosts++;
     active = false;
     image_alpha = BOOST_FADE;
+    audio_play_sound(sndPickup, 0, false);
     alarm[0] = floor(random_range(BOOST_RESPAWN_MIN, BOOST_RESPAWN_MAX)) * room_speed;
 }
 

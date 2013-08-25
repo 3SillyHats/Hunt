@@ -146,6 +146,7 @@ if (rumble &gt; 0) {
           <argument>
             <kind>1</kind>
             <string>speed *= 0.9;
+audio_play_sound(sndHit, 0, false);
 
 </string>
           </argument>
@@ -199,6 +200,7 @@ if (rumble &gt; 0) {
 } else if (other.isHunter and invulnerability &lt;= 0.0) {
     rumble = 0.5;
     dead = true;
+	audio_play_sound(sndExplosion, 0, false);
 }
 
 </string>

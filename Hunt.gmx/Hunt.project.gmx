@@ -4,7 +4,11 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndPickup</sound>
+    <sound>sound\sndHit</sound>
+    <sound>sound\sndExplosion</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprPlayer1</sprite>
     <sprite>sprites\sprPlayer2</sprite>
