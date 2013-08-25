@@ -32,6 +32,8 @@ time = 0;
 
 scrSpawn();
 
+dir = 90;
+moving = false;
 </string>
           </argument>
         </arguments>
@@ -66,14 +68,27 @@ if (dead) {
 ax = gamepad_axis_value(gp, gp_axislh);
 ay = gamepad_axis_value(gp, gp_axislv);
 
+if(ax!=0){
+    dir = -radtodeg(arctan(ay/ax));
+    if(ax&lt;0){
+        dir += 180;
+    }
+}else if(ay &gt; 0){
+    dir = 0;
+}else{
+    dir = 180;
+}
+
 var boost = gamepad_button_check_pressed(gp, gp_face1);
 
 var norm = sqrt(ax * ax + ay * ay);
 
 if (norm &lt; DEAD_ZONE) {
+    moving = false;
     ax = -FRICTION*hspeed;
     ay = -FRICTION*vspeed;
 } else {
+    moving = true;
     if (norm &gt; 1) {
         ax /= norm;
         ay /= norm;
@@ -250,7 +265,9 @@ for (i = 0; i &lt; boosts; i++) {
     draw_circle_color(x + bx, y + by, 4, c_white, c_white, false);
     draw_set_alpha(1);
 }
-
+if(moving){
+    draw_sprite_ext(sprArrow,0,x,y,1,1,dir,c_white,0.25);
+}
 </string>
           </argument>
         </arguments>

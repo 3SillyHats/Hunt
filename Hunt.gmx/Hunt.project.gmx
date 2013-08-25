@@ -10,6 +10,7 @@
     <sprite>sprites\sprPlayer2</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoinGold</sprite>
+    <sprite>sprites\sprArrow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
