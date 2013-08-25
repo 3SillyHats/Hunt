@@ -36,7 +36,8 @@
   <rooms name="rooms">
     <room>rooms\rmGame</room>
   </rooms>
-  <constants number="10">
+  <constants number="11">
+    <constant name="BOOST_HOLD_DAMPING">0.9</constant>
     <constant name="ACCELERATION_MAX">0.5</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_MAX">3</constant>
