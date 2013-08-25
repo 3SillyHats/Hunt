@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>captures = 0;
 boosts = SPAWN_BOOSTS;
+rumble = 0;
 
 </string>
           </argument>
@@ -74,16 +75,21 @@ if (boost and boosts &gt; 0) {
     if (norm &lt; 0.2) {
         speed = 0;
     } else {
-        hspeed = (ax / norm) * SPEED_MAX / 20;
-        vspeed = (ay / norm) * SPEED_MAX / 20;
+        hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
+        vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
     }
 } else {
     hspeed += ax;
     vspeed += ay;
     
-    speed -= speed * speed * ACCELERATION_MAX / SPEED_MAX;
+    speed -= speed * speed * ACCELERATION_MAX / (SPEED_MAX * SPEED_MAX);
 }
-    
+if (rumble &gt; 0) {
+    rumble--;
+    gamepad_set_vibration(gp, 0.6, 0.6);
+} else {
+    gamepad_set_vibration(gp, 0, 0);
+}
 </string>
           </argument>
         </arguments>
@@ -106,7 +112,8 @@ if (boost and boosts &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed *= 0.9
+            <string>speed *= 0.9;
+
 </string>
           </argument>
         </arguments>
@@ -153,7 +160,8 @@ if (boost and boosts &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (isHunter) {
+            <string>rumble = 15;
+if (isHunter) {
     captures++;
 } else {
     boosts = SPAWN_BOOSTS;

@@ -38,7 +38,7 @@
     <constant name="DEAD_ZONE">0.2</constant>
     <constant name="FRICTION">0.05</constant>
     <constant name="SPAWN_BOOSTS">1</constant>
-    <constant name="SPEED_MAX">1000</constant>
+    <constant name="SPEED_MAX">40</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
