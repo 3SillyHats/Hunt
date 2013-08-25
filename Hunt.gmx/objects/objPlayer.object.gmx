@@ -79,8 +79,8 @@ if(ax!=0){
     dir = 180;
 }
 
-var boosting = gamepad_button_check(gp, gp_face1);
-var boosted = gamepad_button_check_released(gp, gp_face1);
+var boosting = gamepad_button_check(gp, gp_face1) and boosts &gt; 0;
+var boosted = gamepad_button_check_released(gp, gp_face1) and boosts &gt; 0;
 
 var norm = sqrt(ax * ax + ay * ay);
 
@@ -98,7 +98,7 @@ if (norm &lt; DEAD_ZONE) {
     ay *= ACCELERATION_MAX;
 }
 
-if (boosted and boosts &gt; 0) {
+if (boosted) {
     boosts--
     if (norm &lt; 0.2) {
         speed = 0;
@@ -109,7 +109,7 @@ if (boosted and boosts &gt; 0) {
         hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
         vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
     }
-} else if (boosting and boosts &gt; 0) {
+} else if (boosting) {
     speed *= BOOST_HOLD_DAMPING;
 } else {
     hspeed += ax;
@@ -119,7 +119,9 @@ if (boosted and boosts &gt; 0) {
 }
 if (rumble &gt; 0) {
     rumble -= 1/room_speed;
-    gamepad_set_vibration(gp, 0.6, 0.6);
+    gamepad_set_vibration(gp, 0.8, 0.8);
+} else if (boosting) {
+    gamepad_set_vibration(gp, 0.15, 0.15);
 } else {
     gamepad_set_vibration(gp, 0, 0);
 }
