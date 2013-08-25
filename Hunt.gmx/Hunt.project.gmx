@@ -14,6 +14,7 @@
     <sprite>sprites\sprPlayer1</sprite>
     <sprite>sprites\sprPlayer2</sprite>
     <sprite>sprites\sprPlayer3</sprite>
+    <sprite>sprites\sprPlayer4</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoinGold</sprite>
     <sprite>sprites\sprArrow</sprite>
@@ -33,6 +34,7 @@
       <object>objects\objPlayer1</object>
       <object>objects\objPlayer2</object>
       <object>objects\objPlayer3</object>
+      <object>objects\objPlayer4</object>
     </objects>
     <object>objects\objWall</object>
     <object>objects\objBoost</object>
