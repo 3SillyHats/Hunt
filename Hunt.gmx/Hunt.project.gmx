@@ -22,7 +22,9 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scrSpawn.gml</script>
+    <script>scripts\spawn.gml</script>
+    <script>scripts\newHunter.gml</script>
+    <script>scripts\shuffleHunters.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">

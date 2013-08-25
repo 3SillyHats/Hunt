@@ -25,22 +25,59 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (irandom(1)) {
-    global.hunter = objPlayer1;
-    global.hunted = objPlayer2;
-} else {
-    global.hunter = objPlayer2;
-    global.hunted = objPlayer1;
+            <string>global.players[0] = objPlayer1;
+global.players[1] = objPlayer2;
+
+global.nPlayers = array_length_1d(global.players);
+
+for(i=0; i&lt;global.nPlayers; i++) {
+    hunters[i] = global.players[i];
 }
 
-global.hunter.isHunter = true;
-global.hunted.isHunter = false;
-
-audio_play_music(sndMusic, false);
-
-alarm[0] = 10*room_speed;
+shuffleHunters();
+hunter = 0;
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>601</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>9</kind>
+            <script>newHunter</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -48,36 +85,41 @@ alarm[0] = 10*room_speed;
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>objPlayer1.isHunter = not objPlayer1.isHunter;
-objPlayer2.isHunter = not objPlayer2.isHunter;
-
-if (objPlayer1.isHunter) {
-    global.hunter = objPlayer1;
-    global.hunted = objPlayer2;
-} else {
-    global.hunter = objPlayer2;
-    global.hunted = objPlayer1;
-}
-
-audio_play_music(sndMusic, false);
-
-alarm[0] = 10*room_speed;
-
-</string>
+            <kind>9</kind>
+            <script>newHunter</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
