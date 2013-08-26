@@ -66,8 +66,8 @@ if (dead) {
     spawn();
 }
 
-ax = gamepad_axis_value(gp, gp_axislh);
-ay = gamepad_axis_value(gp, gp_axislv);
+ax = gamepad_axis_value(controller, gp_axislh);
+ay = gamepad_axis_value(controller, gp_axislv);
 
 if(ax!=0){
     dir = -radtodeg(arctan(ay/ax));
@@ -80,8 +80,8 @@ if(ax!=0){
     dir = 180;
 }
 
-var boosting = gamepad_button_check(gp, gp_face1) and boosts &gt; 0;
-var boosted = gamepad_button_check_released(gp, gp_face1) and boosts &gt; 0;
+var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
+var boosted = gamepad_button_check_released(controller, gp_face1) and boosts &gt; 0;
 
 var norm = sqrt(ax * ax + ay * ay);
 
@@ -120,11 +120,11 @@ if (boosted) {
 }
 if (rumble &gt; 0) {
     rumble -= 1/room_speed;
-    gamepad_set_vibration(gp, 0.8, 0.8);
+    gamepad_set_vibration(controller, 0.8, 0.8);
 } else if (boosting) {
-    gamepad_set_vibration(gp, 0.15, 0.15);
+    gamepad_set_vibration(controller, 0.15, 0.15);
 } else {
-    gamepad_set_vibration(gp, 0, 0);
+    gamepad_set_vibration(controller, 0, 0);
 }
 </string>
           </argument>
@@ -232,8 +232,23 @@ audio_play_sound(sndHit, 0, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Draw captures
-draw_text(10, 10 + (30 * gp), captures);
+            <string>// Draw HUD box
+draw_set_color(c_black);
+draw_set_alpha(HUD_BOX_FADE);
+draw_roundrect(hudX, hudY, hudX + 180, hudY + 70, false);
+
+// Draw icon
+draw_set_color(c_white);
+draw_set_alpha(HUD_ICON_FADE);
+var w = sprite_get_width(sprite_index);
+var h = sprite_get_height(sprite_index);
+var icon = object_get_sprite(object_index);
+draw_sprite(icon, 0, hudX + 5 + w/2, hudY + 5 + h/2);
+
+// Draw captures
+draw_set_alpha(1);
+draw_set_font(global.font);
+draw_text(hudX + 75, hudY + 10, captures);
 
 </string>
           </argument>

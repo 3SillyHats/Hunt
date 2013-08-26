@@ -21,6 +21,7 @@
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
+    <sprite>sprites\sprFont</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
@@ -31,6 +32,7 @@
     <script>scripts\newHunter.gml</script>
     <script>scripts\shuffleHunters.gml</script>
   </scripts>
+  <fonts name="fonts"/>
   <objects name="objects">
     <objects name="Player">
       <object>objects\objPlayer</object>
@@ -47,7 +49,7 @@
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
-  <constants number="14">
+  <constants number="16">
     <constant name="ACCELERATION_MAX">0.25</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
@@ -55,6 +57,8 @@
     <constant name="BOOST_RESPAWN_TIME">12</constant>
     <constant name="DEAD_ZONE">0.2</constant>
     <constant name="FRICTION">0.05</constant>
+    <constant name="HUD_ICON_FADE">.75</constant>
+    <constant name="HUD_BOX_FADE">.5</constant>
     <constant name="HUNT_TIME">10.0</constant>
     <constant name="INVULNERABLE_DODGE_TIME">0.5</constant>
     <constant name="INVULNERABLE_FADE">.3</constant>

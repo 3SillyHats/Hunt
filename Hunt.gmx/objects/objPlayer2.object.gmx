@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gp = 1;
+            <string>controller = 1;
 color = make_color_hsv(72, 128, 128);
+hudX = 1665;
+hudY = 935;
 
 </string>
           </argument>
