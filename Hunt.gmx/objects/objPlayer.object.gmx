@@ -77,6 +77,11 @@ if (dead) {
     spawn();
 }
 
+
+if (global.kills[controller] &gt;= WIN_THRESHOLD) {
+    global.winner = self;
+}
+
 if global.winner == noone {
     time += 1/room_speed;
     if (invulnerability &gt; 0) {
@@ -234,9 +239,6 @@ if (rumble &gt; 0) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.kills[controller]++;
-        if (global.kills[controller] &gt;= WIN_THRESHOLD) {
-            global.winner = self;
-        }
     } else if (other.isHunter and invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.deaths[controller]++;
