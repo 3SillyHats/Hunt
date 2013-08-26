@@ -25,18 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize()
-global.players[0] = objPlayer1;
-global.players[1] = objPlayer2;
-global.players[2] = objPlayer3;
-global.players[3] = objPlayer4;
-
-global.nPlayers = array_length_1d(global.players);
-
-var spawns
+            <string>var spawns;
 for (i=0; i&lt;instance_number(objSpawn); i+=1)
 {
-    spawns[i] = instance_find(objSpawn,i);
+    spawns[i] = instance_find(objSpawn, i);
 }
 
 for(i=array_length_1d(spawns)-1; i&gt;0; i--) {
@@ -56,7 +48,7 @@ for(i=0; i&lt;global.nPlayers; i++) {
 }
 
 // Force newHunter next step
-hunter = global.nPlayers;
+hunter = global.nPlayers - 1;
 firstRound = true;
 
 global.winner = noone;
@@ -234,7 +226,7 @@ winTime = WIN_TIME;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="3">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -258,7 +250,7 @@ winTime = WIN_TIME;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="2">
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>

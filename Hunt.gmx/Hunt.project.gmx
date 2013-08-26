@@ -18,11 +18,11 @@
       <sprite>sprites\sprPlayer4</sprite>
       <sprite>sprites\sprPlayerAngry</sprite>
     </sprites>
-    <sprite>sprites\sprAvatars</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprFont</sprite>
+    <sprite>sprites\sprAvatars</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
@@ -53,7 +53,7 @@
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
-  <constants number="18">
+  <constants number="19">
     <constant name="ACCELERATION_MAX">0.25</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>

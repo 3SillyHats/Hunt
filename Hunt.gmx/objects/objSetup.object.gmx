@@ -114,7 +114,7 @@ for (i = 0; i &lt; gamepads; i++) {
 for (i = 0; i &lt; gamepad_get_device_count(); i++) {
     if (not selected[i]) {
         while (avatarTaken[global.players[i]]) {
-                    global.players[i] = (global.players[i] + 1) % 4;
+            global.players[i] = (global.players[i] + 1) % 4;
         }
     }
 }
@@ -148,9 +148,9 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
             case 1: global.players[i] = objPlayer2; break;
             case 2: global.players[i] = objPlayer3; break;
             case 3: global.players[i] = objPlayer4; break;
-        }
+        };
     } else {
-        global.players[i] = false;
+        global.players[i] = noone;
     }
 }
 
