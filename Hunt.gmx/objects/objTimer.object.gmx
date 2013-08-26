@@ -44,6 +44,8 @@ for(i=0; i&lt;PLAYERS_MAX; i++) {
     if global.players[i] != noone {
         global.players[i] = instance_create(spawns[i].x, spawns[i].y, global.players[i]);
         global.players[i].controller = i;
+        global.kills[i] = 0
+        global.deaths[i] = 0
     }
 }
 
