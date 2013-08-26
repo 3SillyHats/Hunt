@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepads = 0;
-for (i = 0; i &lt; 4; i++) {
+            <string>for (i = 0; i &lt; 4; i++) {
     global.players[i] = i;
     pressed[i] = false;
     selected[i] = false;
@@ -59,7 +58,7 @@ for (i = 0; i &lt; 4; i++) {
     if not gamepad_is_connected(i) { continue; }
 
     var gp_axis_lh = gamepad_axis_value(i, gp_axislh);
-    
+
     if (gamepad_button_check_pressed(i, gp_start)) {
         // Play game
         var selections = 0;
@@ -252,6 +251,21 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     draw_sprite(sprController, controller,
         w  / 2 + (w + spacing) * i + xmargin,
         60 + h + ymargin
+    );
+    
+    // Draw prompt
+    var prompt = "Waiting for players...";
+    var selections = 0;
+    for (j = 0; j &lt; 4; j++) {
+        if (selected[j]) { selections++; }
+    }
+    if selections &gt;= 2 { prompt = "Press start to begin!"; }
+    draw_set_alpha(1);
+    draw_set_font(fntMain);
+    draw_text(
+        room_width/2 - string_width(prompt)/2,
+        room_height - 150,
+        prompt
     );
 }
 
