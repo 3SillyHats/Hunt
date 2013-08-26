@@ -32,14 +32,14 @@ time = 0;
 isHunter = false;
 
 if x &lt; room_width/2 {
-    hudX = 75;
+    hudX = 85;
 } else {
-    hudX = 1665;
+    hudX = 1655;
 }
 if y &lt; room_height/2 {
-    hudY = 75;
+    hudY = 85;
 } else {
-    hudY = 935;
+    hudY = 925;
 }
 
 

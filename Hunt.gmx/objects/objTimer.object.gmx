@@ -291,14 +291,14 @@ global.part_emitter_boost = part_emitter_create(global.particles);
             <string>// Draw HUD box
 draw_set_color(c_black);
 draw_set_alpha(HUD_BOX_FADE);
-draw_roundrect(room_width/2 - 90, 75, room_width/2 + 90, 145, false);
+draw_roundrect(room_width/2 - 70, 85, room_width/2 + 70, 155, false);
 
 // Draw timer
-var sec = (alarm[0] / (HUNT_TIME * room_speed)) % 10;
+var sec = ceil(alarm[0] / room_speed);
 draw_set_color(c_white);
 draw_set_alpha(1);
 draw_set_font(fntMain);
-draw_text(room_width/2 - 60, 80, string(sec));
+draw_text(room_width/2 - string_width(string(sec))/2, 90, string(sec));
 
 </string>
           </argument>
