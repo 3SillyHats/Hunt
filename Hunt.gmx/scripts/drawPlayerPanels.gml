@@ -1,6 +1,6 @@
 
 var w = 360;
-var h = 720;
+var h = 660;
 var spacing = 100;
 var xmargin = 90 + ((w + spacing) * (4 - gamepads))/2;
 var ymargin = 90;
@@ -27,7 +27,7 @@ for (i = 0; i < gamepads; i++) {
     
     draw_sprite(sprAvatars, global.players[i],
         (w - aw) / 2 + (w + spacing) * i + xmargin,
-        30 + ymargin
+        60 + ymargin
     );
     
     // Draw icon
@@ -40,7 +40,7 @@ for (i = 0; i < gamepads; i++) {
     }
     draw_sprite(icon, 0,
         w  / 2 + (w + spacing) * i + xmargin,
-        640 + ymargin
+        -60 + h + ymargin
     );
     draw_set_alpha(1);
     
@@ -48,16 +48,28 @@ for (i = 0; i < gamepads; i++) {
     if (not selected[i]) {
         draw_sprite_ext(sprArrow, 0,
             w  / 2 + (w + spacing) * i + xmargin,
-            640 + ymargin, 1, 1,
+            -60 + h + ymargin, 1, 1,
             0,
             c_white, 1
         );
         draw_sprite_ext(sprArrow, 0,
             w  / 2 + (w + spacing) * i + xmargin,
-            640 + ymargin, 1, 1,
+            -60 + h + ymargin, 1, 1,
             180,
             c_white, 1
         );
     }
+    
+    // Draw controller
+    var controller;
+    switch (gamepad_get_description(i)) {
+        case "Xbox 360 Controller (XInput STANDARD GAMEPAD)": controller = 2; break;
+        case "PLAYSTATION(R)3 Controller": controller = 3; break;
+        default: controller = 1; break;
+    }
+    draw_sprite(sprController, controller,
+        w  / 2 + (w + spacing) * i + xmargin,
+        60 + h + ymargin
+    );
 }
 
