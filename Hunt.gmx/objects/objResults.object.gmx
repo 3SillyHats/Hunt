@@ -105,41 +105,99 @@ for (i = 0; i &lt; gamepads; i++) {
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>9</kind>
-            <script>drawResults</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
+            <kind>1</kind>
+            <string>
+var w = 360;
+var h = 660;
+var spacing = 100;
+var xmargin = 90 + ((w + spacing) * (4 - global.nPlayers))/2;
+var ymargin = 90;
+
+var i = 0;
+for (j = 0; j &lt; PLAYERS_MAX; j++) {
+    if (global.players[j] == noone) { continue; }
+    
+    // Draw box
+    if (global.winner == j) {
+        draw_set_color(make_color_hsv(36, 255, 255));
+    } else {
+        draw_set_color(c_black);
+    }
+    draw_set_alpha(HUD_BOX_FADE);
+    draw_roundrect(
+        (w + spacing) * i + xmargin, ymargin,
+        w + ((w + spacing) * i) + xmargin, h + ymargin,
+        false
+    );
+    
+    // Draw avatar
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    var aw = sprite_get_width(sprAvatars);
+    var frame;
+    switch (global.players[j]) {
+        case objPlayer1: frame = 0; break;
+        case objPlayer2: frame = 1; break;
+        case objPlayer3: frame = 2; break;
+        case objPlayer4: frame = 3; break;
+    }
+    draw_sprite(sprAvatars, frame,
+        (w - aw) / 2 + (w + spacing) * i + xmargin,
+        30 + ymargin
+    );
+    
+    // Draw stats
+    draw_set_font(fntMain);
+    var sh = string_height("M");
+    draw_text(
+        20 + (w + spacing) * i + xmargin, 350 + ymargin,
+        "Kills: " + string(global.kills[j])
+    );
+    draw_text(
+        20 + (w + spacing) * i + xmargin, sh + 350 + ymargin,
+        "Deaths: " + string(global.deaths[j])
+    );
+    draw_text(
+        20 + (w + spacing) * i + xmargin, (2 * sh) + 350 + ymargin,
+        "Dodges: " + string(global.dodges[j])
+    );
+    draw_text(
+        20 + (w + spacing) * i + xmargin, (3 * sh) + 350 + ymargin,
+        "Boosts: " + string(global.pickups[j])
+    );
+    
+    // Draw options
+    for (k = 0; k &lt; array_length_1d(options); k++) {
+        if (k == selected) {
+            draw_set_alpha(1);
+        } else {
+            draw_set_alpha(HUD_OPTION_FADE);
+        }
+        draw_text(
+            room_width/2 - string_width(options[k])/2,
+            room_height - 300 + (string_height("M") * k),
+            options[k]
+        );
+    }
+    draw_set_alpha(1);
+    
+    i++;
+}
+
+</string>
           </argument>
         </arguments>
       </action>

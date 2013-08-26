@@ -80,7 +80,7 @@ if (dead) {
 
 
 if (global.kills[controller] &gt;= WIN_THRESHOLD) {
-    global.winner = self;
+    global.winner = controller;
 }
 
 if global.winner == noone {

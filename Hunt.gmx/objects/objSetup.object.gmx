@@ -157,41 +157,100 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>9</kind>
-            <script>drawSetup</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>
+var w = 360;
+var h = 660;
+var spacing = 100;
+var xmargin = 90;
+var ymargin = 90;
+
+for (i = 0; i &lt; PLAYERS_MAX; i++) {
+    // Draw box
+    draw_set_color(c_black);
+    draw_set_alpha(HUD_BOX_FADE);
+    draw_roundrect(
+        (w + spacing) * i + xmargin, ymargin,
+        w + ((w + spacing) * i) + xmargin, h + ymargin,
+        false
+    );
+    
+    if (selected[i]) {
+        draw_set_alpha(1);
+    } else {
+        draw_set_alpha(HUD_AVATAR_FADE);
+    }
+    
+    // Draw avatar
+    draw_set_color(c_white);
+    var aw = sprite_get_width(sprAvatars);
+    
+    draw_sprite(sprAvatars, global.players[i],
+        (w - aw) / 2 + (w + spacing) * i + xmargin,
+        30 + ymargin
+    );
+    
+    // Draw icon
+    var icon
+    switch (global.players[i]) {
+        case 0: icon = sprPlayer1; break;
+        case 1: icon = sprPlayer2; break;
+        case 2: icon = sprPlayer3; break;
+        case 3: icon = sprPlayer4; break;
+    }
+    draw_sprite(icon, 0,
+        w  / 2 + (w + spacing) * i + xmargin,
+        -60 + h + ymargin
+    );
+    draw_set_alpha(1);
+    
+    // Draw arrows
+    if (not selected[i]) {
+        draw_sprite_ext(sprArrow, 0,
+            w  / 2 + (w + spacing) * i + xmargin,
+            -60 + h + ymargin, 1, 1,
+            0,
+            c_white, 1
+        );
+        draw_sprite_ext(sprArrow, 0,
+            w  / 2 + (w + spacing) * i + xmargin,
+            -60 + h + ymargin, 1, 1,
+            180,
+            c_white, 1
+        );
+    }
+    
+    // Draw controller
+    var controller;
+    if gamepad_is_connected(i) {
+        switch (gamepad_get_description(i)) {
+            case "Xbox 360 Controller (XInput STANDARD GAMEPAD)": controller = 2; break;
+            case "PLAYSTATION(R)3 Controller": controller = 3; break;
+            default: controller = 1; break;
+        }
+    } else {
+        controller = 0;
+    }
+    draw_sprite(sprController, controller,
+        w  / 2 + (w + spacing) * i + xmargin,
+        60 + h + ymargin
+    );
+}
+
+</string>
           </argument>
         </arguments>
       </action>
