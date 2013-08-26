@@ -18,6 +18,7 @@
       <sprite>sprites\sprPlayer4</sprite>
       <sprite>sprites\sprPlayerAngry</sprite>
     </sprites>
+    <sprite>sprites\sprAvatars</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
@@ -31,6 +32,7 @@
     <script>scripts\spawn.gml</script>
     <script>scripts\newHunter.gml</script>
     <script>scripts\shuffleHunters.gml</script>
+    <script>scripts\drawPlayerPanels.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -43,9 +45,11 @@
     <object>objects\objWall</object>
     <object>objects\objBoost</object>
     <object>objects\objTimer</object>
+    <object>objects\objSetup</object>
     <object>objects\objSpawn</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rmSetup</room>
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
@@ -57,6 +61,7 @@
     <constant name="BOOST_RESPAWN_TIME">12</constant>
     <constant name="DEAD_ZONE">0.2</constant>
     <constant name="FRICTION">0.05</constant>
+    <constant name="HUD_AVATAR_FADE">.5</constant>
     <constant name="HUD_BOX_FADE">.5</constant>
     <constant name="HUD_ICON_FADE">.75</constant>
     <constant name="HUNT_TIME">10.0</constant>
