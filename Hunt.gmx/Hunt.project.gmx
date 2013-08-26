@@ -24,6 +24,7 @@
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
+    <sprite>sprites\sprCrown</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
@@ -77,7 +78,7 @@
     <constant name="PLAYERS_MAX">4</constant>
     <constant name="SPAWN_BOOSTS">1</constant>
     <constant name="SPEED_MAX">20</constant>
-    <constant name="WIN_THRESHOLD">2</constant>
+    <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
   </constants>
   <help>

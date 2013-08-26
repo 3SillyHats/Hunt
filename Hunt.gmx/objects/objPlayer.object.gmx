@@ -243,6 +243,9 @@ if (rumble &gt; 0) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.kills[controller]++;
+        if (global.kills[controller] &gt; global.maxKills) {
+            global.maxKills = global.kills[controller];
+        }
     } else if (other.isHunter) {
         if (invulnerability &lt;= 0.0) {
             rumble = 0.5;
@@ -320,9 +323,9 @@ draw_text(hudX + 90, hudY + 5, global.kills[controller]);
             <kind>1</kind>
             <string>// Fade if invulnerable
 if (invulnerability &lt;= 0.0 or isHunter) {
-    image_alpha = 1
+    image_alpha = 1;
 } else {
-    image_alpha = INVULNERABLE_FADE
+    image_alpha = INVULNERABLE_FADE;
 }
 
 // Draw self
@@ -345,6 +348,15 @@ for (i = 0; i &lt; boosts; i++) {
 // Draw arrow
 if(moving){
     draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir, c_white, 0.25);
+}
+
+// Draw crown
+if (global.maxKills &gt; 0 and global.kills[controller] == global.maxKills) {
+    if (invulnerability &gt; 0.0 and not isHunter) {
+        draw_set_alpha(INVULNERABLE_FADE);
+    }
+    draw_sprite(sprCrown, 0, x, y-30);
+    draw_set_alpha(1);
 }
 
 </string>

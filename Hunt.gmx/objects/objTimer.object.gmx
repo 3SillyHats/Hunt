@@ -262,6 +262,8 @@ global.particles = part_system_create();
 
 global.part_emitter_boost = part_emitter_create(global.particles);
 
+global.maxKills = 0;
+
 </string>
           </argument>
         </arguments>
