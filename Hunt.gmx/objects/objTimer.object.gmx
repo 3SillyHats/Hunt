@@ -127,6 +127,30 @@ firstRound = true;
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>font_delete(global.font);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="2">
       <action>
         <libid>1</libid>
@@ -145,6 +169,18 @@ firstRound = true;
           <argument>
             <kind>1</kind>
             <string>global.font = font_add_sprite(sprFont, ord("0"), false, 2);
+
+global.part_type_boost = part_type_create();
+part_type_sprite(global.part_type_boost , sprCoin, true, false, false);
+part_type_size(global.part_type_boost, 0.3, 1, -.05, 0);
+part_type_color1(global.part_type_boost, c_white);
+part_type_alpha2(global.part_type_boost, .5, 0);
+part_type_blend(global.part_type_boost, true);
+part_type_life(global.part_type_boost, room_speed, room_speed * 2);
+
+global.particles = part_system_create();
+
+global.part_emitter_boost = part_emitter_create(global.particles);
 
 </string>
           </argument>

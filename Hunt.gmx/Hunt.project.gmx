@@ -32,7 +32,6 @@
     <script>scripts\newHunter.gml</script>
     <script>scripts\shuffleHunters.gml</script>
   </scripts>
-  <fonts name="fonts"/>
   <objects name="objects">
     <objects name="Player">
       <object>objects\objPlayer</object>

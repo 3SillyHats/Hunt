@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -107,8 +107,20 @@ if (boosted) {
             invulnerability = INVULNERABLE_DODGE_TIME;
         }
     } else {
+        // Set to max speed
         hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
         vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
+        
+        // Particles
+        part_type_direction(global.part_type_boost,
+            (direction + 160) % 360, (direction + 200) % 360, 0, 0
+        );
+        part_type_speed(global.part_type_boost, speed/4, speed/2, 0, 0);
+        part_emitter_region(global.particles, global.part_emitter_boost,
+            x + hspeed * 4, x + hspeed * 4, y + vspeed * 4, y + vspeed * 4,
+            ps_shape_ellipse, ps_distr_gaussian
+        );
+        part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
     }
 } else if (boosting) {
     speed *= BOOST_HOLD_DAMPING;
@@ -118,6 +130,7 @@ if (boosted) {
     
     speed -= speed * speed * ACCELERATION_MAX / (SPEED_MAX * SPEED_MAX);
 }
+
 if (rumble &gt; 0) {
     rumble -= 1/room_speed;
     gamepad_set_vibration(controller, 0.8, 0.8);
@@ -126,6 +139,7 @@ if (rumble &gt; 0) {
 } else {
     gamepad_set_vibration(controller, 0, 0);
 }
+
 </string>
           </argument>
         </arguments>
