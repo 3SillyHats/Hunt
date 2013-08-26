@@ -70,78 +70,82 @@ moving = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>time += 1/room_speed;
-if (invulnerability &gt; 0) {
-    invulnerability -= 1/room_speed;
-}
+            <string>var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
+var boosted = gamepad_button_check_released(controller, gp_face1) and boosts &gt; 0;
 
 if (dead) {
     spawn();
 }
 
-ax = gamepad_axis_value(controller, gp_axislh);
-ay = gamepad_axis_value(controller, gp_axislv);
-
-if(ax!=0){
-    dir = -radtodeg(arctan(ay/ax));
-    if(ax&lt;0){
-        dir += 180;
+if global.winner == noone {
+    time += 1/room_speed;
+    if (invulnerability &gt; 0) {
+        invulnerability -= 1/room_speed;
     }
-}else if(ay &gt; 0){
-    dir = 0;
-}else{
-    dir = 180;
-}
-
-var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
-var boosted = gamepad_button_check_released(controller, gp_face1) and boosts &gt; 0;
-
-var norm = sqrt(ax * ax + ay * ay);
-
-if (norm &lt; DEAD_ZONE) {
-    moving = false;
-    ax = -FRICTION*hspeed;
-    ay = -FRICTION*vspeed;
-} else {
-    moving = true;
-    if (norm &gt; 1) {
-        ax /= norm;
-        ay /= norm;
-    }
-    ax *= ACCELERATION_MAX;
-    ay *= ACCELERATION_MAX;
-}
-
-if (boosted) {
-    boosts--
-    if (norm &lt; 0.2) {
-        speed = 0;
-        if (invulnerability &lt; INVULNERABLE_DODGE_TIME) {
-            invulnerability = INVULNERABLE_DODGE_TIME;
-        }
-    } else {
-        // Set to max speed
-        hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
-        vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
-        
-        // Particles
-        part_type_direction(global.part_type_boost,
-            (direction + 160) % 360, (direction + 200) % 360, 0, 0
-        );
-        part_type_speed(global.part_type_boost, speed/4, speed/2, 0, 0);
-        part_emitter_region(global.particles, global.part_emitter_boost,
-            x + hspeed * 4, x + hspeed * 4, y + vspeed * 4, y + vspeed * 4,
-            ps_shape_ellipse, ps_distr_gaussian
-        );
-        part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
-    }
-} else if (boosting) {
-    speed *= BOOST_HOLD_DAMPING;
-} else {
-    hspeed += ax;
-    vspeed += ay;
     
-    speed -= speed * speed * ACCELERATION_MAX / (SPEED_MAX * SPEED_MAX);
+    ax = gamepad_axis_value(controller, gp_axislh);
+    ay = gamepad_axis_value(controller, gp_axislv);
+    
+    if(ax!=0){
+        dir = -radtodeg(arctan(ay/ax));
+        if(ax&lt;0){
+            dir += 180;
+        }
+    }else if(ay &gt; 0){
+        dir = 0;
+    }else{
+        dir = 180;
+    }
+    
+    var norm = sqrt(ax * ax + ay * ay);
+    
+    if (norm &lt; DEAD_ZONE) {
+        moving = false;
+        ax = -FRICTION*hspeed;
+        ay = -FRICTION*vspeed;
+    } else {
+        moving = true;
+        if (norm &gt; 1) {
+            ax /= norm;
+            ay /= norm;
+        }
+        ax *= ACCELERATION_MAX;
+        ay *= ACCELERATION_MAX;
+    }
+    
+    if (boosted) {
+        boosts--
+        if (norm &lt; 0.2) {
+            speed = 0;
+            if (invulnerability &lt; INVULNERABLE_DODGE_TIME) {
+                invulnerability = INVULNERABLE_DODGE_TIME;
+            }
+        } else {
+            // Set to max speed
+            hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
+            vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
+            
+            // Particles
+            part_type_direction(global.part_type_boost,
+                (direction + 160) % 360, (direction + 200) % 360, 0, 0
+            );
+            part_type_speed(global.part_type_boost, speed/4, speed/2, 0, 0);
+            part_emitter_region(global.particles, global.part_emitter_boost,
+                x + hspeed * 4, x + hspeed * 4, y + vspeed * 4, y + vspeed * 4,
+                ps_shape_ellipse, ps_distr_gaussian
+            );
+            part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
+        }
+    } else if (boosting) {
+        speed *= BOOST_HOLD_DAMPING;
+    } else {
+        hspeed += ax;
+        vspeed += ay;
+        
+        speed -= speed * speed * ACCELERATION_MAX / (SPEED_MAX * SPEED_MAX);
+    }
+} else {
+    speed = 0;
 }
 
 if (rumble &gt; 0) {
@@ -175,8 +179,10 @@ if (rumble &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed *= 0.9;
-audio_play_sound(sndHit, 0, false);
+            <string>if (global.winner == noone) {
+    speed *= 0.9;
+    audio_play_sound(sndHit, 0, false);
+}
 
 </string>
           </argument>
@@ -224,17 +230,18 @@ audio_play_sound(sndHit, 0, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (isHunter and other.invulnerability &lt;= 0.0) {
-    rumble = 0.5;
-    captures++;
-    if (captures &gt;= WIN_THRESHOLD) {
-        global.winner = self;
-        room_goto_next();
+            <string>if (global.winner == noone) {
+    if (isHunter and other.invulnerability &lt;= 0.0) {
+        rumble = 0.5;
+        captures++;
+        if (captures &gt;= WIN_THRESHOLD) {
+            global.winner = self;
+        }
+    } else if (other.isHunter and invulnerability &lt;= 0.0) {
+        rumble = 0.5;
+        dead = true;
+        audio_play_sound(sndExplosion, 0, false);
     }
-} else if (other.isHunter and invulnerability &lt;= 0.0) {
-    rumble = 0.5;
-    dead = true;
-    audio_play_sound(sndExplosion, 0, false);
 }
 
 </string>

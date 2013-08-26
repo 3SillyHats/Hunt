@@ -49,7 +49,7 @@
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
-  <constants number="17">
+  <constants number="18">
     <constant name="ACCELERATION_MAX">0.25</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
@@ -66,7 +66,8 @@
     <constant name="INVULNERABLE_SPAWN_TIME">2</constant>
     <constant name="SPAWN_BOOSTS">1</constant>
     <constant name="SPEED_MAX">20</constant>
-    <constant name="WIN_THRESHOLD">10</constant>
+    <constant name="WIN_THRESHOLD">3</constant>
+    <constant name="WIN_TIME">0.6</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
