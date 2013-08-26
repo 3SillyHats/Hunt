@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -234,11 +234,6 @@ audio_play_sound(sndHit, 0, false);
             <string>// Draw captures
 draw_text(10, 10 + (30 * gp), captures);
 
-// Draw if hunter
-if (isHunter) {
-    draw_circle_color(x, y, 23.5, c_red, c_red, true);
-}
-
 </string>
           </argument>
         </arguments>
@@ -261,24 +256,35 @@ if (isHunter) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (invulnerability &lt;= 0.0 or isHunter) {
+            <string>// Fade if invulnerable
+if (invulnerability &lt;= 0.0 or isHunter) {
     image_alpha = 1
 } else {
     image_alpha = INVULNERABLE_FADE
+}
+
+// Draw self
+if (isHunter) {
+    sprite_index = sprPlayerAngry;
+} else {
+    sprite_index = object_get_sprite(object_index);
 }
 draw_self();
 
 // Draw boosts
 for (i = 0; i &lt; boosts; i++) {
-    var bx = 32 * cos(2*pi/3 * i + pi*time);
-    var by = 32 * sin(2*pi/3 * i + pi*time);
+    var bx = 40 * cos(2*pi/3 * i + pi*time);
+    var by = 40 * sin(2*pi/3 * i + pi*time);
     draw_set_alpha(.5);
-    draw_circle_color(x + bx, y + by, 4, c_white, c_white, false);
+    draw_circle_color(x + bx, y + by, 8, c_white, c_white, false);
     draw_set_alpha(1);
 }
+
+// Draw arrow
 if(moving){
-    draw_sprite_ext(sprArrow,0,x,y,1,1,dir,c_white,0.25);
+    draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir, color, 0.25);
 }
+
 </string>
           </argument>
         </arguments>

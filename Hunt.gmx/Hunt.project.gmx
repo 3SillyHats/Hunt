@@ -11,10 +11,13 @@
     <sound>sound\sndMusic</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\sprPlayer1</sprite>
-    <sprite>sprites\sprPlayer2</sprite>
-    <sprite>sprites\sprPlayer3</sprite>
-    <sprite>sprites\sprPlayer4</sprite>
+    <sprites name="Player">
+      <sprite>sprites\sprPlayer1</sprite>
+      <sprite>sprites\sprPlayer2</sprite>
+      <sprite>sprites\sprPlayer3</sprite>
+      <sprite>sprites\sprPlayer4</sprite>
+      <sprite>sprites\sprPlayerAngry</sprite>
+    </sprites>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoinGold</sprite>
     <sprite>sprites\sprArrow</sprite>
@@ -45,7 +48,7 @@
     <room>rooms\rmResults</room>
   </rooms>
   <constants number="14">
-    <constant name="ACCELERATION_MAX">0.5</constant>
+    <constant name="ACCELERATION_MAX">0.25</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
     <constant name="BOOST_MAX">3</constant>
@@ -57,7 +60,7 @@
     <constant name="INVULNERABLE_FADE">.3</constant>
     <constant name="INVULNERABLE_SPAWN_TIME">2</constant>
     <constant name="SPAWN_BOOSTS">1</constant>
-    <constant name="SPEED_MAX">40</constant>
+    <constant name="SPEED_MAX">20</constant>
     <constant name="WIN_THRESHOLD">10</constant>
   </constants>
   <help>
