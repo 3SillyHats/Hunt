@@ -31,6 +31,7 @@ rumble = 0.0;
 time = 0;
 isHunter = false;
 dodged = 0;
+collidedThisFrame = false;
 
 if x &lt; room_width/2 {
     hudX = 85;
@@ -71,7 +72,9 @@ moving = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
+            <string>collidedThisFrame = false;
+
+var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
 var boosted = gamepad_button_check_released(controller, gp_face1) and boosts &gt; 0;
 
 if (dead) {
@@ -188,7 +191,8 @@ if (rumble &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.winner == noone) {
+            <string>if (global.winner == noone and not collidedThisFrame) {
+    collidedThisFrame = true;
     speed *= 0.9;
     audio_play_sound(sndHit, 0, false);
 }
@@ -239,8 +243,9 @@ if (rumble &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.winner == noone) {
+            <string>if (global.winner == noone and not collidedThisFrame) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
+        collidedThisFrame = true;
         rumble = 0.5;
         global.kills[controller]++;
         if (global.kills[controller] &gt; global.maxKills) {
@@ -248,11 +253,13 @@ if (rumble &gt; 0) {
         }
     } else if (other.isHunter) {
         if (invulnerability &lt;= 0.0) {
+            collidedThisFrame = true;
             rumble = 0.5;
             global.deaths[controller]++;
             dead = true;
             audio_play_sound(sndExplosion, 0, false);
         } else if (dodged &lt;= 0.0) {
+            collidedThisFrame = true;
             global.dodges[controller]++;
             dodged = invulnerability;
         }
@@ -264,7 +271,7 @@ if (rumble &gt; 0) {
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -303,8 +310,6 @@ draw_text(hudX + 90, hudY + 5, global.kills[controller]);
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>

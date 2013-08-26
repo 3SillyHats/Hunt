@@ -34,6 +34,7 @@
     <script>scripts\spawn.gml</script>
     <script>scripts\newHunter.gml</script>
     <script>scripts\shuffleHunters.gml</script>
+    <script>scripts\scaleCanvas.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntMain</font>
@@ -52,6 +53,7 @@
     <object>objects\objResults</object>
     <object>objects\objSetup</object>
     <object>objects\objSpawn</object>
+    <object>objects\objScaler</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmSetup</room>
