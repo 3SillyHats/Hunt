@@ -71,12 +71,15 @@ for (i = 0; i &lt; gamepads; i++) {
         // Select option
         switch (selected) {
         case 0:
+            audio_play_sound(sndBlip, 0, false);
             room_goto(rmGame);
             break;
         case 1:
+            audio_play_sound(sndBlip, 0, false);
             room_goto(rmSetup);
             break;
         case 2:
+            audio_play_sound(sndBlip, 0, false);
             game_end();
             break;
         }
@@ -85,12 +88,14 @@ for (i = 0; i &lt; gamepads; i++) {
         if (not pressed[i]) {
             selected = (selected + 1) % array_length_1d(options);
             pressed[i] = true;
+            audio_play_sound(sndBlip, 0, false);
         }
     } else if (axis &lt; -DEAD_ZONE) {
         // Move up
         if (not pressed[i]) {
             selected = (selected - 1) % array_length_1d(options);
             pressed[i] = true;
+            audio_play_sound(sndBlip, 0, false);
         }
     } else {
         pressed[i] = false;

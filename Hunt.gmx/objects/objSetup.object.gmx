@@ -68,6 +68,7 @@ for (i = 0; i &lt; 4; i++) {
         }
         if (selections &gt;= 2) {
             global.nPlayers = selections;
+            audio_play_sound(sndBlip, 0, false);
             room_goto_next();
         }
     } else if (selected[i] and
@@ -76,12 +77,14 @@ for (i = 0; i &lt; 4; i++) {
         avatarTaken[global.players[i]] = false;
         selected[i] = false;
         pressed[i] = false;
+        audio_play_sound(sndBlip, 0, false);
     } else if (not selected[i] and
             gamepad_button_check_pressed(i, gp_face1)) {
         // Make selection
         avatarTaken[global.players[i]] = true;
         selected[i] = true;
         pressed[i] = false;
+        audio_play_sound(sndBlip, 0, false);
     } else if (not selected[i] and gp_axis_lh &gt; DEAD_ZONE) {
         // Move right
         if (not pressed[i]) {
@@ -89,6 +92,7 @@ for (i = 0; i &lt; 4; i++) {
                 global.players[i] = (global.players[i] + 1) % 4;
             } until (not avatarTaken[global.players[i]]);
             pressed[i] = true;
+            audio_play_sound(sndBlip, 0, false);
         }
     } else if (not selected[i] and gp_axis_lh &lt; -DEAD_ZONE) {
         // Move left
@@ -100,6 +104,7 @@ for (i = 0; i &lt; 4; i++) {
                 }
             } until (not avatarTaken[global.players[i]]);
             pressed[i] = true;
+            audio_play_sound(sndBlip, 0, false);
         }
     } else {
         pressed[i] = false;

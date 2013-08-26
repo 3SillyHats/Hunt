@@ -9,6 +9,7 @@
     <sound>sound\sndHit</sound>
     <sound>sound\sndExplosion</sound>
     <sound>sound\sndMusic</sound>
+    <sound>sound\sndBlip</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
