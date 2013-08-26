@@ -34,6 +34,9 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     pressed[i] = false;
 }
 
+// Make background purple
+background_blend[0] = make_color_hsv(197, 100, 81);
+
 </string>
           </argument>
         </arguments>
@@ -124,12 +127,11 @@ for (i = 0; i &lt; gamepads; i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-var w = 360;
+            <string>var w = 410;
 var h = 660;
-var spacing = 100;
-var xmargin = 90 + ((w + spacing) * (4 - global.nPlayers))/2;
-var ymargin = 90;
+var spacing = 30;
+var xmargin = 95 + ((w + spacing) * (4 - global.nPlayers))/2;
+var ymargin = 95;
 
 var i = 0;
 for (j = 0; j &lt; PLAYERS_MAX; j++) {
