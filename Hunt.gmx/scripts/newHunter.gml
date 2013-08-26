@@ -1,5 +1,5 @@
 for(i=0; i<global.nPlayers; i++) {
-    global.players[i].isHunter = false
+    hunters[i].isHunter = false
 }
 
 hunter++;

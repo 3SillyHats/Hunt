@@ -72,7 +72,8 @@ for (i = 0; i &lt; gamepads; i++) {
         for (i = 0; i &lt; 4; i++) {
             if (selected[i]) { selections++; }
         }
-        if (selections == gamepads) {
+        if (selections &gt;= 2) {
+            global.nPlayers = selections;
             room_goto_next();
         }
     } else if (selected[i] and
@@ -142,7 +143,7 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
           <argument>
             <kind>1</kind>
             <string>for (i = 0; i &lt; 4; i++) {
-    if (i &lt; gamepads) {
+    if selected[i] {
         switch (global.players[i]) {
             case 0: global.players[i] = objPlayer1; break;
             case 1: global.players[i] = objPlayer2; break;
@@ -153,8 +154,6 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
         global.players[i] = noone;
     }
 }
-
-global.nPlayers = gamepads;
 
 </string>
           </argument>

@@ -54,7 +54,7 @@
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
-  <constants number="19">
+  <constants number="20">
     <constant name="ACCELERATION_MAX">0.25</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
@@ -74,6 +74,7 @@
     <constant name="SPEED_MAX">20</constant>
     <constant name="WIN_THRESHOLD">3</constant>
     <constant name="WIN_TIME">0.6</constant>
+    <constant name="PLAYERS_MAX">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
