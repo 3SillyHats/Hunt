@@ -27,8 +27,6 @@
             <kind>1</kind>
             <string>controller = 3;
 color = make_color_hsv(34, 128, 128);
-hudX = 75;
-hudY = 935;
 
 </string>
           </argument>

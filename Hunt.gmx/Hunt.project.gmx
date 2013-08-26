@@ -43,6 +43,7 @@
     <object>objects\objWall</object>
     <object>objects\objBoost</object>
     <object>objects\objTimer</object>
+    <object>objects\objSpawn</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGame</room>

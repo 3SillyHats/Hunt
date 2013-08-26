@@ -29,6 +29,19 @@
 invulnerability = 0.0;
 rumble = 0.0;
 time = 0;
+isHunter = false;
+
+if x &lt; room_width/2 {
+    hudX = 75;
+} else {
+    hudX = 1665;
+}
+if y &lt; room_height/2 {
+    hudY = 75;
+} else {
+    hudY = 935;
+}
+
 
 spawn();
 

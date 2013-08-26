@@ -25,12 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.players[0] = objPlayer1;
+            <string>randomize()
+global.players[0] = objPlayer1;
 global.players[1] = objPlayer2;
 global.players[2] = objPlayer3;
 global.players[3] = objPlayer4;
 
 global.nPlayers = array_length_1d(global.players);
+
+var spawns
+for (i=0; i&lt;instance_number(objSpawn); i+=1)
+{
+    spawns[i] = instance_find(objSpawn,i);
+}
+
+for(i=array_length_1d(spawns)-1; i&gt;0; i--) {
+    j = irandom(i);
+    var temp = spawns[i];
+    spawns[i] = spawns[j];
+    spawns[j] = temp;
+}
+
+for(i=0; i&lt;global.nPlayers; i++) {
+    global.players[i] = instance_create(spawns[i].x, spawns[i].y, global.players[i]);
+}
 
 for(i=0; i&lt;global.nPlayers; i++) {
     hunters[i] = global.players[i];
