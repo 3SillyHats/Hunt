@@ -237,30 +237,6 @@ winTime = WIN_TIME;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>font_delete(global.font);
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
@@ -278,9 +254,7 @@ winTime = WIN_TIME;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.font = font_add_sprite(sprFont, ord("0"), false, 2);
-
-global.part_type_boost = part_type_create();
+            <string>global.part_type_boost = part_type_create();
 part_type_sprite(global.part_type_boost , sprCoin, true, false, false);
 part_type_size(global.part_type_boost, 0.3, 1, -.05, 0);
 part_type_color1(global.part_type_boost, c_white);
@@ -323,8 +297,8 @@ draw_roundrect(room_width/2 - 90, 75, room_width/2 + 90, 145, false);
 var sec = (alarm[0] / (HUNT_TIME * room_speed)) % 10;
 draw_set_color(c_white);
 draw_set_alpha(1);
-draw_set_font(global.font);
-draw_text(room_width/2 - 65, 85, string(sec));
+draw_set_font(fntMain);
+draw_text(room_width/2 - 60, 80, string(sec));
 
 </string>
           </argument>

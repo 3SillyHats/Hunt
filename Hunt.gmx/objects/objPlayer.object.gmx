@@ -284,8 +284,8 @@ draw_sprite(icon, 0, hudX + 5 + w/2, hudY + 5 + h/2);
 
 // Draw captures
 draw_set_alpha(1);
-draw_set_font(global.font);
-draw_text(hudX + 75, hudY + 10, global.kills[controller]);
+draw_set_font(fntMain);
+draw_text(hudX + 90, hudY + 5, global.kills[controller]);
 
 </string>
           </argument>

@@ -8,36 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>gamepads = 0;
-for (i = 0; i &lt; 4; i++) {
-    global.players[i] = i;
-    pressed[i] = false;
-    selected[i] = false;
-    avatarTaken[i] = false;
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -55,10 +25,16 @@ for (i = 0; i &lt; 4; i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
-    if not gamepad_is_connected(i) { continue; }
+            <string>var gamepads = 0;
+var gp_num = gamepad_get_device_count();
+for (var i = 0; i &lt; gp_num; i++;) {
+    if gamepad_is_connected(i) {
+        gamepads++;
+    }
+}
 
-    var gp_axis_lh = gamepad_axis_value(i, gp_axislh);
+for (i = 0; i &lt; gamepads; i++) {
+    var axis = gamepad_axis_value(i, gp_axislv);
     
     if (gamepad_button_check_pressed(i, gp_start)) {
         // Play game
@@ -66,8 +42,7 @@ for (i = 0; i &lt; 4; i++) {
         for (i = 0; i &lt; 4; i++) {
             if (selected[i]) { selections++; }
         }
-        if (selections &gt;= 2) {
-            global.nPlayers = selections;
+        if (selections == gamepads) {
             room_goto_next();
         }
     } else if (selected[i] and
@@ -114,40 +89,6 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
     }
 }
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
-    if selected[i] {
-        switch (global.players[i]) {
-            case 0: global.players[i] = objPlayer1; break;
-            case 1: global.players[i] = objPlayer2; break;
-            case 2: global.players[i] = objPlayer3; break;
-            case 3: global.players[i] = objPlayer4; break;
-        };
-    } else {
-        global.players[i] = noone;
-    }
-}
 
 </string>
           </argument>
@@ -171,27 +112,27 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
         <arguments>
           <argument>
             <kind>9</kind>
-            <script>drawSetup</script>
+            <script>drawResults</script>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string></string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string></string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string></string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string></string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

@@ -22,7 +22,6 @@
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
-    <sprite>sprites\sprFont</sprite>
     <sprite>sprites\sprAvatars</sprite>
   </sprites>
   <backgrounds name="background">
@@ -33,8 +32,12 @@
     <script>scripts\spawn.gml</script>
     <script>scripts\newHunter.gml</script>
     <script>scripts\shuffleHunters.gml</script>
-    <script>scripts\drawPlayerPanels.gml</script>
+    <script>scripts\drawSetup.gml</script>
+    <script>scripts\drawResults.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fntMain</font>
+  </fonts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\objPlayer</object>
@@ -46,6 +49,7 @@
     <object>objects\objWall</object>
     <object>objects\objBoost</object>
     <object>objects\objTimer</object>
+    <object>objects\objResults</object>
     <object>objects\objSetup</object>
     <object>objects\objSpawn</object>
   </objects>
