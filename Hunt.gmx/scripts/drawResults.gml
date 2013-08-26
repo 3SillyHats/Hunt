@@ -22,24 +22,40 @@ for (j = 0; j < PLAYERS_MAX; j++) {
     draw_set_alpha(1);
     draw_set_color(c_white);
     var aw = sprite_get_width(sprAvatars);
-    
-    draw_sprite(sprAvatars, global.players[j],
+    var frame;
+    switch (global.players[j]) {
+        case objPlayer1: frame = 0; break;
+        case objPlayer2: frame = 1; break;
+        case objPlayer3: frame = 2; break;
+        case objPlayer4: frame = 3; break;
+    }
+    draw_sprite(sprAvatars, frame,
         (w - aw) / 2 + (w + spacing) * i + xmargin,
         60 + ymargin
     );
     
     // Draw icon
-    var icon
-    switch (global.players[j]) {
-        case 0: icon = sprPlayer1; break;
-        case 1: icon = sprPlayer2; break;
-        case 2: icon = sprPlayer3; break;
-        case 3: icon = sprPlayer4; break;
-    }
+    var icon = object_get_sprite(global.players[j]);
     draw_sprite(icon, 0,
         w  / 2 + (w + spacing) * i + xmargin,
         -60 + h + ymargin
     );
+    
+    // Draw options
+    draw_set_font(fntMain);
+    for (k = 0; k < array_length_1d(options); k++) {
+        if (k == selected) {
+            draw_set_alpha(1);
+        } else {
+            draw_set_alpha(HUD_OPTION_FADE);
+        }
+        draw_text(
+            room_width/2 - 300,
+            room_height - 300 + (70 * k),
+            options[k]
+        );
+    }
+    draw_set_alpha(1);
     
     i++;
 }

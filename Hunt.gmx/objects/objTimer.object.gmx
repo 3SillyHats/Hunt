@@ -40,21 +40,15 @@ for(i=array_length_1d(spawns)-1; i&gt;0; i--) {
     spawns[j] = temp;
 }
 
-for(i=0; i&lt;PLAYERS_MAX; i++) {
-    if global.players[i] != noone {
-        global.players[i] = instance_create(spawns[i].x, spawns[i].y, global.players[i]);
-        global.players[i].controller = i;
-        global.kills[i] = 0
-        global.deaths[i] = 0
-    }
-}
-
 var j = 0;
 for(i=0; i&lt;global.nPlayers; i++) {
     while (global.players[j] == noone) {
         j++;
     }
-    hunters[i] = global.players[j];
+    hunters[i] = instance_create(spawns[i].x, spawns[i].y, global.players[j]);
+    hunters[i].controller = j;
+    global.kills[j] = 0
+    global.deaths[j] = 0
     j++;
 }
 
