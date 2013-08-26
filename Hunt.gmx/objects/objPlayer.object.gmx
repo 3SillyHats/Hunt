@@ -283,7 +283,7 @@ for (i = 0; i &lt; boosts; i++) {
 
 // Draw arrow
 if(moving){
-    draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir, color, 0.25);
+    draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir, c_white, 0.25);
 }
 
 </string>
