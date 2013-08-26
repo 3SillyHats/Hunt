@@ -34,6 +34,9 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     pressed[i] = false;
 }
 
+// Make background purple
+background_blend[0] = make_color_hsv(197, 100, 81);
+
 </string>
           </argument>
         </arguments>
