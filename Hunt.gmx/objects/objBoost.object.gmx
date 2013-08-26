@@ -77,7 +77,7 @@
     other.boosts++;
     active = false;
     audio_play_sound(sndPickup, 0, false);
-    alarm[0] = BOOST_RESPAWN_TIME * room_speed;
+    alarm[0] = BOOST_RESPAWN_TIME * room_speed / global.nPlayers;
 }
 
 </string>
@@ -126,5 +126,8 @@ draw_self() ;
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>-15,-15</point>
+    <point>15,15</point>
+  </PhysicsShapePoints>
 </object>
