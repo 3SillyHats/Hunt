@@ -48,6 +48,7 @@ for(i=array_length_1d(spawns)-1; i&gt;0; i--) {
 
 for(i=0; i&lt;global.nPlayers; i++) {
     global.players[i] = instance_create(spawns[i].x, spawns[i].y, global.players[i]);
+    global.players[i].controller = i;
 }
 
 for(i=0; i&lt;global.nPlayers; i++) {
