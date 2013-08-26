@@ -177,11 +177,11 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
           <argument>
             <kind>1</kind>
             <string>
-var w = 360;
+var w = 410;
 var h = 660;
-var spacing = 100;
-var xmargin = 90;
-var ymargin = 90;
+var spacing = 30;
+var xmargin = 95;
+var ymargin = 95;
 
 for (i = 0; i &lt; PLAYERS_MAX; i++) {
     // Draw box
