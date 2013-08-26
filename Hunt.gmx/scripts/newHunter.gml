@@ -4,13 +4,14 @@ for(i=0; i<global.nPlayers; i++) {
 
 hunter++;
 if(hunter >= global.nPlayers) {
-    shuffleHunters();
+    shuffleHunters(not firstRound);
     hunter = 0;
+    firstRound = false;
 }
 
 hunters[hunter].isHunter = true;
 
 audio_play_music(sndMusic, false);
 
-alarm[0] = 10*room_speed;
+alarm[0] = HUNT_TIME * room_speed;
 

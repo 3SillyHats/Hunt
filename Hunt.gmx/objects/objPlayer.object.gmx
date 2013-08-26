@@ -34,6 +34,7 @@ spawn();
 
 dir = 90;
 moving = false;
+
 </string>
           </argument>
         </arguments>
