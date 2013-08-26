@@ -30,6 +30,7 @@ invulnerability = 0.0;
 rumble = 0.0;
 time = 0;
 isHunter = false;
+dodged = 0;
 
 if x &lt; room_width/2 {
     hudX = 85;
@@ -86,6 +87,9 @@ if global.winner == noone {
     time += 1/room_speed;
     if (invulnerability &gt; 0) {
         invulnerability -= 1/room_speed;
+    }
+    if (dodged &gt; 0) {
+        dodged -= 1/room_speed;
     }
     
     ax = gamepad_axis_value(controller, gp_axislh);
@@ -239,11 +243,16 @@ if (rumble &gt; 0) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.kills[controller]++;
-    } else if (other.isHunter and invulnerability &lt;= 0.0) {
-        rumble = 0.5;
-        global.deaths[controller]++;
-        dead = true;
-        audio_play_sound(sndExplosion, 0, false);
+    } else if (other.isHunter) {
+        if (invulnerability &lt;= 0.0) {
+            rumble = 0.5;
+            global.deaths[controller]++;
+            dead = true;
+            audio_play_sound(sndExplosion, 0, false);
+        } else if (dodged &lt;= 0.0) {
+            global.dodges[controller]++;
+            dodged = invulnerability;
+        }
     }
 }
 

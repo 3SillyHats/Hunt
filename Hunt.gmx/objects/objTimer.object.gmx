@@ -47,8 +47,10 @@ for(i=0; i&lt;global.nPlayers; i++) {
     }
     hunters[i] = instance_create(spawns[i].x, spawns[i].y, global.players[j]);
     hunters[i].controller = j;
-    global.kills[j] = 0
-    global.deaths[j] = 0
+    global.kills[j] = 0;
+    global.deaths[j] = 0;
+    global.dodges[j] = 0;
+    global.pickups[j] = 0;
     j++;
 }
 

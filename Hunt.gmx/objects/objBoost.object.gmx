@@ -75,6 +75,7 @@
             <kind>1</kind>
             <string>if (active and other.boosts &lt; BOOST_MAX) {
     other.boosts++;
+    global.pickups[other.controller]++;
     active = false;
     audio_play_sound(sndPickup, 0, false);
     alarm[0] = BOOST_RESPAWN_TIME * room_speed / global.nPlayers;
