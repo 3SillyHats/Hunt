@@ -55,15 +55,9 @@ for (i = 0; i &lt; 4; i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepads = 0;
-var gp_num = gamepad_get_device_count();
-for (var i = 0; i &lt; gp_num; i++;) {
-    if gamepad_is_connected(i) {
-        gamepads++;
-    }
-}
+            <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
+    if not gamepad_is_connected(i) { continue; }
 
-for (i = 0; i &lt; gamepads; i++) {
     var gp_axis_lh = gamepad_axis_value(i, gp_axislh);
     
     if (gamepad_button_check_pressed(i, gp_start)) {
@@ -142,7 +136,7 @@ for (i = 0; i &lt; gamepad_get_device_count(); i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (i = 0; i &lt; 4; i++) {
+            <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
     if selected[i] {
         switch (global.players[i]) {
             case 0: global.players[i] = objPlayer1; break;

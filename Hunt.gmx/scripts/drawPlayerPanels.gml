@@ -2,10 +2,10 @@
 var w = 360;
 var h = 660;
 var spacing = 100;
-var xmargin = 90 + ((w + spacing) * (4 - gamepads))/2;
+var xmargin = 90;
 var ymargin = 90;
 
-for (i = 0; i < gamepads; i++) {
+for (i = 0; i < PLAYERS_MAX; i++) {
     // Draw box
     draw_set_color(c_black);
     draw_set_alpha(HUD_BOX_FADE);
@@ -62,10 +62,14 @@ for (i = 0; i < gamepads; i++) {
     
     // Draw controller
     var controller;
-    switch (gamepad_get_description(i)) {
-        case "Xbox 360 Controller (XInput STANDARD GAMEPAD)": controller = 2; break;
-        case "PLAYSTATION(R)3 Controller": controller = 3; break;
-        default: controller = 1; break;
+    if gamepad_is_connected(i) {
+        switch (gamepad_get_description(i)) {
+            case "Xbox 360 Controller (XInput STANDARD GAMEPAD)": controller = 2; break;
+            case "PLAYSTATION(R)3 Controller": controller = 3; break;
+            default: controller = 1; break;
+        }
+    } else {
+        controller = 0;
     }
     draw_sprite(sprController, controller,
         w  / 2 + (w + spacing) * i + xmargin,
