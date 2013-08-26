@@ -10,6 +10,7 @@ if(hunter >= global.nPlayers) {
 }
 
 hunters[hunter].isHunter = true;
+hunters[hunter].boosts = 3;
 
 audio_play_music(sndMusic, false);
 

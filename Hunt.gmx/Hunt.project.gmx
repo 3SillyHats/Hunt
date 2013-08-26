@@ -49,7 +49,7 @@
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
-  <constants number="16">
+  <constants number="17">
     <constant name="ACCELERATION_MAX">0.25</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
@@ -57,9 +57,10 @@
     <constant name="BOOST_RESPAWN_TIME">12</constant>
     <constant name="DEAD_ZONE">0.2</constant>
     <constant name="FRICTION">0.05</constant>
-    <constant name="HUD_ICON_FADE">.75</constant>
     <constant name="HUD_BOX_FADE">.5</constant>
+    <constant name="HUD_ICON_FADE">.75</constant>
     <constant name="HUNT_TIME">10.0</constant>
+    <constant name="HUNTER_BOOSTS">3</constant>
     <constant name="INVULNERABLE_DODGE_TIME">0.5</constant>
     <constant name="INVULNERABLE_FADE">.3</constant>
     <constant name="INVULNERABLE_SPAWN_TIME">2</constant>
