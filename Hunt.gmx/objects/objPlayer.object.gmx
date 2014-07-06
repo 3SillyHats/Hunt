@@ -95,6 +95,11 @@ if global.winner == noone {
     ax = gamepad_axis_value(controller, gp_axislh);
     ay = gamepad_axis_value(controller, gp_axislv);
     
+    var acc = ACCELERATION_MAX;
+    //if (!isHunter) {
+    //    acc *= 0.5;
+    //}
+    
     if(ax!=0){
         dir = -radtodeg(arctan(ay/ax));
         if(ax&lt;0){
@@ -118,11 +123,15 @@ if global.winner == noone {
             ax /= norm;
             ay /= norm;
         }
-        ax *= ACCELERATION_MAX;
-        ay *= ACCELERATION_MAX;
+        ax *= acc;
+        ay *= acc;
     }
     
-    if (boosted) {
+    var speed_max = SPEED_MAX;
+    //        if (!isHunter) {
+    //            speed_max *= 2;
+    //        }
+    if (boosted and (invulnerability &lt;= 0.0 or isHunter)) {
         boosts--
         if (norm &lt; 0.2) {
             speed = 0;
@@ -131,8 +140,9 @@ if global.winner == noone {
             }
         } else {
             // Set to max speed
-            hspeed = (ax / (norm * ACCELERATION_MAX)) * SPEED_MAX;
-            vspeed = (ay / (norm * ACCELERATION_MAX)) * SPEED_MAX;
+            
+            hspeed = (ax / (norm * acc)) * speed_max * 2;
+            vspeed = (ay / (norm * acc)) * speed_max * 2;
             
             // Particles
             part_type_direction(global.part_type_boost,
@@ -151,7 +161,7 @@ if global.winner == noone {
         hspeed += ax;
         vspeed += ay;
         
-        speed -= speed * speed * ACCELERATION_MAX / (SPEED_MAX * SPEED_MAX);
+        speed -= speed * speed * acc / (speed_max * speed_max);
     }
 } else {
     speed = 0;
@@ -189,35 +199,29 @@ if (rumble &gt; 0) {
           <argument>
             <kind>1</kind>
             <string>if (global.winner == noone) {
-    speed *= 0.9;
-    audio_play_sound(sndHit, 0, false);
+    // normal_x = other.x - self.x
+    // normal_y = other.y - self.y
+    // normal = sqrt(normal_x*normal_x + normal_y*normal_y)
+    // normal_x /= normal
+    // normal_y /= normal
+    // dot = normal_x*hspeed + normal_y*vspeed
+    // hspeed -= dot*normal_x;
+    // vspeed -= dot*normal_y;
+    //speed *= 0.65
+    
+    x = xprevious
+    y = yprevious
+    move_contact_solid(direction, speed)
+    if place_meeting(x+1, y, objWall) or place_meeting(x-1, y, objWall) {
+        hspeed = -hspeed * BOUNCE_SLOW
+    }
+    if place_meeting(x, y+1, objWall) or place_meeting(x, y-1, objWall) {
+        vspeed = -vspeed * BOUNCE_SLOW
+    }
+    //audio_play_sound(sndHit, 0, false);
 }
 
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>115</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_bounce</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>4</kind>
-            <string>1</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -243,6 +247,9 @@ if (rumble &gt; 0) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.kills[controller]++;
+        if (boosts &lt; BOOST_MAX) {
+            boosts++;
+        }
         if (global.kills[controller] &gt; global.maxKills) {
             global.maxKills = global.kills[controller];
         }
