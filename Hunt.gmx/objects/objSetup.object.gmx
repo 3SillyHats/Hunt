@@ -57,61 +57,74 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
-    if not gamepad_is_connected(i) { continue; }
-
-    var gp_axis_lh = gamepad_axis_value(i, gp_axislh);
-
-    if (gamepad_button_check_pressed(i, gp_start)) {
-        // Play game
-        var selections = 0;
-        for (i = 0; i &lt; 4; i++) {
-            if (selected[i]) { selections++; }
-        }
-        if (selections &gt;= 2) {
-            global.nPlayers = selections;
-            audio_play_sound(sndBlip, 0, false);
-            room_goto_next();
-        }
-    } else if (selected[i] and
-            gamepad_button_check_pressed(i, gp_face2)) {
-        // Cancel selection
-        avatarTaken[global.players[i]] = false;
-        selected[i] = false;
-        pressed[i] = false;
+            <string>if (keyboard_check(vk_space)) {
+    // Play game
+    var selections = 0;
+    for (i = 0; i &lt; 4; i++) {
+        if (selected[i]) { selections++; }
+    }
+    if (selections &gt;= 2) {
+        global.nPlayers = selections;
         audio_play_sound(sndBlip, 0, false);
-    } else if (not selected[i] and
-            gamepad_button_check_pressed(i, gp_face1)) {
-        // Make selection
-        avatarTaken[global.players[i]] = true;
-        selected[i] = true;
-        pressed[i] = false;
-        audio_play_sound(sndBlip, 0, false);
-    } else if (not selected[i] and gp_axis_lh &gt; DEAD_ZONE) {
-        // Move right
-        if (not pressed[i]) {
-            do {
-                global.players[i] = (global.players[i] + 1) % 4;
-            } until (not avatarTaken[global.players[i]]);
-            pressed[i] = true;
-            audio_play_sound(sndBlip, 0, false);
-        }
-    } else if (not selected[i] and gp_axis_lh &lt; -DEAD_ZONE) {
-        // Move left
-        if (not pressed[i]) {
-            do {
-                global.players[i] = global.players[i] - 1;
-                if (global.players[i] &lt; 0) {
-                    global.players[i] += 4;
-                }
-            } until (not avatarTaken[global.players[i]]);
-            pressed[i] = true;
-            audio_play_sound(sndBlip, 0, false);
-        }
-    } else {
-        pressed[i] = false;
+        room_goto_next();
     }
 }
+
+//for (i = 0; i &lt; PLAYERS_MAX; i++) {
+//    if not gamepad_is_connected(i) { continue; }
+//
+//    var gp_axis_lh = gamepad_axis_value(i, gp_axislh);
+//
+//    if (gamepad_button_check_pressed(i, gp_start)) {
+//        // Play game
+//        var selections = 0;
+//        for (i = 0; i &lt; 4; i++) {
+//            if (selected[i]) { selections++; }
+//        }
+//        if (selections &gt;= 2) {
+//            global.nPlayers = selections;
+//            audio_play_sound(sndBlip, 0, false);
+//            room_goto_next();
+//        }
+//    } else if (selected[i] and
+//            gamepad_button_check_pressed(i, gp_face2)) {
+//        // Cancel selection
+//        avatarTaken[global.players[i]] = false;
+//        selected[i] = false;
+//        pressed[i] = false;
+//        audio_play_sound(sndBlip, 0, false);
+//    } else if (not selected[i] and
+//            gamepad_button_check_pressed(i, gp_face1)) {
+//        // Make selection
+//        avatarTaken[global.players[i]] = true;
+//        selected[i] = true;
+//        pressed[i] = false;
+//        audio_play_sound(sndBlip, 0, false);
+//    } else if (not selected[i] and gp_axis_lh &gt; DEAD_ZONE) {
+//        // Move right
+//        if (not pressed[i]) {
+//            do {
+//                global.players[i] = (global.players[i] + 1) % 4;
+//            } until (not avatarTaken[global.players[i]]);
+//            pressed[i] = true;
+//            audio_play_sound(sndBlip, 0, false);
+//        }
+//    } else if (not selected[i] and gp_axis_lh &lt; -DEAD_ZONE) {
+//        // Move left
+//        if (not pressed[i]) {
+//            do {
+//                global.players[i] = global.players[i] - 1;
+//                if (global.players[i] &lt; 0) {
+//                    global.players[i] += 4;
+//                }
+//            } until (not avatarTaken[global.players[i]]);
+//            pressed[i] = true;
+//            audio_play_sound(sndBlip, 0, false);
+//        }
+//    } else {
+//        pressed[i] = false;
+//    }
+//}
 
 for (i = 0; i &lt; gamepad_get_device_count(); i++) {
     if (not selected[i]) {
@@ -186,6 +199,12 @@ var xmargin = 95;
 var ymargin = 95;
 
 for (i = 0; i &lt; PLAYERS_MAX; i++) {
+    if gamepad_is_connected(i) {
+        selected[i] = true;
+    } else {
+        selected[i] = false;
+    } 
+
     // Draw box
     draw_set_color(c_black);
     draw_set_alpha(HUD_BOX_FADE);
@@ -262,7 +281,7 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     for (j = 0; j &lt; 4; j++) {
         if (selected[j]) { selections++; }
     }
-    if selections &gt;= 2 { prompt = "Press start to begin!"; }
+    if selections &gt;= 2 { prompt = "Press space to begin!"; }
     draw_set_alpha(1);
     draw_set_font(fntMain);
     draw_text(
