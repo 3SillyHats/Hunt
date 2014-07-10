@@ -61,6 +61,8 @@ firstRound = true;
 global.winner = noone;
 winTime = WIN_TIME;
 
+hunt_remaining = 0
+
 </string>
           </argument>
         </arguments>
@@ -106,104 +108,6 @@ winTime = WIN_TIME;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>612</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_if_variable</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>global.winner</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>noone</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>9</kind>
-            <script>newHunter</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -221,7 +125,12 @@ winTime = WIN_TIME;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.winner != noone {
+            <string>if global.winner == noone {
+    hunt_remaining = hunt_remaining - delta_time
+    if hunt_remaining &lt;= 0 {
+        newHunter()
+    }
+} else {
     winTime -= 1/room_speed;
     if winTime &lt;= 0 {
         room_goto_next();
@@ -292,7 +201,7 @@ draw_set_alpha(HUD_BOX_FADE);
 draw_roundrect(room_width/2 - 70, 85, room_width/2 + 70, 155, false);
 
 // Draw timer
-var sec = ceil(alarm[0] / room_speed);
+var sec = ceil(hunt_remaining / 1000000);
 draw_set_color(c_white);
 draw_set_alpha(1);
 draw_set_font(fntMain);

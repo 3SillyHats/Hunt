@@ -16,5 +16,5 @@ if hunters[hunter].boosts < 1 {
 
 audio_play_music(sndMusic, false);
 
-alarm[0] = HUNT_TIME * room_speed;
+hunt_remaining = hunt_remaining + HUNT_TIME * 1000000;
 
