@@ -57,7 +57,7 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_space)) {
+            <string>if (keyboard_check(vk_return)) {
     // Play game
     var selections = 0;
     for (i = 0; i &lt; 4; i++) {
@@ -281,7 +281,7 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     for (j = 0; j &lt; 4; j++) {
         if (selected[j]) { selections++; }
     }
-    if selections &gt;= 2 { prompt = "Press space to begin!"; }
+    if selections &gt;= 2 { prompt = "Press enter to begin!"; }
     draw_set_alpha(1);
     draw_set_font(fntMain);
     draw_text(
