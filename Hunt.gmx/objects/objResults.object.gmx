@@ -96,7 +96,7 @@ for (i = 0; i &lt; gamepads; i++) {
     } else if (axis &lt; -DEAD_ZONE) {
         // Move up
         if (not pressed[i]) {
-            selected = (selected - 1) % array_length_1d(options);
+            selected = (selected + array_length_1d(options) - 1) % array_length_1d(options);
             pressed[i] = true;
             audio_play_sound(sndBlip, 0, false);
         }
