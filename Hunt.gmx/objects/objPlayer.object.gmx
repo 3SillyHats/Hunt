@@ -75,8 +75,8 @@ moving = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
-var boosted = gamepad_button_check_released(controller, gp_face1) and boosts &gt; 0;
+            <string>var boost = gamepad_button_check_pressed(controller, gp_face1) and boosts &gt; 0;
+var dodge = gamepad_button_check_pressed(controller, gp_face2) and boosts &gt; 0;
 
 if (gamepad_button_check_pressed(controller, gp_select)) {
     room_goto(rmSetup);
@@ -139,34 +139,29 @@ if global.winner == noone {
     //        if (!isHunter) {
     //            speed_max *= 2;
     //        }
-    if (boosted and (invulnerability &lt;= 0.0 or isHunter)) {
+    if (boost and (invulnerability &lt;= 0.0 or isHunter) and norm &gt; 0.2) {
         boosts--
-        if (norm &lt; 0.2) {
-            speed = 0;
-            if (invulnerability &lt; INVULNERABLE_DODGE_TIME) {
-                invulnerability = INVULNERABLE_DODGE_TIME;
-            }
-        } else {
-            global.boosts[controller]++;
+        global.boosts[controller]++;
         
-            // Set to max speed
-            
-            hspeed = (ax / (norm * acc)) * speed_max * 2;
-            vspeed = (ay / (norm * acc)) * speed_max * 2;
-            
-            // Particles
-            part_type_direction(global.part_type_boost,
-                (direction + 160) % 360, (direction + 200) % 360, 0, 0
-            );
-            part_type_speed(global.part_type_boost, speed/4, speed/2, 0, 0);
-            part_emitter_region(global.particles, global.part_emitter_boost,
-                x + hspeed * 4, x + hspeed * 4, y + vspeed * 4, y + vspeed * 4,
-                ps_shape_ellipse, ps_distr_gaussian
-            );
-            part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
-        }
-    } else if (boosting) {
-        speed *= BOOST_HOLD_DAMPING;
+        // Set to max speed
+        
+        hspeed = (ax / (norm * acc)) * speed_max * 2;
+        vspeed = (ay / (norm * acc)) * speed_max * 2;
+        
+        // Particles
+        part_type_direction(global.part_type_boost,
+            (direction + 160) % 360, (direction + 200) % 360, 0, 0
+        );
+        part_type_speed(global.part_type_boost, speed/4, speed/2, 0, 0);
+        part_emitter_region(global.particles, global.part_emitter_boost,
+            x + hspeed * 4, x + hspeed * 4, y + vspeed * 4, y + vspeed * 4,
+            ps_shape_ellipse, ps_distr_gaussian
+        );
+        part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
+    } else if (dodge and invulnerability &lt;= 0.0 and not isHunter) {
+        boosts--
+        speed = 0;
+        invulnerability = INVULNERABLE_DODGE_TIME;
     } else {
         if normal_time &gt; 0 {
             var dot = ax*normal_x + ay*normal_y
@@ -189,8 +184,6 @@ if global.winner == noone {
 if (rumble &gt; 0) {
     rumble -= 1/room_speed;
     gamepad_set_vibration(controller, 0.8, 0.8);
-} else if (boosting) {
-    gamepad_set_vibration(controller, 0.15, 0.15);
 } else {
     gamepad_set_vibration(controller, 0, 0);
 }
