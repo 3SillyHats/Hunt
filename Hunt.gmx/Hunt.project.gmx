@@ -69,7 +69,7 @@
     <constant name="FRICTION">0.05</constant>
     <constant name="HUD_SELECT_FADE">0.3</constant>
     <constant name="HUD_AVATAR_FADE">.5</constant>
-    <constant name="HUD_OPTION_FADE">.3</constant>
+    <constant name="HUD_OPTION_FADE">.1</constant>
     <constant name="HUD_BOX_FADE">.5</constant>
     <constant name="HUD_ICON_FADE">.75</constant>
     <constant name="HUNT_TIME">10.0</constant>

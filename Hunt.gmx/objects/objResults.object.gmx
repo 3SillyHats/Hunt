@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>options[0] = "Rematch";
 options[1] = "Select Characters";
-options[2] = "Quit";
 selected = 0;
 
 for (i = 0; i &lt; PLAYERS_MAX; i++) {
