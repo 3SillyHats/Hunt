@@ -175,7 +175,7 @@ for (j = 0; j &lt; PLAYERS_MAX; j++) {
     );
     draw_text(
         20 + (w + spacing) * i + xmargin, (3 * sh) + 350 + ymargin,
-        "Boosts: " + string(global.pickups[j])
+        "Boosts: " + string(global.boosts[j])
     );
     
     // Draw options

@@ -147,6 +147,8 @@ if global.winner == noone {
                 invulnerability = INVULNERABLE_DODGE_TIME;
             }
         } else {
+            global.boosts[controller]++;
+        
             // Set to max speed
             
             hspeed = (ax / (norm * acc)) * speed_max * 2;
