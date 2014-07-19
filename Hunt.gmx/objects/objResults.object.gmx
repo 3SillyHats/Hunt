@@ -59,15 +59,8 @@ background_blend[0] = make_color_hsv(197, 100, 81);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var gamepads = 0;
-var gp_num = gamepad_get_device_count();
-for (var i = 0; i &lt; gp_num; i++;) {
-    if gamepad_is_connected(i) {
-        gamepads++;
-    }
-}
-
-for (i = 0; i &lt; gamepads; i++) {
+            <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
+    if not gamepad_is_connected(i) { continue; }
     var axis = gamepad_axis_value(i, gp_axislv);
     
     if (gamepad_button_check_pressed(i, gp_face1)) {

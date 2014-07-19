@@ -57,16 +57,29 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_return)) {
-    // Play game
-    var selections = 0;
-    for (i = 0; i &lt; 4; i++) {
-        if (selected[i]) { selections++; }
+            <string>
+for (i = 0; i &lt; PLAYERS_MAX; i++) {
+    if not gamepad_is_connected(i) { continue; }
+
+    if (gamepad_button_check_pressed(i, gp_face1)) {
+        selected[i] = true;
     }
-    if (selections &gt;= 2) {
-        global.nPlayers = selections;
-        audio_play_sound(sndBlip, 0, false);
-        room_goto_next();
+    if (gamepad_button_check_pressed(i, gp_face2)) {
+        selected[i] = false;
+    }
+    
+    if (gamepad_button_check_pressed(i, gp_start)) {
+        // Play game
+        var selections = 0;
+        for (i = 0; i &lt; 4; i++) {
+            if (selected[i]) { selections++; }
+        }
+        if (selections &gt;= 2) {
+            global.nPlayers = selections;
+            audio_play_sound(sndBlip, 0, false);
+            room_goto_next();
+            break;
+        }
     }
 }
 
@@ -199,14 +212,17 @@ var xmargin = 95;
 var ymargin = 95;
 
 for (i = 0; i &lt; PLAYERS_MAX; i++) {
-    if gamepad_is_connected(i) {
-        selected[i] = true;
-    } else {
-        selected[i] = false;
-    } 
-
     // Draw box
-    draw_set_color(c_black);
+    if (selected[i]) {
+        switch (global.players[i]) {
+            case 0: draw_set_color(c_purple); break;
+            case 1: draw_set_color(c_green); break;
+            case 2: draw_set_color(c_blue); break;
+            case 3: draw_set_color(c_yellow); break;
+        }
+    } else {
+        draw_set_color(c_black);
+    }
     draw_set_alpha(HUD_BOX_FADE);
     draw_roundrect(
         (w + spacing) * i + xmargin, ymargin,
@@ -217,7 +233,7 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     if (selected[i]) {
         draw_set_alpha(1);
     } else {
-        draw_set_alpha(HUD_AVATAR_FADE);
+        draw_set_alpha(HUD_SELECT_FADE);
     }
     
     // Draw avatar
@@ -244,26 +260,26 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     draw_set_alpha(1);
     
     // Draw arrows
-    if (not selected[i]) {
-        draw_sprite_ext(sprArrow, 0,
-            w  / 2 + (w + spacing) * i + xmargin,
-            -60 + h + ymargin, 1, 1,
-            0,
-            c_white, 1
-        );
-        draw_sprite_ext(sprArrow, 0,
-            w  / 2 + (w + spacing) * i + xmargin,
-            -60 + h + ymargin, 1, 1,
-            180,
-            c_white, 1
-        );
-    }
+    // if (not selected[i]) {
+    //     draw_sprite_ext(sprArrow, 0,
+    //         w  / 2 + (w + spacing) * i + xmargin,
+    //         -60 + h + ymargin, 1, 1,
+    //         0,
+    //         c_white, 1
+    //     );
+    //     draw_sprite_ext(sprArrow, 0,
+    //         w  / 2 + (w + spacing) * i + xmargin,
+    //         -60 + h + ymargin, 1, 1,
+    //         180,
+    //         c_white, 1
+    //     );
+    // }
     
     // Draw controller
     var controller;
     if gamepad_is_connected(i) {
         switch (gamepad_get_description(i)) {
-            case "Xbox 360 Controller (XInput STANDARD GAMEPAD)": controller = 2; break;
+            case "Xbox 360 Controller (XInput STANDARD GAMEPAD)": controller = 3; break;
             case "PLAYSTATION(R)3 Controller": controller = 3; break;
             default: controller = 1; break;
         }
@@ -281,7 +297,7 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     for (j = 0; j &lt; 4; j++) {
         if (selected[j]) { selections++; }
     }
-    if selections &gt;= 2 { prompt = "Press enter to begin!"; }
+    if selections &gt;= 2 { prompt = "Press options to begin!"; }
     draw_set_alpha(1);
     draw_set_font(fntMain);
     draw_text(

@@ -78,6 +78,10 @@ moving = false;
             <string>var boosting = gamepad_button_check(controller, gp_face1) and boosts &gt; 0;
 var boosted = gamepad_button_check_released(controller, gp_face1) and boosts &gt; 0;
 
+if (gamepad_button_check_pressed(controller, gp_select)) {
+    room_goto(rmSetup);
+}
+
 if (dead) {
     spawn();
 }
