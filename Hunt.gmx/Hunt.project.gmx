@@ -59,7 +59,7 @@
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
   </rooms>
-  <constants number="23">
+  <constants number="24">
     <constant name="ACCELERATION_MAX">1.0</constant>
     <constant name="BOOST_FADE">.3</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
@@ -73,6 +73,7 @@
     <constant name="HUD_BOX_FADE">.5</constant>
     <constant name="HUD_ICON_FADE">.75</constant>
     <constant name="HUNT_TIME">10.0</constant>
+    <constant name="START_TIME">3.0</constant>
     <constant name="HUNTER_BOOSTS">3</constant>
     <constant name="INVULNERABLE_DODGE_TIME">0.5</constant>
     <constant name="INVULNERABLE_FADE">0.1</constant>

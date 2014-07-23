@@ -89,9 +89,10 @@ if (dead) {
 
 if (global.kills[controller] &gt;= WIN_THRESHOLD) {
     global.winner = controller;
+    global.paused = true
 }
 
-if global.winner == noone {
+if (not global.paused){
     time += 1/room_speed;
     if (invulnerability &gt; 0) {
         invulnerability -= 1/room_speed;
@@ -210,7 +211,7 @@ if (rumble &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.winner == noone) {
+            <string>if (not global.paused) {
     // normal_x = other.x - self.x
     // normal_y = other.y - self.y
     // normal = sqrt(normal_x*normal_x + normal_y*normal_y)
@@ -249,7 +250,7 @@ if (rumble &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.winner == noone) {
+            <string>if (not global.paused) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.kills[controller]++;

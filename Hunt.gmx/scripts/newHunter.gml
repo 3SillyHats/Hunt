@@ -2,6 +2,11 @@ for(i=0; i<global.nPlayers; i++) {
     hunters[i].isHunter = false
 }
 
+
+if firstRound {
+    global.paused = false
+}
+
 hunter++;
 if(hunter >= global.nPlayers) {
     shuffleHunters(not firstRound);
