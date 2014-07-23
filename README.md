@@ -21,6 +21,18 @@ This game was made at the [Jamalaide](http://www.jamalaide.org.au) venue for [Lu
 
 Credits:
 --------
-Development: Finn Stokes, Saxon Douglass, Rory Stokes 
-Graphics: Kenney (The Open Bundle), Harriet Lloyd, Rory Stokes 
-Testing: Sophie Hollit, Kaustubh Naik, Myles Clark, Jaime von Schwarzburg
+###Development:
+ - Finn Stokes
+ - Saxon Douglass
+ - Rory Stokes 
+
+###Graphics:
+ - Kenney (The Open Bundle)
+ - Harriet Lloyd
+ - Rory Stokes
+
+###Testing:
+ - Jaime von Schwarzburg
+ - Sophie Hollit
+ - Kaustubh Naik
+ - Myles Clark
