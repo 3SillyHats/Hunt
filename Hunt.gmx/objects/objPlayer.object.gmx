@@ -78,6 +78,10 @@ moving = false;
             <string>var boost = gamepad_button_check_pressed(controller, gp_face1) and boosts &gt; 0;
 var dodge = gamepad_button_check_pressed(controller, gp_face2) and boosts &gt; 0;
 
+var ice = position_meeting(x, y, objIce);
+var mud = position_meeting(x, y, objMud);
+var spd = position_meeting(x, y, objSpeed);
+
 if (gamepad_button_check_pressed(controller, gp_select)) {
     room_goto(rmSetup);
 }
@@ -105,9 +109,25 @@ if (not global.paused){
     ay = gamepad_axis_value(controller, gp_axislv);
     
     var acc = ACCELERATION_MAX;
-    //if (!isHunter) {
-    //    acc *= 0.5;
-    //}
+    var frict = FRICTION;
+    var speed_max = SPEED_MAX;
+    var boost_imp = SPEED_MAX * 2;
+    if (spd) {
+        acc *= SPEED_ACC_MOD;
+        frict *= SPEED_FRICT_MOD;
+        speed_max *= SPEED_SPD_MOD;
+        boost_imp *= SPEED_BOOST_MOD;
+    } else if (mud) {
+        acc *= MUD_ACC_MOD;
+        frict *= MUD_FRICT_MOD;
+        speed_max *= MUD_SPD_MOD;
+        boost_imp *= MUD_BOOST_MOD;
+    } else if (ice) {
+        acc *= ICE_ACC_MOD;
+        frict *= ICE_FRICT_MOD;
+        speed_max *= ICE_SPD_MOD;
+        boost_imp *= ICE_BOOST_MOD;
+    }
     
     if(ax!=0){
         dir = -radtodeg(arctan(ay/ax));
@@ -124,30 +144,27 @@ if (not global.paused){
     
     if (norm &lt; DEAD_ZONE) {
         moving = false;
-        ax = -FRICTION*hspeed;
-        ay = -FRICTION*vspeed;
+        ax = -frict*hspeed;
+        ay = -frict*vspeed;
     } else {
         moving = true;
         if (norm &gt; 1) {
             ax /= norm;
             ay /= norm;
+            norm = 1;
         }
         ax *= acc;
         ay *= acc;
     }
     
-    var speed_max = SPEED_MAX;
-    //        if (!isHunter) {
-    //            speed_max *= 2;
-    //        }
     if (boost and (invulnerability &lt;= 0.0 or isHunter) and norm &gt; 0.2) {
         boosts--
         global.boosts[controller]++;
         
         // Set to max speed
         
-        hspeed = (ax / (norm * acc)) * speed_max * 2;
-        vspeed = (ay / (norm * acc)) * speed_max * 2;
+        hspeed = (ax / (norm * acc)) * boost_imp;
+        vspeed = (ay / (norm * acc)) * boost_imp;
         
         // Particles
         part_type_direction(global.part_type_boost,
@@ -176,7 +193,11 @@ if (not global.paused){
         hspeed += ax;
         vspeed += ay;
         
-        speed -= speed * speed * acc / (speed_max * speed_max);
+        if (speed &lt; 2*speed_max) {
+            speed -= speed * speed * acc / (speed_max * speed_max);
+        } else {
+            speed -= 4 * acc;
+        }
     }
 } else {
     speed = 0;
