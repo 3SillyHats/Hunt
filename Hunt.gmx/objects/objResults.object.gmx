@@ -62,6 +62,8 @@ background_blend[0] = make_color_hsv(197, 100, 81);
             <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
     if not gamepad_is_connected(i) { continue; }
     var axis = gamepad_axis_value(i, gp_axislv);
+    var up = axis &lt; -MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padu);
+    var down = axis &gt; MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padd);
     
     if (gamepad_button_check_pressed(i, gp_face1)) {
         // Select option
@@ -79,14 +81,14 @@ background_blend[0] = make_color_hsv(197, 100, 81);
             game_end();
             break;
         }
-    } else if (axis &gt; DEAD_ZONE) {
+    } else if (down) {
         // Move down
         if (not pressed[i]) {
             selected = (selected + 1) % array_length_1d(options);
             pressed[i] = true;
             audio_play_sound(sndBlip, 0, false);
         }
-    } else if (axis &lt; -DEAD_ZONE) {
+    } else if (up) {
         // Move up
         if (not pressed[i]) {
             selected = (selected + array_length_1d(options) - 1) % array_length_1d(options);

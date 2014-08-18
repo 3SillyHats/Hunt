@@ -86,7 +86,7 @@ hunt_remaining = START_TIME * 1000000;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (not paused) {
+            <string>if (global.winner == noone) {
     hunt_remaining = hunt_remaining - delta_time
     if hunt_remaining &lt;= 0 {
         newHunter()

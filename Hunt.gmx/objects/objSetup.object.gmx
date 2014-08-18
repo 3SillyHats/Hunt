@@ -61,7 +61,9 @@ background_blend[0] = make_color_hsv(18, 99, 178);
     if not gamepad_is_connected(i) { continue; }
 
     var gp_axis_lh = gamepad_axis_value(i, gp_axislh);
-
+    var gp_left = gp_axis_lh &lt; -MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padl);
+    var gp_right = gp_axis_lh &gt; MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padr);
+    
     if (gamepad_button_check_pressed(i, gp_start)) {
         // Play game
         var selections = 0;
@@ -87,7 +89,7 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         selected[i] = true;
         pressed[i] = false;
         audio_play_sound(sndBlip, 0, false);
-    } else if (not selected[i] and gp_axis_lh &gt; DEAD_ZONE) {
+    } else if (not selected[i] and gp_right) {
         // Move right
         if (not pressed[i]) {
             do {
@@ -96,7 +98,7 @@ background_blend[0] = make_color_hsv(18, 99, 178);
             pressed[i] = true;
             audio_play_sound(sndBlip, 0, false);
         }
-    } else if (not selected[i] and gp_axis_lh &lt; -DEAD_ZONE) {
+    } else if (not selected[i] and gp_left) {
         // Move left
         if (not pressed[i]) {
             do {
