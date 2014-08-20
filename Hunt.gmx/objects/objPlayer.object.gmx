@@ -78,10 +78,6 @@ moving = false;
             <string>var boost = gamepad_button_check_pressed(controller, gp_face1) and boosts &gt; 0;
 var dodge = gamepad_button_check_pressed(controller, gp_face2) and boosts &gt; 0;
 
-var ice = position_meeting(x, y, objIce);
-var mud = position_meeting(x, y, objMud);
-var spd = position_meeting(x, y, objSpeed);
-
 if (gamepad_button_check_pressed(controller, gp_select)) {
     room_goto(rmSetup);
 }
@@ -112,21 +108,13 @@ if (not global.paused){
     var frict = FRICTION;
     var speed_max = SPEED_MAX;
     var boost_imp = SPEED_MAX * BOOST_JUICE;
-    if (spd) {
-        acc *= SPEED_ACC_MOD;
-        frict *= SPEED_FRICT_MOD;
-        speed_max *= SPEED_SPD_MOD;
-        boost_imp *= SPEED_BOOST_MOD;
-    } else if (mud) {
-        acc *= MUD_ACC_MOD;
-        frict *= MUD_FRICT_MOD;
-        speed_max *= MUD_SPD_MOD;
-        boost_imp *= MUD_BOOST_MOD;
-    } else if (ice) {
-        acc *= ICE_ACC_MOD;
-        frict *= ICE_FRICT_MOD;
-        speed_max *= ICE_SPD_MOD;
-        boost_imp *= ICE_BOOST_MOD;
+    var modifier = instance_position(x, y, objFloorMod);
+    if (modifier != noone) {
+        show_debug_message(modifier.speed_mod)
+        acc *= modifier.acceleration_mod;
+        frict *= modifier.friction_mod;
+        speed_max *= modifier.speed_mod;
+        boost_imp *= modifier.boost_mod;
     }
     
     if(ax!=0){
