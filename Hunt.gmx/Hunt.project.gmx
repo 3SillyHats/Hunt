@@ -64,13 +64,15 @@
     <room>rooms\rmSetup</room>
     <room>rooms\rmGame</room>
     <room>rooms\rmResults</room>
+    <room>rooms\rmTest</room>
   </rooms>
-  <constants number="39">
-    <constant name="ACCELERATION_MAX">1.0</constant>
-    <constant name="BOOST_FADE">.3</constant>
+  <constants number="40">
+    <constant name="ACCELERATION_MAX">1.2</constant>
+    <constant name="BOOST_FADE">.5</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
     <constant name="BOOST_MAX">3</constant>
     <constant name="BOOST_RESPAWN_TIME">24</constant>
+    <constant name="BOOST_JUICE">3</constant>
     <constant name="DEAD_ZONE">0.2</constant>
     <constant name="MENU_DEAD_ZONE">0.4</constant>
     <constant name="FRICTION">0.05</constant>
@@ -103,7 +105,7 @@
     <constant name="SPEED_FRICT_MOD">1</constant>
     <constant name="SPEED_SPD_MOD">2</constant>
     <constant name="SPEED_BOOST_MOD">1</constant>
-    <constant name="GM_build_date">41869.5711744907</constant>
+    <constant name="GM_build_date">41871.5388730093</constant>
     <constant name="GM_version">'1.0.0.2'</constant>
   </constants>
   <help>
