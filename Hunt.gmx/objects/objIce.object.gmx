@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>acceleration_mod = 0.25;
-friction_mod = 0.25;
-speed_mod = 1.0;
+            <string>acceleration_mod = 0.125;
+friction_mod = 0.0;
+speed_mod = 1.5;
 boost_mod = 1.0;
 
 </string>
