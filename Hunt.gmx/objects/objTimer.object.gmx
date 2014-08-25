@@ -94,7 +94,7 @@ hunt_remaining = START_TIME * 1000000;
 } else {
     winTime -= 1/room_speed;
     if winTime &lt;= 0 {
-        room_goto_next();
+        room_goto(rmResults);
     }
 }
 
