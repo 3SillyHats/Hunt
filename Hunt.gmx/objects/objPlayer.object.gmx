@@ -169,6 +169,12 @@ if (not global.paused){
         speed = 0;
         invulnerability = INVULNERABLE_DODGE_TIME;
     } else {
+        force_floor = instance_position(x, y, objFloorForce);
+        if(force_floor != noone) {
+            ax += force_floor.force_x
+            ay += force_floor.force_y
+        }
+    
         if normal_time &gt; 0 {
             var dot = ax*normal_x + ay*normal_y
             if dot &gt; 0 {
