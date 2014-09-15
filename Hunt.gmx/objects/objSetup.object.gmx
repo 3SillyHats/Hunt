@@ -71,7 +71,7 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         for (i = 0; i &lt; 4; i++) {
             if (selected[i]) { selections++; }
         }
-        if (selections &gt;= 2) {
+        if (selections &gt;= PLAYERS_MIN) {
             global.nPlayers = selections;
             audio_play_sound(sndBlip, 0, false);
             room_goto_next();
@@ -274,7 +274,7 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
     for (j = 0; j &lt; 4; j++) {
         if (selected[j]) { selections++; }
     }
-    if selections &gt;= 2 { prompt = "Press start to begin!"; }
+    if selections &gt;= PLAYERS_MIN { prompt = "Press start to begin!"; }
     draw_set_alpha(1);
     draw_set_font(fntMain);
     draw_text(

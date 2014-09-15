@@ -12,10 +12,10 @@ for(i=global.nPlayers-1; i>0; i--) {
 }
 
 if(stopRepeats) {
-    if (hunters[0] == last) {
-    var j = irandom_range(1,global.nPlayers-1);
-    hunters[0] = hunters[j];
-    hunters[j] = last;
+    if (hunters[0] == last and global.nPlayers >= 2) {
+        var j = irandom_range(1,global.nPlayers-1);
+        hunters[0] = hunters[j];
+        hunters[j] = last;
     }
 }
 
