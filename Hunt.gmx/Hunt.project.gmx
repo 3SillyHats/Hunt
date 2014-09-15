@@ -21,6 +21,7 @@
     </sprites>
     <sprite>sprites\sprController</sprite>
     <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\sprWallSmall</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
@@ -66,6 +67,7 @@
       <object>objects\objForceDown</object>
     </objects>
     <object>objects\objWall</object>
+    <object>objects\objWallSmall</object>
     <object>objects\objBoost</object>
     <object>objects\objTimer</object>
     <object>objects\objResults</object>
