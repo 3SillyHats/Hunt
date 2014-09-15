@@ -19,6 +19,31 @@
       <sprite>sprites\sprPlayer4</sprite>
       <sprite>sprites\sprPlayerAngry</sprite>
     </sprites>
+    <sprites name="Floors">
+      <sprite>sprites\sprIce</sprite>
+      <sprite>sprites\sprMud</sprite>
+      <sprite>sprites\sprSpeed</sprite>
+      <sprite>sprites\sprForceLeftLow</sprite>
+      <sprite>sprites\sprForceLeftMed</sprite>
+      <sprite>sprites\sprForceLeftHigh</sprite>
+      <sprite>sprites\sprForceLeftVHigh</sprite>
+      <sprite>sprites\sprForceLeftExtrm</sprite>
+      <sprite>sprites\sprForceRightLow</sprite>
+      <sprite>sprites\sprForceRightMed</sprite>
+      <sprite>sprites\sprForceRightHigh</sprite>
+      <sprite>sprites\sprForceRightVHigh</sprite>
+      <sprite>sprites\sprForceRightExtrm</sprite>
+      <sprite>sprites\sprForceUpLow</sprite>
+      <sprite>sprites\sprForceUpMed</sprite>
+      <sprite>sprites\sprForceUpHigh</sprite>
+      <sprite>sprites\sprForceUpVHigh</sprite>
+      <sprite>sprites\sprForceUpExtrm</sprite>
+      <sprite>sprites\sprForceDownLow</sprite>
+      <sprite>sprites\sprForceDownMed</sprite>
+      <sprite>sprites\sprForceDownHigh</sprite>
+      <sprite>sprites\sprForceDownVHigh</sprite>
+      <sprite>sprites\sprForceDownExtrm</sprite>
+    </sprites>
     <sprite>sprites\sprController</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprWallSmall</sprite>
@@ -26,13 +51,6 @@
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
     <sprite>sprites\sprCrown</sprite>
-    <sprite>sprites\sprIce</sprite>
-    <sprite>sprites\sprMud</sprite>
-    <sprite>sprites\sprSpeed</sprite>
-    <sprite>sprites\sprForceLeft</sprite>
-    <sprite>sprites\sprForceRight</sprite>
-    <sprite>sprites\sprForceUp</sprite>
-    <sprite>sprites\sprForceDown</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
@@ -61,10 +79,26 @@
       <object>objects\objMud</object>
       <object>objects\objSpeed</object>
       <object>objects\objFloorForce</object>
-      <object>objects\objFloorLeft</object>
-      <object>objects\objFloorRight</object>
-      <object>objects\objForceUp</object>
-      <object>objects\objForceDown</object>
+      <object>objects\objFloorLeftLow</object>
+      <object>objects\objFloorLeftMed</object>
+      <object>objects\objFloorLeftHigh</object>
+      <object>objects\objFloorLeftVHigh</object>
+      <object>objects\objFloorLeftExtrm</object>
+      <object>objects\objFloorRightLow</object>
+      <object>objects\objFloorRightMed</object>
+      <object>objects\objFloorRightHigh</object>
+      <object>objects\objFloorRightVHigh</object>
+      <object>objects\objFloorRightExtrm</object>
+      <object>objects\objFloorUpLow</object>
+      <object>objects\objFloorUpMed</object>
+      <object>objects\objFloorUpHigh</object>
+      <object>objects\objFloorUpVHigh</object>
+      <object>objects\objFloorUpExtrm</object>
+      <object>objects\objFloorDownLow</object>
+      <object>objects\objFloorDownMed</object>
+      <object>objects\objFloorDownHigh</object>
+      <object>objects\objFloorDownVHigh</object>
+      <object>objects\objFloorDownExtrm</object>
     </objects>
     <object>objects\objWall</object>
     <object>objects\objWallSmall</object>
@@ -130,7 +164,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41897.5307725926</constant>
+    <constant name="GM_build_date">41897.5428223264</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
