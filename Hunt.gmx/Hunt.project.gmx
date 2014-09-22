@@ -47,6 +47,8 @@
     <sprite>sprites\sprController</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprWallSmall</sprite>
+    <sprite>sprites\sprWallBounce</sprite>
+    <sprite>sprites\sprWallStick</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
@@ -100,8 +102,13 @@
       <object>objects\objFloorDownVHigh</object>
       <object>objects\objFloorDownExtrm</object>
     </objects>
-    <object>objects\objWall</object>
-    <object>objects\objWallSmall</object>
+    <objects name="Walls">
+      <object>objects\objWall</object>
+      <object>objects\objWallBase</object>
+      <object>objects\objWallSmall</object>
+      <object>objects\objWallBounce</object>
+      <object>objects\objWallStick</object>
+    </objects>
     <object>objects\objBoost</object>
     <object>objects\objTimer</object>
     <object>objects\objResults</object>
@@ -116,6 +123,8 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
+    <room>rooms\rmStick1</room>
+    <room>rooms\rmBounce1</room>
     <rooms name="Ice">
       <room>rooms\rmIce1</room>
       <room>rooms\rmIce2</room>
@@ -164,7 +173,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41897.5428223264</constant>
+    <constant name="GM_build_date">41904.5368833449</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>

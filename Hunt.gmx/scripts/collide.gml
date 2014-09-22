@@ -20,11 +20,24 @@ if floor(speed) > 0 {
         show_debug_message("------------")
     }
 
-    if (hspeed > 0 and place_meeting(x+1, y, objWall)) or (hspeed < 0 and place_meeting(x-1, y, objWall)) {
-        if (vspeed > 0 and place_meeting(x, y+1, objWall)) or (vspeed < 0 and place_meeting(x, y-1, objWall)) {
+    var vwall = noone;
+    var hwall = noone;
+    if (hspeed > 0) {
+        vwall = instance_place(x+1, y, objWall)
+    } else if (hspeed < 0) {
+        vwall = instance_place(x-1, y, objWall)
+    }
+    if (vspeed > 0) {
+        hwall = instance_place(x, y+1, objWall)
+    } else if (vspeed < 0) {
+        hwall = instance_place(x, y-1, objWall)
+    }
+    if (vwall != noone) {
+        if (hwall != noone) {
             if place_meeting(x+6*sign(vspeed), y-6*sign(hspeed), objWall) and place_meeting(x-6*sign(vspeed), y+6*sign(hspeed), objWall) {
-                hspeed = -hspeed*BOUNCE_SLOW
-                vspeed = -vspeed*BOUNCE_SLOW
+                hspeed = -hspeed*vwall.restitution*(1-hwall.frict)
+                vspeed = -vspeed*hwall.restitution*(1-vwall.frict)
+                //show_debug_message("in corner")
             } else {
                 normal_x = other.x + other.sprite_width/2 - self.x
                 normal_y = other.y + other.sprite_height/2 - self.y
@@ -46,36 +59,52 @@ if floor(speed) > 0 {
                 //var normal_x = -1/sqrt(2)*sign(hspeed)
                 //var normal_y = -1/sqrt(2)*sign(vspeed)
                 var dot = normal_x*hspeed + normal_y*vspeed
-                hspeed = hspeed - dot*normal_x*(1+BOUNCE_SLOW);
-                vspeed = vspeed - dot*normal_y*(1+BOUNCE_SLOW);
+                var perp_dot = normal_y*hspeed - normal_x*vspeed
+                hspeed = hspeed - dot*normal_x*(1+vwall.restitution) - perp_dot*normal_y*hwall.frict;
+                vspeed = vspeed - dot*normal_y*(1+hwall.restitution) + perp_dot*normal_x*vwall.frict;
                 //show_debug_message(speed)
+                //show_debug_message("out corner")
             }
             if floor(speed*dt) > 0 {
                 move_contact_solid(direction, floor(speed*dt))
             }
         } else  {
-            hspeed = -hspeed * BOUNCE_SLOW
+            hspeed = -hspeed * vwall.restitution
+            vspeed = vspeed * (1 - vwall.frict)
             //show_debug_message("vertical wall")
-            //show_debug_message(hspeed)
+            //show_debug_message(vwall.restitution)
             if floor(speed*dt) > 0 {
                 move_contact_solid(direction, floor(speed*dt))
-                if (vspeed > 0 and place_meeting(x, y+1, objWall)) or (vspeed < 0 and place_meeting(x, y-1, objWall)) {
-                    vspeed = -vspeed * BOUNCE_SLOW
+                if (vspeed > 0) {
+                    var hwall = instance_position(x, y+1, objWall)
+                } else if (vspeed < 0) {
+                    var hwall = instance_position(x, y-1, objWall)
+                }
+                if (hwall != noone) {
+                    hspeed = hspeed * (1 - hwall.frict)
+                    vspeed = -vspeed * hwall.restitution
                     //show_debug_message("horizontal wall")
-                    //show_debug_message(vspeed)
+                    //show_debug_message(hwall.restitution)
                 }
             }
         }
-    } else if (vspeed > 0 and place_meeting(x, y+1, objWall)) or (vspeed < 0 and place_meeting(x, y-1, objWall)) {
-        vspeed = -vspeed * BOUNCE_SLOW
+    } else if (hwall != noone) {
+        hspeed = hspeed * (1 - hwall.frict)
+        vspeed = -vspeed * hwall.restitution
         //show_debug_message("horizontal wall")
-        //show_debug_message(vspeed)
+        //show_debug_message(hwall.restitution)
         if floor(speed*dt) > 0 {
             move_contact_solid(direction, floor(speed*dt))
-            if (hspeed > 0 and place_meeting(x+1, y, objWall)) or (hspeed < 0 and place_meeting(x-1, y, objWall)) {
-                hspeed = -hspeed * BOUNCE_SLOW
+            if (hspeed > 0) {
+                var vwall = instance_position(x+1, y, objWall)
+            } else if (hspeed < 0) {
+                var vwall = instance_position(x-1, y, objWall)
+            }
+            if (vwall != noone) {
+                hspeed = -hspeed * vwall.restitution
+                vspeed = vspeed * (1 - vwall.frict)
                 //show_debug_message("vertical wall")
-                //show_debug_message(hspeed)
+                //show_debug_message(vwall.restitution)
             }
         }
     } else {
@@ -89,8 +118,10 @@ if floor(speed) > 0 {
         normal_time = 3
         
         var dot = normal_x*hspeed + normal_y*vspeed
-        hspeed = hspeed - dot*normal_x*(1+BOUNCE_SLOW);
-        vspeed = vspeed - dot*normal_y*(1+BOUNCE_SLOW);
+        var perp_dot = normal_y*hspeed - normal_x*vspeed
+        hspeed = hspeed - dot*normal_x*(1+other.restitution) - perp_dot*normal_y*other.frict;
+        vspeed = vspeed - dot*normal_y*(1+other.restitution) + perp_dot*normal_x*other.frict;
+        //show_debug_message("no contact")
         
         if floor(speed*dt) > 0 {
             move_contact_solid(direction, floor(speed*dt))
