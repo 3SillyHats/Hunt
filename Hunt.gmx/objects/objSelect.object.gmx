@@ -43,6 +43,9 @@ for (i = 0; i &lt; PLAYERS_MAX; i++) {
 // Make background taupe
 background_blend[0] = make_color_hsv(18, 99, 178);
 
+columns = ceil(array_length_1d(rooms) * string_height("M") / (room_height - 64))
+colheight = ceil(array_length_1d(rooms) / columns)
+
 </string>
           </argument>
         </arguments>
@@ -67,9 +70,12 @@ background_blend[0] = make_color_hsv(18, 99, 178);
             <kind>1</kind>
             <string>for (i = 0; i &lt; PLAYERS_MAX; i++) {
     if not gamepad_is_connected(i) { continue; }
-    var axis = gamepad_axis_value(i, gp_axislv);
-    var up = axis &lt; -MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padu);
-    var down = axis &gt; MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padd);
+    var vaxis = gamepad_axis_value(i, gp_axislv);
+    var haxis = gamepad_axis_value(i, gp_axislh);
+    var up = vaxis &lt; -MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padu);
+    var down = vaxis &gt; MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padd);
+    var left = haxis &lt; -MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padl);
+    var right = haxis &gt; MENU_DEAD_ZONE or gamepad_button_check_pressed(i,gp_padr);
     
     if (gamepad_button_check_pressed(i, gp_face1)) {
         // Select option
@@ -91,6 +97,26 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         // Move up
         if (not pressed[i]) {
             selected = (selected + array_length_1d(rooms) - 1) % array_length_1d(rooms);
+            pressed[i] = true;
+            audio_play_sound(sndBlip, 0, false);
+        }
+    } else if (right) {
+        // Move right
+        if (not pressed[i] and columns &gt; 1) {
+            selected = (selected + colheight) % (columns*colheight);
+            if (selected &gt;= array_length_1d(rooms)) {
+                selected = array_length_1d(rooms) - 1
+            }
+            pressed[i] = true;
+            audio_play_sound(sndBlip, 0, false);
+        }
+    } else if (left) {
+        // Move left
+        if (not pressed[i] and columns &gt; 1) {
+            selected = (selected + (columns - 1)*colheight) % (columns*colheight);
+            if (selected &gt;= array_length_1d(rooms)) {
+                selected = array_length_1d(rooms) - 1
+            }
             pressed[i] = true;
             audio_play_sound(sndBlip, 0, false);
         }
@@ -121,24 +147,30 @@ background_blend[0] = make_color_hsv(18, 99, 178);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var k = 0;
-for (k = 0; k &lt; array_length_1d(rooms); k++) {
-    var name = room_get_name(rooms[k]);
-    name = string_delete(name, 1, 2)
-    n = string_digits(name)
-    if (n != "") {
-        name = string_replace(name, n, "") + " " + n
-    }
-    if (k == selected) {
-        draw_set_alpha(1);
+            <string>for (var col = 0; col &lt; columns; col++) {
+    if (col &lt; columns - 1) {
+        var height = colheight
     } else {
-        draw_set_alpha(HUD_OPTION_FADE);
+        var height = array_length_1d(rooms) - (columns - 1) * colheight
     }
-    draw_text(
-        room_width/2 - string_width(name)/2,
-        room_height/2 + (string_height("M") * (k - array_length_1d(rooms)/2.0)),
-        name
-    );
+    for (var k = 0; k &lt; height; k++) {
+        var name = room_get_name(rooms[k + col*colheight]);
+        name = string_delete(name, 1, 2)
+        n = string_digits(name)
+        if (n != "") {
+            name = string_replace(name, n, "") + " " + n
+        }
+        if (k + col*colheight == selected) {
+            draw_set_alpha(1);
+        } else {
+            draw_set_alpha(HUD_OPTION_FADE);
+        }
+        draw_text(
+            (col + 1)*room_width/(columns + 1) - string_width(name)/2,
+            room_height/2 + (string_height("M") * (k - colheight/2.0)),
+            name
+        );
+    }
 }
 draw_set_alpha(1);
 
