@@ -20,6 +20,6 @@
   <width>120</width>
   <height>120</height>
   <frames>
-    <frame index="0">images\spriteWallDiag_0.png</frame>
+    <frame index="0">images\sprWallDiag_0.png</frame>
   </frames>
 </sprite>

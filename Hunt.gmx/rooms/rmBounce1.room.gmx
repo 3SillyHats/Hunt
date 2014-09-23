@@ -235,6 +235,8 @@
     <instance objName="objWallBounce" x="1140" y="780" name="inst_DD22A019" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBounce" x="1200" y="780" name="inst_6CF87853" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBounce" x="480" y="780" name="inst_4C8D4F28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallBounceDiag" x="240" y="960" name="inst_B3E9C582" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallBounceDiag" x="1560" y="960" name="inst_0A8DECDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
