@@ -126,7 +126,6 @@
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
     <room>rooms\rmStick1</room>
-    <room>rooms\rmBounce1</room>
     <room>rooms\rmSpeedWall1</room>
     <rooms name="Ice">
       <room>rooms\rmIce1</room>
@@ -146,6 +145,12 @@
     </rooms>
     <rooms name="Force">
       <room>rooms\rmForce1</room>
+      <room>rooms\rmForce2</room>
+      <room>rooms\rmForce3</room>
+    </rooms>
+    <rooms name="Bounce">
+      <room>rooms\rmBounce1</room>
+      <room>rooms\rmBounce2</room>
     </rooms>
   </rooms>
   <constants number="29">
@@ -176,7 +181,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41904.5451621644</constant>
+    <constant name="GM_build_date">41911.4585977662</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
