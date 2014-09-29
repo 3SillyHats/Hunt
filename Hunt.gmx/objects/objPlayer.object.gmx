@@ -35,6 +35,9 @@ dodged = 0;
 normal_x = 0
 normal_y = 0
 normal_time = 0
+last_collide_diag = false
+
+dir2 = 0
 
 if x &lt; room_width/2 {
     hudX = 85;
@@ -401,6 +404,14 @@ for (i = 0; i &lt; boosts; i++) {
 // Draw arrow
 if(moving){
     draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir, c_white, 0.25);
+}
+
+if (global.debug) {
+    if (last_collide_diag) {
+        draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir2, c_yellow, 0.25);
+    } else {
+        draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir2, c_red, 0.25);
+    }
 }
 
 // Draw crown

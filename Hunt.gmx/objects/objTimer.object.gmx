@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>randomize();
 
+global.debug = false;
+
 var spawns;
 for (i=0; i&lt;instance_number(objSpawn); i+=1)
 {
@@ -96,6 +98,11 @@ hunt_remaining = START_TIME * 1000000;
     if winTime &lt;= 0 {
         room_goto(rmResults);
     }
+}
+
+// Debug toggle
+if (keyboard_check_pressed(ord('D'))) {
+    global.debug = not global.debug
 }
 
 </string>

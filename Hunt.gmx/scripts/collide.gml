@@ -34,13 +34,99 @@ while (floor(dt*speed) > 0 and iter < 9) {
     var hwall = noone;
     if (hspeed > 0) {
         vwall = instance_place(x+1, y, objWallRect)
+        //Fix messy corners at block type change
+        if (vwall != noone) {
+            if (hspeed - vspeed <= 0 and !place_meeting(x+1, y+1, vwall)) {
+                vwall = noone
+            } else if (hspeed + vspeed <= 0 and !place_meeting(x+1, y-1, vwall)) {
+                vwall = noone
+            }
+        }
     } else if (hspeed < 0) {
         vwall = instance_place(x-1, y, objWallRect)
+        //Fix messy corners at block type change
+        if (vwall != noone) {
+            if (hspeed - vspeed >= 0 and !place_meeting(x-1, y-1, vwall)) {
+                vwall = noone
+            } else if (hspeed + vspeed >= 0 and !place_meeting(x-1, y+1, vwall)) {
+                vwall = noone
+            }
+        }
     }
     if (vspeed > 0) {
         hwall = instance_place(x, y+1, objWallRect)
+        //Fix messy corners at block type change
+        if (hwall != noone) {
+            if (hspeed - vspeed >= 0 and !place_meeting(x+1, y+1, hwall)) {
+                hwall = noone
+            } else if (hspeed + vspeed <= 0 and !place_meeting(x-1, y+1, hwall)) {
+                hwall = noone
+            }
+        }
     } else if (vspeed < 0) {
         hwall = instance_place(x, y-1, objWallRect)
+        //Fix messy corners at block type change
+        if (hwall != noone) {
+            if (hspeed - vspeed <= 0 and !place_meeting(x-1, y-1, hwall)) {
+                hwall = noone
+            } else if (hspeed + vspeed >= 0 and !place_meeting(x+1, y-1, hwall)) {
+                hwall = noone
+            }
+        }
+    }
+    var dlwall = noone;
+    var drwall = noone;
+    if (last_collide_diag or (vwall == noone and hwall == noone)) {
+        if (hspeed + vspeed > 0) {
+            //show_debug_message("x+1, y+1")
+            dlwall = instance_place(x+1, y+1, objWallDiag)
+            //Fix messy corners at block type change
+            if (dlwall != noone) {
+                if (hspeed <= 0 and !place_meeting(x, y+1, dlwall)) {
+                    dlwall = noone
+                } else if (vspeed <= 0 and !place_meeting(x+1, y, dlwall)) {
+                    dlwall = noone
+                }
+            }
+        } else if (hspeed + vspeed < 0) {
+            //show_debug_message("x-1, y-1")
+            dlwall = instance_place(x-1, y-1, objWallDiag)
+            //Fix messy corners at block type change
+            if (dlwall != noone) {
+                if (hspeed >= 0 and !place_meeting(x, y-1, dlwall)) {
+                    dlwall = noone
+                } else if (vspeed >= 0 and !place_meeting(x-1, y, dlwall)) {
+                    dlwall = noone
+                }
+            }
+        }
+        if (hspeed - vspeed > 0) {
+            //show_debug_message("x+1, y-1")
+            drwall = instance_place(x+1, y-1, objWallDiag)
+            //Fix messy corners at block type change
+            if (drwall != noone) {
+                if (hspeed <= 0 and !place_meeting(x, y-1, drwall)) {
+                    drwall = noone
+                } else if (vspeed >= 0 and !place_meeting(x+1, y, drwall)) {
+                    drwall = noone
+                }
+            }
+        } else if (hspeed - vspeed < 0) {
+            //show_debug_message("x-1, y+1")
+            drwall = instance_place(x-1, y+1, objWallDiag)
+            //Fix messy corners at block type change
+            if (drwall != noone) {
+                if (hspeed >= 0 and !place_meeting(x, y+1, drwall)) {
+                    drwall = noone
+                } else if (vspeed <= 0 and !place_meeting(x-1, y, drwall)) {
+                    drwall = noone
+                }
+            }
+        }
+        if ((dlwall != noone or drwall != noone)) {
+            vwall = noone
+            hwall = noone
+        }
     }
     if (vwall != noone) {
         if (hwall == vwall) {
@@ -53,60 +139,57 @@ while (floor(dt*speed) > 0 and iter < 9) {
             normal_y = normal_y / normal
             normal_time = 3
             wall = vwall
+            last_collide_diag = false
         } else  {
             normal_x = 1
             normal_y = 0
             wall = vwall
+            last_collide_diag = false
         }
     } else if (hwall != noone) {
         normal_x = 0
         normal_y = 1
         wall = hwall
-    } else {
-        var dlwall = noone;
-        var drwall = noone;
-        if (hspeed + vspeed > 0) {
-            //show_debug_message("x+1, y+1")
-            dlwall = instance_place(x+1, y+1, objWallDiag)
-        } else if (hspeed + vspeed < 0) {
-            //show_debug_message("x-1, y-1")
-            dlwall = instance_place(x-1, y-1, objWallDiag)
-        }
-        if (hspeed - vspeed > 0) {
-            //show_debug_message("x+1, y-1")
-            drwall = instance_place(x+1, y-1, objWallDiag)
-        } else if (hspeed - vspeed < 0) {
-            //show_debug_message("x-1, y+1")
-            drwall = instance_place(x-1, y+1, objWallDiag)
-        }
-        //show_debug_message(dlwall)
-        //show_debug_message(drwall)
-        if (dlwall != noone) {
-            if (drwall == dlwall) {
-                show_debug_message("corner")
-                normal_x = dlwall.x + dlwall.sprite_width/2 - self.x
-                normal_y = dlwall.y + dlwall.sprite_height/2 - self.y
-                if (abs(normal_x) > abs(normal_y)) {
-                    normal_x = normal_x - sign(normal_x)*dlwall.sprite_width/2
-                } else {
-                    normal_y = normal_y - sign(normal_y)*dlwall.sprite_height/2
-                }
-                var normal = sqrt(normal_x*normal_x + normal_y*normal_y)
-                normal_x = normal_x / normal
-                normal_y = normal_y / normal
-                normal_time = 3
-                wall = dlwall
+        last_collide_diag = false
+    } else if (dlwall != noone) {
+        if (drwall == dlwall) {
+            show_debug_message("corner")
+            normal_x = dlwall.x + dlwall.sprite_width/2 - self.x
+            normal_y = dlwall.y + dlwall.sprite_height/2 - self.y
+            if (abs(normal_x) > abs(normal_y)) {
+                normal_x = normal_x - sign(normal_x)*dlwall.sprite_width/2
             } else {
-                normal_x = 1 / sqrt(2)
-                normal_y = 1 / sqrt(2)
-                normal_time = 3
-                wall = dlwall
+                normal_y = normal_y - sign(normal_y)*dlwall.sprite_height/2
             }
-        } else if (drwall != noone) {
-            normal_x = 1 / sqrt(2)
-            normal_y = -1 / sqrt(2)
+            var normal = sqrt(normal_x*normal_x + normal_y*normal_y)
+            normal_x = normal_x / normal
+            normal_y = normal_y / normal
             normal_time = 3
-            wall = drwall
+            wall = dlwall
+            last_collide_diag = true
+        } else {
+            normal_x = 1 / sqrt(2)
+            normal_y = 1 / sqrt(2)
+            wall = dlwall
+            last_collide_diag = true
+        }
+    } else if (drwall != noone) {
+        normal_x = 1 / sqrt(2)
+        normal_y = -1 / sqrt(2)
+        wall = drwall
+        last_collide_diag = true
+    }
+    
+    if (global.debug) {
+        if(normal_x!=0){
+            dir2 = -radtodeg(arctan(normal_y/normal_x));
+            if(normal_x<0){
+                dir2 += 180;
+            }
+        }else if(normal_y > 0){
+            dir2 = -90;
+        }else{
+            dir2 = 90;
         }
     }
     
