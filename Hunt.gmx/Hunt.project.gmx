@@ -159,7 +159,6 @@
     <rooms name="Force">
       <room>rooms\rmForce1</room>
       <room>rooms\rmForce2</room>
-      <room>rooms\rmForce3</room>
     </rooms>
     <rooms name="Bounce">
       <room>rooms\rmBounce1</room>
