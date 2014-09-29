@@ -44,12 +44,18 @@
       <sprite>sprites\sprForceDownVHigh</sprite>
       <sprite>sprites\sprForceDownExtrm</sprite>
     </sprites>
+    <sprites name="Walls">
+      <sprite>sprites\sprWall</sprite>
+      <sprite>sprites\sprWallDiag</sprite>
+      <sprite>sprites\sprWallSmall</sprite>
+      <sprite>sprites\sprWallBounce</sprite>
+      <sprite>sprites\sprWallBounceDiag</sprite>
+      <sprite>sprites\sprWallStick</sprite>
+      <sprite>sprites\sprWallStickDiag</sprite>
+      <sprite>sprites\sprWallSpeed</sprite>
+      <sprite>sprites\sprWallSpeedDiag</sprite>
+    </sprites>
     <sprite>sprites\sprController</sprite>
-    <sprite>sprites\sprWall</sprite>
-    <sprite>sprites\sprWallSmall</sprite>
-    <sprite>sprites\sprWallBounce</sprite>
-    <sprite>sprites\sprWallStick</sprite>
-    <sprite>sprites\sprWallSpeed</sprite>
     <sprite>sprites\sprCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
@@ -105,11 +111,17 @@
     </objects>
     <objects name="Walls">
       <object>objects\objWall</object>
+      <object>objects\objWallDiag</object>
+      <object>objects\objWallRect</object>
       <object>objects\objWallBase</object>
       <object>objects\objWallSmall</object>
+      <object>objects\objWallBaseDiag</object>
       <object>objects\objWallBounce</object>
+      <object>objects\objWallBounceDiag</object>
       <object>objects\objWallStick</object>
+      <object>objects\objWallStickDiag</object>
       <object>objects\objWallSpeed</object>
+      <object>objects\objWallSpeedDiag</object>
     </objects>
     <object>objects\objBoost</object>
     <object>objects\objTimer</object>
@@ -127,6 +139,7 @@
     <room>rooms\rmBase</room>
     <room>rooms\rmStick1</room>
     <room>rooms\rmSpeedWall1</room>
+    <room>rooms\rmDiag1</room>
     <rooms name="Ice">
       <room>rooms\rmIce1</room>
       <room>rooms\rmIce2</room>
