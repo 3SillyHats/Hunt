@@ -138,7 +138,6 @@
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
     <room>rooms\rmStick1</room>
-    <room>rooms\rmBounce1</room>
     <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
     <rooms name="Ice">
@@ -159,6 +158,12 @@
     </rooms>
     <rooms name="Force">
       <room>rooms\rmForce1</room>
+      <room>rooms\rmForce2</room>
+      <room>rooms\rmForce3</room>
+    </rooms>
+    <rooms name="Bounce">
+      <room>rooms\rmBounce1</room>
+      <room>rooms\rmBounce2</room>
     </rooms>
   </rooms>
   <constants number="29">
