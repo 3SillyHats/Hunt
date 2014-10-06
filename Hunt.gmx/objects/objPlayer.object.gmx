@@ -56,6 +56,9 @@ spawn();
 dir = 90;
 moving = false;
 
+oldx = x
+oldy = y
+
 </string>
           </argument>
         </arguments>
