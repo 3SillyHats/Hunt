@@ -96,6 +96,8 @@ if (global.kills[controller] &gt;= WIN_THRESHOLD) {
 }
 
 if (not global.paused){
+    collide()
+
     time += 1/room_speed;
     if (invulnerability &gt; 0) {
         invulnerability -= 1/room_speed;
@@ -205,45 +207,6 @@ if (rumble &gt; 0) {
     gamepad_set_vibration(controller, 0.8, 0.8);
 } else {
     gamepad_set_vibration(controller, 0, 0);
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="objWall">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (not global.paused) {
-    // normal_x = other.x - self.x
-    // normal_y = other.y - self.y
-    // normal = sqrt(normal_x*normal_x + normal_y*normal_y)
-    // normal_x /= normal
-    // normal_y /= normal
-    // dot = normal_x*hspeed + normal_y*vspeed
-    // hspeed -= dot*normal_x;
-    // vspeed -= dot*normal_y;
-    //speed *= 0.65
-    
-    x = xprevious
-    y = yprevious
-    collide()
-    //audio_play_sound(sndHit, 0, false);
 }
 
 </string>
