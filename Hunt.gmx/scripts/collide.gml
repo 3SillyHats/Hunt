@@ -27,15 +27,15 @@ while (t*speed > 0.1 and iter < 9) {
             
             // If moving vertically
             if (other.hspeed == 0) {
-                show_debug_message("vert")
+                //show_debug_message("vert")
                 var yy = y + (1 - sign(other.vspeed)) * sprite_height/2
                 // If left of wall, check for collisions with near left corner
                 if ( other.x < x ) {
-                    var discriminant = sqr(other.speed*r) - sqr(other.vspeed*(other.x-x))
+                    var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.vspeed*(other.x-x))
                     if (discriminant > 0) {
-                        var tc = (-other.vspeed*(other.y-yy) - sqrt(discriminant))/sqr(other.speed)
+                        var tc = (-other.vspeed*(other.y-yy) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
                         if (tc > 0 and tc < dt) {
-                            show_debug_message("vlc")
+                            //show_debug_message("vlc")
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.hspeed - x
@@ -52,11 +52,11 @@ while (t*speed > 0.1 and iter < 9) {
                     }
                 // If right of wall, check for collisions with near right corner
                 } else if ( other.x > x + sprite_width ) {
-                    var discriminant = sqr(other.speed*r) - sqr(other.vspeed*(other.x-x-sprite_width))
+                    var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.vspeed*(other.x-x-sprite_width))
                     if (discriminant > 0) {
-                        var tc = (-other.vspeed*(other.y-yy) - sqrt(discriminant))/sqr(other.speed)
+                        var tc = (-other.vspeed*(other.y-yy) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
                         if (tc > 0 and tc < dt) {
-                            show_debug_message("vrc")
+                            //show_debug_message("vrc")
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.hspeed - x - sprite_width
@@ -75,7 +75,7 @@ while (t*speed > 0.1 and iter < 9) {
                 } else {
                     var tc = (yy - other.y - r*sign(other.vspeed)) / other.vspeed
                     if (tc > -0.1 and tc < dt) {
-                        show_debug_message("vf")
+                        //show_debug_message("vf")
                         dt = tc
                         wall = id
                         normal_x = 0
@@ -87,15 +87,15 @@ while (t*speed > 0.1 and iter < 9) {
                 }
             // If moving horizontally
             } else if (other.vspeed == 0) {
-                show_debug_message("horiz")
+                //show_debug_message("horiz")
                 var xx = x + (1 - sign(other.hspeed)) * sprite_width/2
                 // If above wall, check for collisions with near top corner
                 if ( other.y < y ) {
-                    var discriminant = sqr(other.speed*r) - sqr(other.hspeed*(other.y-y))
+                    var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-y))
                     if (discriminant > 0) {
-                        var tc = (-other.hspeed*(other.x-xx) - sqrt(discriminant))/sqr(other.speed)
+                        var tc = (-other.hspeed*(other.x-xx) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
                         if (tc > 0 and tc < dt) {
-                            show_debug_message("htc")
+                            //show_debug_message("htc")
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.hspeed - xx
@@ -112,11 +112,11 @@ while (t*speed > 0.1 and iter < 9) {
                     }
                 // If below wall, check for collisions with near bottom corner
                 } else if ( other.y > y + sprite_height ) {
-                    var discriminant = sqr(other.speed*r) - sqr(other.hspeed*(other.y-y-sprite_height))
+                    var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-y-sprite_height))
                     if (discriminant > 0) {
-                        var tc = (-other.hspeed*(other.x-xx) - sqrt(discriminant))/sqr(other.speed)
+                        var tc = (-other.hspeed*(other.x-xx) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
                         if (tc > 0 and tc < dt) {
-                            show_debug_message("hbc")
+                            //show_debug_message("hbc")
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.hspeed - xx
@@ -135,7 +135,7 @@ while (t*speed > 0.1 and iter < 9) {
                 } else {
                     var tc = (xx - other.x - r*sign(other.hspeed)) / other.hspeed
                     if (tc > -0.1 and tc < dt) {
-                        show_debug_message("hf")
+                        //show_debug_message("hf")
                         dt = tc
                         wall = id
                         normal_x = -sign(other.hspeed)
@@ -159,7 +159,255 @@ while (t*speed > 0.1 and iter < 9) {
                     var yx = other.y + tx*other.vspeed
                     // If falling short, must eventually hit near corner
                     if (sign(other.vspeed)*yx < sign(other.vspeed)*yy) {
-                        var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy) - sqrt(sqr(other.speed*r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx))))/sqr(other.speed)
+                        var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy) - sqrt((sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx))))/(sqr(other.hspeed)+sqr(other.vspeed))
+                        if (tc > 0 and tc < dt) {
+                            //show_debug_message("xnc")
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - xx
+                            normal_y = other.y + tc*other.vspeed - yy
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
+                            debug_colour = c_purple
+                        }
+                    // If overshooting, check for collision with far corner
+                    } else if (sign(other.vspeed)*yx > sign(other.vspeed)*yy + sprite_height) {
+                        var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy-sign(other.vspeed)*sprite_height) - other.vspeed*(other.x-xx))
+                        if (discriminant > 0) {
+                            var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy-sign(other.vspeed)*sprite_height) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
+                            if (tc > 0 and tc < dt) {
+                                //show_debug_message("xfc")
+                                dt = tc
+                                wall = id
+                                normal_x = other.x + tc*other.hspeed - xx
+                                normal_y = other.y + tc*other.vspeed - yy - sign(other.vspeed)*sprite_height
+                                var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                                normal_x = normal_x/norm
+                                normal_y = normal_y/norm
+                                debug_colour = c_gray
+                            } else {
+                                debug_colour = c_blue
+                            }
+                        } else {
+                            debug_colour = c_lime
+                        }
+                    // Otherwise, collide with vertical face
+                    } else if (tx > -0.1 and tx < dt) {
+                        //show_debug_message("xf")
+                        dt = tx
+                        wall = id
+                        normal_x = -sign(other.hspeed)
+                        normal_y = 0
+                        debug_colour = c_gray
+                    } else {
+                        debug_colour = c_green
+                    }
+                // Otherwise, moving towards horizontal face
+                } else {
+                    var xy = other.x + ty*other.hspeed
+                    // If falling short, must eventually hit near corner
+                    if (sign(other.hspeed)*xy < sign(other.hspeed)*xx) {
+                        var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy) - sqrt((sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx))))/(sqr(other.hspeed)+sqr(other.vspeed))
+                        if (tc > 0 and tc < dt) {
+                            //show_debug_message("ync")
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - xx
+                            normal_y = other.y + tc*other.vspeed - yy
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
+                            debug_colour = c_yellow
+                        }
+                    // If overshooting, check for collision with far corner
+                    } else if (sign(other.hspeed)*xy > sign(other.hspeed)*xx + sprite_width) {
+                        var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx-sign(other.hspeed)*sprite_width))
+                        if (discriminant > 0) {
+                            var tc = (-other.hspeed*(other.x-xx-sign(other.hspeed)*sprite_width) - other.vspeed*(other.y-yy) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
+                            if (tc > 0 and tc < dt) {
+                                //show_debug_message("yfc")
+                                dt = tc
+                                wall = id
+                                normal_x = other.x + tc*other.hspeed - xx - sign(other.hspeed)*sprite_height
+                                normal_y = other.y + tc*other.vspeed - yy
+                                var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                                normal_x = normal_x/norm
+                                normal_y = normal_y/norm
+                                debug_colour = c_gray
+                            } else {
+                                debug_colour = c_orange
+                            }
+                        } else {
+                            debug_colour = c_lime
+                        }
+                    // Otherwise, collide with horizontal face
+                    } else if (ty > -0.1 and ty < dt) {
+                        //show_debug_message("yf")
+                        dt = ty
+                        wall = id
+                        normal_x = 0
+                        normal_y = -sign(other.vspeed)
+                        debug_colour = c_gray
+                    } else if (ty < 0) {
+                        debug_colour = c_blue
+                    } else {
+                        debug_colour = c_red
+                    }
+                }
+            }
+        } else {
+            debug_colour = c_white
+        }
+    }
+    
+    // Find nearest colliding diagonal wall
+    with(objWallDiag) {
+        var dx = (x + sprite_width/2) - (other.x + t*other.hspeed/2)
+        var dy = (y + sprite_height/2) - (other.y + t*other.vspeed/2)
+        
+        // Check that wall is close enough for collision to occur
+        if (abs(dx) <= abs(dt*other.hspeed)/2 + r + sprite_width/2 and
+            abs(dy) <= abs(dt*other.vspeed)/2 + r + sprite_height/2) {
+            
+            debug_colour = c_black
+            
+            // If moving down/right
+            if (other.hspeed == other.vspeed) {
+                //show_debug_message("dr")
+                // x + y along front face
+                var xpy = x + y + (2 - sign(other.hspeed)) * sprite_width / 2
+                // If left/below wall, check for collisions with near left/lower corner
+                if ( other.x - other.y < x - y - sprite_height/2 ) {
+                    var discriminant = sqr(other.hspeed)*(2*sqr(r) - sqr(other.y - other.x + x - y - sprite_height / 2))
+                    if (discriminant > 0) {
+                        var tc = (-other.hspeed*(other.x+other.y - xpy) - sqrt(discriminant))/(2*sqr(other.hspeed))
+                        if (tc > 0 and tc < dt) {
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - (xpy + x - y - sprite_height/2) / 2
+                            normal_y = other.y + tc*other.vspeed - (xpy - x + y + sprite_height/2) / 2
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
+                            debug_colour = c_aqua
+                        }
+                    } else {
+                        debug_colour = c_lime
+                    }
+                // If right/above wall, check for collisions with near right/upper corner
+                } else if ( other.x - other.y > x + sprite_width/2 - y ) {
+                    var discriminant = sqr(other.hspeed)*(2*sqr(r) - sqr(other.y - other.x + x + sprite_width/2 - y))
+                    if (discriminant > 0) {
+                        var tc = (-other.hspeed*(other.x+other.y - xpy) - sqrt(discriminant))/(2*sqr(other.hspeed))
+                        if (tc > 0 and tc < dt) {
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - (xpy - x - sprite_width/2 + y) / 2
+                            normal_y = other.y + tc*other.vspeed - (xpy + x + sprite_width/2 - y) / 2
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
+                            debug_colour = c_maroon
+                        }
+                    } else {
+                        debug_colour = c_fuchsia
+                    }
+                // Otherwise, collide with near face
+                } else {
+                    var tc = (xpy - other.x - other.y - sqrt(2)*r*sign(other.hspeed)) / (2*other.hspeed)
+                    if (tc > -0.1 and tc < dt) {
+                        dt = tc
+                        wall = id
+                        normal_x = -sign(other.hspeed)/sqrt(2)
+                        normal_y = -sign(other.vspeed)/sqrt(2)
+                        debug_colour = c_gray
+                    } else {
+                        debug_colour = c_aqua
+                    }
+                }
+            // If moving down/left
+            } else if (other.vspeed + other.hspeed == 0) {
+                //show_debug_message("dl")
+                // x - y along front face
+                var xmy = x - y - sign(other.hspeed) * sprite_width / 2
+                // If left/above wall, check for collisions with near left/top corner
+                if ( other.x + other.y < x + y + sprite_width / 2 ) {
+                    var discriminant = sqr(other.hspeed)*(2*sqr(r) - sqr(other.x + other.y - x - y - sprite_width / 2))
+                    if (discriminant > 0) {
+                        var tc = (-other.hspeed*(other.x - other.y - xmy) - sqrt(discriminant))/(2*sqr(other.hspeed))
+                        if (tc > 0 and tc < dt) {
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - (xmy + x + y + sprite_width / 2) / 2
+                            normal_y = other.y + tc*other.vspeed + (xmy - x - y - sprite_width / 2) / 2
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
+                            debug_colour = c_aqua
+                        }
+                    } else {
+                        debug_colour = c_lime
+                    }
+                // If right/below wall, check for collisions with near right/bottom corner
+                } else if ( other.x + other.y > x + y + 3*sprite_height/2 ) {
+                    var discriminant = sqr(other.hspeed)*(2*sqr(r) - sqr(other.x + other.y - x - y - sprite_width / 3))
+                    if (discriminant > 0) {
+                        var tc = (-other.hspeed*(other.x  - other.y - xmy) - sqrt(discriminant))/(2*sqr(other.hspeed))
+                        if (tc > 0 and tc < dt) {
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - (xmy + x + y + 3 * sprite_width / 2) / 2
+                            normal_y = other.y + tc*other.vspeed + (xmy - x - y - 3 * sprite_width / 2) / 2
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
+                            debug_colour = c_maroon
+                        }
+                    } else {
+                        debug_colour = c_fuchsia
+                    }
+                // Otherwise, collide with near face
+                } else {
+                    var tc = (xmy - other.x + other.y - sqrt(2)*r*sign(other.hspeed)) / (2*other.hspeed)
+                    if (tc > -0.1 and tc < dt) {
+                        dt = tc
+                        wall = id
+                        normal_x = -sign(other.hspeed)/sqrt(2)
+                        normal_y = -sign(other.vspeed)/sqrt(2)
+                        debug_colour = c_gray
+                    } else {
+                        debug_colour = c_aqua
+                    }
+                }
+            // !!TODO!!: change this to diagonal collisions
+            // If moving diagonally
+            } else {
+                // Check collisions with near faces only
+                var xx = x + (1 - sign(other.hspeed)) * sprite_width/2
+                var yy = y + (1 - sign(other.vspeed)) * sprite_height/2
+            
+                var tx = (xx - other.x - r*sign(other.hspeed)) / other.hspeed
+                var ty = (yy - other.y - r*sign(other.vspeed)) / other.vspeed
+            
+                // If moving towards vertical face
+                if (tx > ty) {
+                    var yx = other.y + tx*other.vspeed
+                    // If falling short, must eventually hit near corner
+                    if (sign(other.vspeed)*yx < sign(other.vspeed)*yy) {
+                        var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy) - sqrt((sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx))))/(sqr(other.hspeed)+sqr(other.vspeed))
                         if (tc > 0 and tc < dt) {
                             show_debug_message("xnc")
                             dt = tc
@@ -175,9 +423,9 @@ while (t*speed > 0.1 and iter < 9) {
                         }
                     // If overshooting, check for collision with far corner
                     } else if (sign(other.vspeed)*yx > sign(other.vspeed)*yy + sprite_height) {
-                        var discriminant = sqr(other.speed*r) - sqr(other.hspeed*(other.y-yy-sign(other.vspeed)*sprite_height) - other.vspeed*(other.x-xx))
+                        var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy-sign(other.vspeed)*sprite_height) - other.vspeed*(other.x-xx))
                         if (discriminant > 0) {
-                            var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy-sign(other.vspeed)*sprite_height) - sqrt(discriminant))/sqr(other.speed)
+                            var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy-sign(other.vspeed)*sprite_height) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
                             if (tc > 0 and tc < dt) {
                                 show_debug_message("xfc")
                                 dt = tc
@@ -210,7 +458,7 @@ while (t*speed > 0.1 and iter < 9) {
                     var xy = other.x + ty*other.hspeed
                     // If falling short, must eventually hit near corner
                     if (sign(other.hspeed)*xy < sign(other.hspeed)*xx) {
-                        var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy) - sqrt(sqr(other.speed*r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx))))/sqr(other.speed)
+                        var tc = (-other.hspeed*(other.x-xx) - other.vspeed*(other.y-yy) - sqrt((sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx))))/(sqr(other.hspeed)+sqr(other.vspeed))
                         if (tc > 0 and tc < dt) {
                             show_debug_message("ync")
                             dt = tc
@@ -226,9 +474,9 @@ while (t*speed > 0.1 and iter < 9) {
                         }
                     // If overshooting, check for collision with far corner
                     } else if (sign(other.hspeed)*xy > sign(other.hspeed)*xx + sprite_width) {
-                        var discriminant = sqr(other.speed*r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx-sign(other.hspeed)*sprite_width))
+                        var discriminant = (sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr(other.hspeed*(other.y-yy) - other.vspeed*(other.x-xx-sign(other.hspeed)*sprite_width))
                         if (discriminant > 0) {
-                            var tc = (-other.hspeed*(other.x-xx-sign(other.hspeed)*sprite_width) - other.vspeed*(other.y-yy) - sqrt(discriminant))/sqr(other.speed)
+                            var tc = (-other.hspeed*(other.x-xx-sign(other.hspeed)*sprite_width) - other.vspeed*(other.y-yy) - sqrt(discriminant))/(sqr(other.hspeed)+sqr(other.vspeed))
                             if (tc > 0 and tc < dt) {
                                 show_debug_message("yfc")
                                 dt = tc
