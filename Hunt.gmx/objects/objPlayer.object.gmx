@@ -86,10 +86,14 @@ var dodge = gamepad_button_check_pressed(controller, gp_face2) and boosts &gt; 0
 
 if (global.debug and gamepad_button_check(controller, gp_shoulderl)) {
     hspeed = 0
+    //hspeed = (hspeed - vspeed) / 2
+    //vspeed = -hspeed
 }
 
 if (global.debug and gamepad_button_check(controller, gp_shoulderr)) {
     vspeed = 0
+    //hspeed = (hspeed + vspeed) / 2
+    //vspeed = hspeed
 }
 
 if (gamepad_button_check_pressed(controller, gp_select)) {
