@@ -453,50 +453,50 @@ while (t*speed > 0.1 and iter < 9) {
                         debug_colour = c_green
                     }
                 // Otherwise, moving towards upper-right/lower-left face
-                } else if (false) {
+                } else {
                     var xpyp = other.x + other.y + txmy*(other.hspeed + other.vspeed)
                     // If falling short, must eventually hit near corner
                     if (sign(other.hspeed + other.vspeed)*xpyp < sign(other.hspeed + other.vspeed)*xpy) {
-                        //var discriminant = 4*(sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr((other.hspeed+other.vspeed)*(other.x-other.y-xmy) - (other.hspeed-other.vspeed)*(other.x+other.y-xpy))
-                        //var tc = (-(other.hspeed+other.vspeed)*(other.x+other.y-xpy) - (other.hspeed-other.vspeed)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.hspeed)+sqr(other.vspeed)))
-                        //if (tc > 0 and tc < dt) {
-                        //    dt = tc
-                        //    wall = id
-                        //    normal_x = other.x + tc*other.hspeed - (xpy + xmy)/2
-                        //    normal_y = other.y + tc*other.vspeed - (xpy - xmy)/2
-                        //    var norm = sqrt(sqr(normal_x) + sqr(normal_y))
-                        //    normal_x = normal_x/norm
-                        //    normal_y = normal_y/norm
-                        //    debug_colour = c_gray
-                        //} else {
+                        var discriminant = 4*(sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr((other.hspeed+other.vspeed)*(other.x-other.y-xmy) - (other.hspeed-other.vspeed)*(other.x+other.y-xpy))
+                        var tc = (-(other.hspeed+other.vspeed)*(other.x+other.y-xpy) - (other.hspeed-other.vspeed)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.hspeed)+sqr(other.vspeed)))
+                        if (tc > 0 and tc < dt) {
+                            dt = tc
+                            wall = id
+                            normal_x = other.x + tc*other.hspeed - (xpy + xmy)/2
+                            normal_y = other.y + tc*other.vspeed - (xpy - xmy)/2
+                            var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                            normal_x = normal_x/norm
+                            normal_y = normal_y/norm
+                            debug_colour = c_gray
+                        } else {
                             debug_colour = c_yellow
-                        //}
+                        }
                     // If overshooting, check for collision with far corner
-                    } else if (sign(other.hspeed + other.vspeed)*xpyp < sign(other.hspeed + other.vspeed)*xpy + sprite_width) {
-                        //var discriminant = 4*(sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr((other.hspeed+other.vspeed)*(other.x-other.y-xmy) - (other.hspeed-other.vspeed)*(other.x+other.y-xpy-sign(other.hspeed+other.vspeed)*sprite_height))
-                        //if (discriminant > 0) {
-                        //    var tc = (-(other.hspeed+other.vspeed)*(other.x+other.y-xpy-sign(other.hspeed+other.vspeed)*sprite_height) - (other.hspeed-other.vspeed)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.hspeed)+sqr(other.vspeed)))
-                        //    if (tc > 0 and tc < dt) {
-                        //        dt = tc
-                        //        wall = id
-                        //        normal_x = other.x + tc*other.hspeed - (xpy + sign(other.hspeed+other.vspeed)*sprite_height + xmy)/2
-                        //        normal_y = other.y + tc*other.vspeed - (xpy + sign(other.hspeed+other.vspeed)*sprite_height - xmy)/2
-                        //        var norm = sqrt(sqr(normal_x) + sqr(normal_y))
-                        //        normal_x = normal_x/norm
-                        //        normal_y = normal_y/norm
-                        //        debug_colour = c_gray
-                        //    } else {
+                    } else if (sign(other.hspeed + other.vspeed)*xpyp > sign(other.hspeed + other.vspeed)*xpy + sprite_width) {
+                        var discriminant = 4*(sqr(other.hspeed)+sqr(other.vspeed))*sqr(r) - sqr((other.hspeed+other.vspeed)*(other.x-other.y-xmy) - (other.hspeed-other.vspeed)*(other.x+other.y-xpy-sign(other.hspeed+other.vspeed)*sprite_height))
+                        if (discriminant > 0) {
+                            var tc = (-(other.hspeed+other.vspeed)*(other.x+other.y-xpy-sign(other.hspeed+other.vspeed)*sprite_height) - (other.hspeed-other.vspeed)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.hspeed)+sqr(other.vspeed)))
+                            if (tc > 0 and tc < dt) {
+                                dt = tc
+                                wall = id
+                                normal_x = other.x + tc*other.hspeed - (xpy + sign(other.hspeed+other.vspeed)*sprite_height + xmy)/2
+                                normal_y = other.y + tc*other.vspeed - (xpy + sign(other.hspeed+other.vspeed)*sprite_height - xmy)/2
+                                var norm = sqrt(sqr(normal_x) + sqr(normal_y))
+                                normal_x = normal_x/norm
+                                normal_y = normal_y/norm
+                                debug_colour = c_gray
+                            } else {
                                 debug_colour = c_orange
-                        //    }
-                        //} else {
-                        //    debug_colour = c_lime
-                        //}
+                            }
+                        } else {
+                            debug_colour = c_lime
+                        }
                     // Otherwise, collide with horizontal face
                     } else if (txmy > -0.1 and txmy < dt) {
                         dt = txmy
                         wall = id
                         normal_x = -sign(other.hspeed-other.vspeed)/sqrt(2)
-                        normal_y = sign(other.vspeed-other.vspeed)/sqrt(2)
+                        normal_y = sign(other.hspeed-other.vspeed)/sqrt(2)
                         debug_colour = c_gray
                     } else {
                         debug_colour = c_red
