@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>captures = 0;
+            <string>xvel = 0;
+yvel = 0;
+
+captures = 0;
 invulnerability = 0.0;
 rumble = 0.0;
 time = 0;
@@ -36,8 +39,6 @@ normal_x = 0
 normal_y = 0
 normal_time = 0
 last_collide_diag = false
-
-dir2 = 0
 
 if x &lt; room_width/2 {
     hudX = 85;
@@ -55,9 +56,6 @@ spawn();
 
 dir = 90;
 moving = false;
-
-oldx = x
-oldy = y
 
 </string>
           </argument>
@@ -85,15 +83,15 @@ oldy = y
 var dodge = gamepad_button_check_pressed(controller, gp_face2) and boosts &gt; 0;
 
 if (global.debug and gamepad_button_check(controller, gp_shoulderl)) {
-    hspeed = 0
-    //hspeed = (hspeed - vspeed) / 2
-    //vspeed = -hspeed
+    xvel = 0
+    //xvel = (xvel - yvel) / 2
+    //yvel = -xvel
 }
 
 if (global.debug and gamepad_button_check(controller, gp_shoulderr)) {
-    vspeed = 0
-    //hspeed = (hspeed + vspeed) / 2
-    //vspeed = hspeed
+    yvel = 0
+    //xvel = (xvel + yvel) / 2
+    //yvel = xvel
 }
 
 if (gamepad_button_check_pressed(controller, gp_select)) {
@@ -152,8 +150,8 @@ if (not global.paused){
     
     if (norm &lt; DEAD_ZONE) {
         moving = false;
-        ax = -frict*hspeed;
-        ay = -frict*vspeed;
+        ax = -frict*xvel;
+        ay = -frict*yvel;
     } else {
         moving = true;
         if (norm &gt; 1) {
@@ -171,22 +169,24 @@ if (not global.paused){
         
         // Set to max speed
         
-        hspeed = (ax / (norm * acc)) * boost_imp;
-        vspeed = (ay / (norm * acc)) * boost_imp;
+        xvel = (ax / (norm * acc)) * boost_imp;
+        yvel = (ay / (norm * acc)) * boost_imp;
         
         // Particles
         part_type_direction(global.part_type_boost,
             (direction + 160) % 360, (direction + 200) % 360, 0, 0
         );
-        part_type_speed(global.part_type_boost, speed/4, speed/2, 0, 0);
+        var spd = sqrt(sqr(xvel) + sqr(yvel))
+        part_type_speed(global.part_type_boost, spd/4, spd/2, 0, 0);
         part_emitter_region(global.particles, global.part_emitter_boost,
-            x + hspeed * 4, x + hspeed * 4, y + vspeed * 4, y + vspeed * 4,
+            x + xvel * 4, x + xvel * 4, y + yvel * 4, y + yvel * 4,
             ps_shape_ellipse, ps_distr_gaussian
         );
         part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
     } else if (dodge and invulnerability &lt;= 0.0 and not isHunter) {
         boosts--
-        speed = 0;
+        xvel = 0;
+        yvel = 0;
         invulnerability = INVULNERABLE_DODGE_TIME;
     } else {
         force_floor = instance_position(x, y, objFloorForce);
@@ -194,27 +194,30 @@ if (not global.paused){
             ax += force_floor.force_x
             ay += force_floor.force_y
         }
-    
-        if normal_time &gt; 0 {
-            var dot = ax*normal_x + ay*normal_y
-            if dot &gt; 0 {
-                ax = ax - normal_x*dot
-                ay = ay - normal_y*dot
+        
+        xvel += ax;
+        yvel += ay;
+        
+        var spd = sqrt(sqr(xvel) + sqr(yvel))
+        if (spd &gt; 0) {
+            var newSpd = spd
+            if (spd &lt; 2*speed_max) {
+                newSpd -= sqr(spd) * acc / (speed_max * speed_max);    
+            } else {
+                newSpd -= 4 * acc;
             }
-            normal_time = normal_time - 1
-        }
-        
-        hspeed += ax;
-        vspeed += ay;
-        
-        if (speed &lt; 2*speed_max) {
-            speed -= speed * speed * acc / (speed_max * speed_max);
-        } else {
-            speed -= 4 * acc;
+            if (newSpd &gt; 0) {
+                xvel *= newSpd/spd
+                yvel *= newSpd/spd
+            } else {
+                xvel = 0
+                yvel = 0
+            }
         }
     }
 } else {
-    speed = 0;
+    xvel = 0;
+    yvel = 0;
 }
 
 if (rumble &gt; 0) {
@@ -385,11 +388,9 @@ if(moving){
 }
 
 if (global.debug) {
-    if (last_collide_diag) {
-        draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir2, c_yellow, 0.25);
-    } else {
-        draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir2, c_red, 0.25);
-    }
+    var dir2 = radtodeg(arctan2(-normal_y, normal_x))
+    show_debug_message("-----")
+    draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir2, c_red, 0.25);
 }
 
 // Draw crown
