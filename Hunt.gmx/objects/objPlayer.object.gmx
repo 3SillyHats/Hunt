@@ -117,6 +117,12 @@ if (not teleporting) {
 }
 
 if (not global.paused){
+    var spd2 = sqr(xvel) + sqr(yvel)
+    if (spd2 &gt; sqr(SPEED_LIMIT)) {
+        var spdMod = sqrt(sqr(SPEED_LIMIT) / spd2)
+        xvel = xvel * spdMod
+        yvel = yvel * spdMod
+    }
     collide()
 
     time += 1/room_speed;
