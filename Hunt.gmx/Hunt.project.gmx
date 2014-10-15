@@ -55,13 +55,19 @@
       <sprite>sprites\sprWallSpeed</sprite>
       <sprite>sprites\sprWallSpeedDiag</sprite>
     </sprites>
+    <sprites name="Pickups">
+      <sprite>sprites\sprCoin</sprite>
+      <sprite>sprites\sprTripleCoin</sprite>
+    </sprites>
+    <sprites name="Teleporters">
+      <sprite>sprites\sprTeleporter1</sprite>
+      <sprite>sprites\sprTeleporter2</sprite>
+      <sprite>sprites\sprTeleporter3</sprite>
+    </sprites>
     <sprite>sprites\sprController</sprite>
-    <sprite>sprites\sprCoin</sprite>
-    <sprite>sprites\sprTripleCoin</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
     <sprite>sprites\sprCrown</sprite>
-    <sprite>sprites\sprTeleporter</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
@@ -129,7 +135,12 @@
       <object>objects\objBoost</object>
       <object>objects\objTripleBoost</object>
     </objects>
-    <object>objects\objTeleporter</object>
+    <objects name="Teleporters">
+      <object>objects\objTeleporter</object>
+      <object>objects\objTeleporter1</object>
+      <object>objects\objTeleporter2</object>
+      <object>objects\objTeleporter3</object>
+    </objects>
     <object>objects\objTimer</object>
     <object>objects\objResults</object>
     <object>objects\objSelect</object>
@@ -200,7 +211,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41927.4131497569</constant>
+    <constant name="GM_build_date">41927.4169863542</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
