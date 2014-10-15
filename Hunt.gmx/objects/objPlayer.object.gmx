@@ -35,6 +35,9 @@ time = 0;
 isHunter = false;
 dodged = 0;
 
+teleporting = false; // Whether the player is currently contacing a teleporter
+can_teleport = true; // True unless the player has been in contact with a teleporter since their last teleport
+
 normal_x = 0
 normal_y = 0
 normal_time = 0
@@ -102,10 +105,15 @@ if (dead) {
     spawn();
 }
 
-
 if (global.kills[controller] &gt;= WIN_THRESHOLD) {
     global.winner = controller;
     global.paused = true
+}
+
+if (not teleporting) {
+    can_teleport = true
+} else {
+    teleporting = false
 }
 
 if (not global.paused){

@@ -61,6 +61,7 @@
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprAvatars</sprite>
     <sprite>sprites\sprCrown</sprite>
+    <sprite>sprites\sprTeleporter</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgCastle</background>
@@ -124,8 +125,11 @@
       <object>objects\objWallSpeed</object>
       <object>objects\objWallSpeedDiag</object>
     </objects>
-    <object>objects\objBoost</object>
-    <object>objects\objTripleBoost</object>
+    <objects name="Pickups">
+      <object>objects\objBoost</object>
+      <object>objects\objTripleBoost</object>
+    </objects>
+    <object>objects\objTeleporter</object>
     <object>objects\objTimer</object>
     <object>objects\objResults</object>
     <object>objects\objSelect</object>
@@ -139,6 +143,7 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
+    <room>rooms\rmTeleporter</room>
     <room>rooms\rmStick1</room>
     <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
@@ -195,7 +200,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41925.4274991435</constant>
+    <constant name="GM_build_date">41927.4131497569</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
