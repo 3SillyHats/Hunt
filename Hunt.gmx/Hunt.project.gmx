@@ -43,6 +43,7 @@
       <sprite>sprites\sprForceDownHigh</sprite>
       <sprite>sprites\sprForceDownVHigh</sprite>
       <sprite>sprites\sprForceDownExtrm</sprite>
+      <sprite>sprites\sprButton</sprite>
     </sprites>
     <sprites name="Walls">
       <sprite>sprites\sprWall</sprite>
@@ -60,6 +61,12 @@
       <sprite>sprites\sprWallToggleOffDiag</sprite>
       <sprite>sprites\sprWallToggleWaitDiag</sprite>
       <sprite>sprites\sprWallToggleOnDiag</sprite>
+      <sprite>sprites\sprWallBtnOff</sprite>
+      <sprite>sprites\sprWallBtnWait</sprite>
+      <sprite>sprites\sprWallBtnOn</sprite>
+      <sprite>sprites\sprWallBtnOffDiag</sprite>
+      <sprite>sprites\sprWallBtnWaitDiag</sprite>
+      <sprite>sprites\sprWallBtnOnDiag</sprite>
     </sprites>
     <sprites name="Pickups">
       <sprite>sprites\sprCoin</sprite>
@@ -124,6 +131,7 @@
       <object>objects\objFloorDownHigh</object>
       <object>objects\objFloorDownVHigh</object>
       <object>objects\objFloorDownExtrm</object>
+      <object>objects\objButton</object>
     </objects>
     <objects name="Walls">
       <object>objects\objWall</object>
@@ -144,6 +152,12 @@
       <object>objects\objWallToggleOffDiag</object>
       <object>objects\objWallToggleWaitDiag</object>
       <object>objects\objWallToggleOnDiag</object>
+      <object>objects\objWallBtnOff</object>
+      <object>objects\objWallBtnWait</object>
+      <object>objects\objWallBtnOn</object>
+      <object>objects\objWallBtnOffDiag</object>
+      <object>objects\objWallBtnWaitDiag</object>
+      <object>objects\objWallBtnOnDiag</object>
     </objects>
     <objects name="Pickups">
       <object>objects\objBoost</object>
@@ -168,7 +182,8 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
-    <room>rooms\rmToggle</room>
+    <room>rooms\rmToggleTime</room>
+    <room>rooms\rmToggleBtn</room>
     <room>rooms\rmTeleporter</room>
     <room>rooms\rmStick1</room>
     <room>rooms\rmSpeedWall1</room>
@@ -227,7 +242,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41930.2281242361</constant>
+    <constant name="GM_build_date">41930.3024373611</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
