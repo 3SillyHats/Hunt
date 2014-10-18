@@ -99,7 +99,6 @@ toggleState = 1
     if (not global.paused) {
         toggleState = hunt_remaining * 2 div (HUNT_TIME * 1000000)
     }
-    show_debug_message(toggleState)
 } else {
     winTime -= 1/room_speed;
     if winTime &lt;= 0 {

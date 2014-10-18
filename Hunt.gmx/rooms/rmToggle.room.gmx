@@ -201,7 +201,7 @@
     <instance objName="objWallBase" x="1620" y="120" name="inst_A9C3E585" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="240" y="900" name="inst_893F9BEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="240" y="960" name="inst_0F057ABC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1620" y="900" name="inst_12CDAE2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOffDiag" x="1800" y="360" name="inst_19F77982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1620" y="960" name="inst_125C9587" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1620" y="360" name="inst_4F03D590" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1680" y="360" name="inst_33907273" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -235,6 +235,12 @@
     <instance objName="objWallToggleOff" x="1140" y="780" name="inst_0D4BEA73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallToggleOff" x="1080" y="780" name="inst_1389C301" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallToggleOff" x="1020" y="780" name="inst_343D5663" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOffDiag" x="1800" y="840" name="inst_E2451DCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallBaseDiag" x="1620" y="900" name="inst_6F7393EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOnDiag" x="0" y="660" name="inst_1365E728" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOnDiag" x="240" y="960" name="inst_1CC0FBFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOnDiag" x="0" y="840" name="inst_0B2AB7F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOn" x="1620" y="900" name="inst_46E281F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

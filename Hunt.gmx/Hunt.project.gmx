@@ -57,6 +57,9 @@
       <sprite>sprites\sprWallToggleOff</sprite>
       <sprite>sprites\sprWallToggleWait</sprite>
       <sprite>sprites\sprWallToggleOn</sprite>
+      <sprite>sprites\sprWallToggleOffDiag</sprite>
+      <sprite>sprites\sprWallToggleWaitDiag</sprite>
+      <sprite>sprites\sprWallToggleOnDiag</sprite>
     </sprites>
     <sprites name="Pickups">
       <sprite>sprites\sprCoin</sprite>
@@ -81,6 +84,8 @@
     <script>scripts\newHunter.gml</script>
     <script>scripts\shuffleHunters.gml</script>
     <script>scripts\collide.gml</script>
+    <script>scripts\wallClear.gml</script>
+    <script>scripts\wallDiagClear.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntMain</font>
@@ -136,6 +141,9 @@
       <object>objects\objWallToggleOff</object>
       <object>objects\objWallToggleWait</object>
       <object>objects\objWallToggleOn</object>
+      <object>objects\objWallToggleOffDiag</object>
+      <object>objects\objWallToggleWaitDiag</object>
+      <object>objects\objWallToggleOnDiag</object>
     </objects>
     <objects name="Pickups">
       <object>objects\objBoost</object>
@@ -219,7 +227,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41930.1379815741</constant>
+    <constant name="GM_build_date">41930.1845602546</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>

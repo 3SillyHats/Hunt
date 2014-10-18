@@ -142,7 +142,6 @@ if (not global.paused){
     var boost_imp = SPEED_MAX * BOOST_JUICE;
     var modifier = instance_position(x, y, objFloorMod);
     if (modifier != noone) {
-        show_debug_message(modifier.speed_mod)
         acc *= modifier.acceleration_mod;
         frict *= modifier.friction_mod;
         speed_max *= modifier.speed_mod;
@@ -403,7 +402,6 @@ if(moving){
 
 if (global.debug) {
     var dir2 = radtodeg(arctan2(-normal_y, normal_x))
-    show_debug_message("-----")
     draw_sprite_ext(sprArrow, 0, x, y, 1, 1, dir2, c_red, 0.25);
 }
 
