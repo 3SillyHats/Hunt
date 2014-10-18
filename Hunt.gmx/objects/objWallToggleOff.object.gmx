@@ -26,10 +26,17 @@
           <argument>
             <kind>1</kind>
             <string>if (objTimer.toggleState != initialState) {
-    if(place_meeting(x,y,objPlayer)) {
-        instance_change(objWallToggleWait,true)
-    } else {
+    var clear = true
+    with (objPlayer) {
+        if(abs(x+sprite_width/2 - player.x) &lt; sprite_width/2 + player.sprite_width/2 + 1 and
+           abs(y+sprite_height/2 - player.y) &lt; sprite_height/2 + player.sprite_height/2 + 1) {
+           clear = false
+        }
+    }
+    if(clear) {
         instance_change(objWallToggleOn,true)
+    } else {
+        instance_change(objWallToggleWait,true)
     }
     initialState = objTimer.toggleState
 }

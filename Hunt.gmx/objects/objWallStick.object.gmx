@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>restitution = BOUNCE_SLOW
+            <string>event_inherited()
+restitution = BOUNCE_SLOW
 frict = 0.85
-
 </string>
           </argument>
         </arguments>

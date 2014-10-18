@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>restitution = 0
+            <string>event_inherited()
 frict = -0.1
 </string>
           </argument>

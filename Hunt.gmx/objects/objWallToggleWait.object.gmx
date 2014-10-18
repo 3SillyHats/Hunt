@@ -29,9 +29,14 @@
     instance_change(objWallToggleOff,true)
     initialState = objTimer.toggleState
 } else {
-    player = instance_nearest(x+sprite_width/2, y+sprite_width/2, objPlayer)
-    if(abs(x+sprite_width/2 - player.x) &gt; sprite_width/2 + player.sprite_width/2 + 1 or
-       abs(y+sprite_height/2 - player.y) &gt; sprite_height/2 + player.sprite_height/2 + 1) {
+    var clear = true
+    with (objPlayer) {
+        if(abs(x+sprite_width/2 - player.x) &lt; sprite_width/2 + player.sprite_width/2 + 1 and
+           abs(y+sprite_height/2 - player.y) &lt; sprite_height/2 + player.sprite_height/2 + 1) {
+           clear = false
+        }
+    }
+    if (clear) {
         instance_change(objWallToggleOn,true)
     }
 }
