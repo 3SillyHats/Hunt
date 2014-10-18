@@ -28,8 +28,8 @@
             <string>if (objTimer.toggleState != initialState) {
     var clear = true
     with (objPlayer) {
-        if(abs(x+sprite_width/2 - player.x) &lt; sprite_width/2 + player.sprite_width/2 + 1 and
-           abs(y+sprite_height/2 - player.y) &lt; sprite_height/2 + player.sprite_height/2 + 1) {
+        if(abs(other.x+other.sprite_width/2 - x) &lt; other.sprite_width/2 + sprite_width/2 + 1 and
+           abs(other.y+other.sprite_height/2 - y) &lt; other.sprite_height/2 + sprite_height/2 + 1) {
            clear = false
         }
     }

@@ -72,21 +72,21 @@
     <instance objName="objWallBase" x="120" y="1020" name="inst_272F4AA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="180" y="1020" name="inst_38679165" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="240" y="1020" name="inst_34834B53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="780" y="480" name="inst_7815C605" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="540" y="780" name="inst_73F390A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1260" y="300" name="inst_4108C3C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="480" y="300" name="inst_9C75F932" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoost" x="1429" y="534" name="inst_D94503F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoost" x="1075" y="300" name="inst_1FAF557E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1020" y="780" name="inst_C6FD991F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="540" y="780" name="inst_F5D53CB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="480" y="780" name="inst_CF75099F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOn" x="780" y="480" name="inst_E14D2AF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOn" x="780" y="540" name="inst_0D6FF786" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOn" x="780" y="420" name="inst_7F99D525" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="240" y="660" name="inst_18F1EFA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="180" y="660" name="inst_95029C04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="120" y="660" name="inst_6102E7EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="60" y="660" name="inst_6F63D121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="600" y="1020" name="inst_683A3330" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="780" y="420" name="inst_586DC1AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="600" y="780" name="inst_853A7FC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="480" y="780" name="inst_F7425725" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOn" x="780" y="600" name="inst_04A960FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1260" y="360" name="inst_632EABDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="420" y="420" name="inst_61DCDE02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="480" y="420" name="inst_A197E2C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -166,7 +166,7 @@
     <instance objName="objSpawn" x="1800" y="840" name="inst_23F33A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpawn" x="1800" y="240" name="inst_97D46D76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoost" x="1172" y="931" name="inst_1C2A2B9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="780" y="540" name="inst_1CA89FF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="600" y="780" name="inst_1DAFB767" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="480" y="1020" name="inst_8C1642F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1260" y="420" name="inst_10483648" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="300" y="1020" name="inst_2B413E6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -229,12 +229,12 @@
     <instance objName="objWallBase" x="780" y="1020" name="inst_978E8795" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="720" y="1020" name="inst_7EF18307" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="660" y="1020" name="inst_244D3BCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1080" y="780" name="inst_75C1CA9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="780" y="600" name="inst_F708F7E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1260" y="780" name="inst_8F17DE91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1200" y="780" name="inst_91DCE35A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1140" y="780" name="inst_7019D956" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWallBase" x="1320" y="780" name="inst_8B01B821" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="1320" y="780" name="inst_BD0C6423" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="1260" y="780" name="inst_5CDEBCDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="1200" y="780" name="inst_ED7D0E4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="1140" y="780" name="inst_0D4BEA73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="1080" y="780" name="inst_1389C301" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWallToggleOff" x="1020" y="780" name="inst_343D5663" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
