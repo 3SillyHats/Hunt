@@ -1,5 +1,6 @@
 var t = 1.0
 var iter = 0
+var oldwall = noone
 var r = other.sprite_width/2
 while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
     iter = iter + 1
@@ -17,7 +18,8 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         var dy = (y + sprite_height/2) - (other.y + t*other.yvel/2)
         
         // Check that wall is close enough for collision to occur
-        if (abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
+        if (id != oldwall and
+            abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
             abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2) {
             
             debug_colour = c_black
@@ -31,7 +33,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = (sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.yvel*(other.x-x))
                     if (discriminant > 0) {
                         var tc = (-other.yvel*(other.y-yy) - sqrt(discriminant))/(sqr(other.xvel)+sqr(other.yvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             //show_debug_message("vlc")
                             dt = tc
                             wall = id
@@ -52,7 +54,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = (sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.yvel*(other.x-x-sprite_width))
                     if (discriminant > 0) {
                         var tc = (-other.yvel*(other.y-yy) - sqrt(discriminant))/(sqr(other.xvel)+sqr(other.yvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             //show_debug_message("vrc")
                             dt = tc
                             wall = id
@@ -91,7 +93,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = (sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.xvel*(other.y-y))
                     if (discriminant > 0) {
                         var tc = (-other.xvel*(other.x-xx) - sqrt(discriminant))/(sqr(other.xvel)+sqr(other.yvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             //show_debug_message("htc")
                             dt = tc
                             wall = id
@@ -112,7 +114,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = (sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.xvel*(other.y-y-sprite_height))
                     if (discriminant > 0) {
                         var tc = (-other.xvel*(other.x-xx) - sqrt(discriminant))/(sqr(other.xvel)+sqr(other.yvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             //show_debug_message("hbc")
                             dt = tc
                             wall = id
@@ -157,7 +159,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     // If falling short, must eventually hit near corner
                     if (sign(other.yvel)*yx < sign(other.yvel)*yy) {
                         var tc = (-other.xvel*(other.x-xx) - other.yvel*(other.y-yy) - sqrt((sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.xvel*(other.y-yy) - other.yvel*(other.x-xx))))/(sqr(other.xvel)+sqr(other.yvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             //show_debug_message("xnc")
                             dt = tc
                             wall = id
@@ -175,7 +177,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                         var discriminant = (sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.xvel*(other.y-yy-sign(other.yvel)*sprite_height) - other.yvel*(other.x-xx))
                         if (discriminant > 0) {
                             var tc = (-other.xvel*(other.x-xx) - other.yvel*(other.y-yy-sign(other.yvel)*sprite_height) - sqrt(discriminant))/(sqr(other.xvel)+sqr(other.yvel))
-                            if (tc > 0 and tc < dt) {
+                            if (tc > -0.001 and tc < dt) {
                                 //show_debug_message("xfc")
                                 dt = tc
                                 wall = id
@@ -208,7 +210,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     // If falling short, must eventually hit near corner
                     if (sign(other.xvel)*xy < sign(other.xvel)*xx) {
                         var tc = (-other.xvel*(other.x-xx) - other.yvel*(other.y-yy) - sqrt((sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.xvel*(other.y-yy) - other.yvel*(other.x-xx))))/(sqr(other.xvel)+sqr(other.yvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             //show_debug_message("ync")
                             dt = tc
                             wall = id
@@ -226,7 +228,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                         var discriminant = (sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr(other.xvel*(other.y-yy) - other.yvel*(other.x-xx-sign(other.xvel)*sprite_width))
                         if (discriminant > 0) {
                             var tc = (-other.xvel*(other.x-xx-sign(other.xvel)*sprite_width) - other.yvel*(other.y-yy) - sqrt(discriminant))/(sqr(other.xvel)+sqr(other.yvel))
-                            if (tc > 0 and tc < dt) {
+                            if (tc > -0.001 and tc < dt) {
                                 //show_debug_message("yfc")
                                 dt = tc
                                 wall = id
@@ -268,7 +270,8 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         var dy = (y + sprite_height/2) - (other.y + t*other.yvel/2)
         
         // Check that wall is close enough for collision to occur
-        if (abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
+        if (id != oldwall and
+            abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
             abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2) {
             
             debug_colour = c_black
@@ -283,7 +286,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = sqr(other.xvel)*(2*sqr(r) - sqr(other.y - other.x + x - y - sprite_height / 2))
                     if (discriminant > 0) {
                         var tc = (-other.xvel*(other.x+other.y - xpy) - sqrt(discriminant))/(2*sqr(other.xvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.xvel - (xpy + x - y - sprite_height/2) / 2
@@ -303,7 +306,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = sqr(other.xvel)*(2*sqr(r) - sqr(other.y - other.x + x + sprite_width/2 - y))
                     if (discriminant > 0) {
                         var tc = (-other.xvel*(other.x+other.y - xpy) - sqrt(discriminant))/(2*sqr(other.xvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.xvel - (xpy + x + sprite_width/2 - y) / 2
@@ -341,7 +344,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = sqr(other.xvel)*(2*sqr(r) - sqr(other.x + other.y - x - y - sprite_width / 2))
                     if (discriminant > 0) {
                         var tc = (-other.xvel*(other.x - other.y - xmy) - sqrt(discriminant))/(2*sqr(other.xvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.xvel - (xmy + x + y + sprite_width / 2) / 2
@@ -361,7 +364,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     var discriminant = sqr(other.xvel)*(2*sqr(r) - sqr(other.x + other.y - x - y - 3*sprite_height/2))
                     if (discriminant > 0) {
                         var tc = (-other.xvel*(other.x  - other.y - xmy) - sqrt(discriminant))/(2*sqr(other.xvel))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.xvel - (xmy + x + y + 3 * sprite_width / 2) / 2
@@ -405,7 +408,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     if (sign(other.xvel - other.yvel)*xmyp < sign(other.xvel - other.yvel)*xmy) {
                         var discriminant = 4*(sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr((other.xvel+other.yvel)*(other.x-other.y-xmy) - (other.xvel-other.yvel)*(other.x+other.y-xpy))
                         var tc = (-(other.xvel+other.yvel)*(other.x+other.y-xpy) - (other.xvel-other.yvel)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.xvel)+sqr(other.yvel)))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.xvel - (xpy + xmy)/2
@@ -422,7 +425,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                         var discriminant = 4*(sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr((other.xvel+other.yvel)*(other.x-other.y-xmy-sign(other.xvel-other.yvel)*sprite_height) - (other.xvel-other.yvel)*(other.x+other.y-xpy))
                         if (discriminant > 0) {
                             var tc = (-(other.xvel+other.yvel)*(other.x+other.y-xpy) - (other.xvel-other.yvel)*(other.x-other.y-xmy-sign(other.xvel-other.yvel)*sprite_height) - sqrt(discriminant))/(2*(sqr(other.xvel)+sqr(other.yvel)))
-                            if (tc > 0 and tc < dt) {
+                            if (tc > -0.001 and tc < dt) {
                                 dt = tc
                                 wall = id
                                 normal_x = other.x + tc*other.xvel - (xpy + xmy + sign(other.xvel-other.yvel)*sprite_height)/2
@@ -456,7 +459,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                     if (sign(other.xvel + other.yvel)*xpyp < sign(other.xvel + other.yvel)*xpy) {
                         var discriminant = 4*(sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr((other.xvel+other.yvel)*(other.x-other.y-xmy) - (other.xvel-other.yvel)*(other.x+other.y-xpy))
                         var tc = (-(other.xvel+other.yvel)*(other.x+other.y-xpy) - (other.xvel-other.yvel)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.xvel)+sqr(other.yvel)))
-                        if (tc > 0 and tc < dt) {
+                        if (tc > -0.001 and tc < dt) {
                             dt = tc
                             wall = id
                             normal_x = other.x + tc*other.xvel - (xpy + xmy)/2
@@ -473,7 +476,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
                         var discriminant = 4*(sqr(other.xvel)+sqr(other.yvel))*sqr(r) - sqr((other.xvel+other.yvel)*(other.x-other.y-xmy) - (other.xvel-other.yvel)*(other.x+other.y-xpy-sign(other.xvel+other.yvel)*sprite_height))
                         if (discriminant > 0) {
                             var tc = (-(other.xvel+other.yvel)*(other.x+other.y-xpy-sign(other.xvel+other.yvel)*sprite_height) - (other.xvel-other.yvel)*(other.x-other.y-xmy) - sqrt(discriminant))/(2*(sqr(other.xvel)+sqr(other.yvel)))
-                            if (tc > 0 and tc < dt) {
+                            if (tc > -0.001 and tc < dt) {
                                 dt = tc
                                 wall = id
                                 normal_x = other.x + tc*other.xvel - (xpy + sign(other.xvel+other.yvel)*sprite_height + xmy)/2
@@ -523,5 +526,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         xvel = xvel - dot*normal_x*(1+wall.restitution) - perp_dot*normal_y*wall.frict;
         yvel = yvel - dot*normal_y*(1+wall.restitution) + perp_dot*normal_x*wall.frict;
     }
+    
+    oldWall = wall
 }
 
