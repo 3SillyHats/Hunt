@@ -182,6 +182,7 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
+    <room>rooms\rmWrap</room>
     <room>rooms\rmToggleTime</room>
     <room>rooms\rmToggleBtn</room>
     <room>rooms\rmTeleporter</room>
@@ -242,7 +243,7 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41933.5152297569</constant>
+    <constant name="GM_build_date">41933.5233702199</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
