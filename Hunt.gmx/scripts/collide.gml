@@ -20,7 +20,8 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         // Check that wall is close enough for collision to occur
         if (id != oldwall and
             abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
-            abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2) {
+            abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2 and
+            ((not other.isHunter) or self.collidesHunter)) {
             
             debug_colour = c_black
             
@@ -272,7 +273,8 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         // Check that wall is close enough for collision to occur
         if (id != oldwall and
             abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
-            abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2) {
+            abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2 and
+            ((not other.isHunter) or self.collidesHunter)) {
             
             debug_colour = c_black
             
