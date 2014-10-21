@@ -55,7 +55,7 @@ if y &lt; room_height/2 {
 }
 
 
-spawn();
+spawn(false);
 
 dir = 90;
 moving = false;
@@ -102,7 +102,7 @@ if (gamepad_button_check_pressed(controller, gp_select)) {
 }
 
 if (dead) {
-    spawn();
+    spawn(true);
 }
 
 if (global.kills[controller] &gt;= WIN_THRESHOLD) {
