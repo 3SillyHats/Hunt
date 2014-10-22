@@ -1,25 +1,27 @@
 for(i=0; i<global.nPlayers; i++) {
+    hunters[i].isNext = false
     hunters[i].isHunter = false
 }
 
-
-if firstRound {
-    global.paused = false
-}
-
-hunter++;
-if(hunter >= global.nPlayers) {
+nextHunter++;
+if(nextHunter >= global.nPlayers) {
     shuffleHunters(not firstRound);
-    hunter = 0;
-    firstRound = false;
+    nextHunter = 0;
 }
 
-hunters[hunter].isHunter = true;
-if hunters[hunter].boosts < 1 {
-    hunters[hunter].boosts = 1;
+hunter = next
+next = hunters[nextHunter]
+
+next.isNext = true;
+if ( hunter != noone ) {
+    hunter.isHunter = true;
+    if hunter.boosts < 1 {
+        hunter.boosts = 1;
+    }
 }
 
-audio_play_sound(sndMusic, 100, false);
-
-hunt_remaining = hunt_remaining + HUNT_TIME * 1000000;
+if (not firstRound) {
+    audio_play_sound(sndMusic, 100, false);
+    hunt_remaining = hunt_remaining + HUNT_TIME * 1000000;
+}
 

@@ -9,7 +9,7 @@ if (invulnerability < INVULNERABLE_SPAWN_TIME) {
 dodged = INVULNERABLE_SPAWN_TIME;
 
 if (argument0) {
-    var hunter = objTimer.hunters[objTimer.hunter]
+    var hunter = objTimer.hunter
     var nearest = instance_nearest(hunter.x, hunter.y, objSpawn)
     var spawns = ds_list_create()
     with(objSpawn) {

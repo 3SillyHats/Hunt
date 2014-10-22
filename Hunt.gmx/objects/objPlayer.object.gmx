@@ -235,7 +235,9 @@ if (not global.paused){
 
 if (rumble &gt; 0) {
     rumble -= 1/room_speed;
-    gamepad_set_vibration(controller, 0.8, 0.8);
+    gamepad_set_vibration(controller, CAUGHT_RUMBLE_STRENGTH, CAUGHT_RUMBLE_STRENGTH);
+} else if (isNext and objTimer.hunt_remaining &lt; HUNTER_NOTIFY_HAPTIC * 1000000) {
+    gamepad_set_vibration(controller, NOTIFY_RUMBLE_STRENGTH, NOTIFY_RUMBLE_STRENGTH);
 } else {
     gamepad_set_vibration(controller, 0, 0);
 }
@@ -366,7 +368,7 @@ if (invulnerability &lt;= 0.0 or isHunter) {
 }
 
 // Draw self
-if (isHunter) {
+if (isHunter or (isNext and objTimer.hunt_remaining &lt; HUNTER_NOTIFY_VISUAL * 1000000 and floor(objTimer.hunt_remaining*5/1000000) mod 2 == 1) ) {
     sprite_index = sprPlayerAngry;
 } else {
     sprite_index = object_get_sprite(object_index);

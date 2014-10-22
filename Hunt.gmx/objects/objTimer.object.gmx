@@ -56,8 +56,9 @@ for(i=0; i&lt;global.nPlayers; i++) {
     j++;
 }
 
-// Force newHunter next step
-hunter = global.nPlayers - 1;
+hunter = noone
+next = noone
+nextHunter = global.nPlayers - 1;
 firstRound = true;
 
 global.winner = noone;
@@ -65,6 +66,8 @@ global.paused = true;
 winTime = WIN_TIME;
 
 hunt_remaining = START_TIME * 1000000;
+
+newHunter()
 
 toggleState = 1
 
@@ -93,6 +96,10 @@ toggleState = 1
             <string>if (global.winner == noone) {
     hunt_remaining = hunt_remaining - delta_time
     if hunt_remaining &lt;= 0 {
+        if firstRound {
+            global.paused = false
+            firstRound = false
+        }
         newHunter()
     }
     
@@ -227,8 +234,8 @@ draw_text(room_width/2 - string_width(string(sec))/2, 90, string(sec));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(hunters[hunter])) {
-    background_blend[0] = hunters[hunter].color;
+            <string>if (instance_exists(hunter)) {
+    background_blend[0] = hunter.color;
 }
 
 </string>

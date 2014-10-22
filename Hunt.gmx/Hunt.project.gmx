@@ -219,7 +219,7 @@
       <room>rooms\rmBounce2</room>
     </rooms>
   </rooms>
-  <constants number="30">
+  <constants number="34">
     <constant name="ACCELERATION_MAX">1.2</constant>
     <constant name="BOOST_FADE">.5</constant>
     <constant name="BOOST_HOLD_DAMPING">0.9</constant>
@@ -248,7 +248,11 @@
     <constant name="WIN_THRESHOLD">10</constant>
     <constant name="WIN_TIME">0.6</constant>
     <constant name="BOUNCE_SLOW">0.3</constant>
-    <constant name="GM_build_date">41933.5382331134</constant>
+    <constant name="HUNTER_NOTIFY_HAPTIC">1.5</constant>
+    <constant name="HUNTER_NOTIFY_VISUAL">1.5</constant>
+    <constant name="CAUGHT_RUMBLE_STRENGTH">0.8</constant>
+    <constant name="NOTIFY_RUMBLE_STRENGTH">0.15</constant>
+    <constant name="GM_build_date">41934.6151738889</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
