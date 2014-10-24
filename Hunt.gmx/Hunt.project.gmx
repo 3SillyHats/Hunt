@@ -81,6 +81,7 @@
     </sprites>
     <sprites name="Hazards">
       <sprite>sprites\sprSpkes</sprite>
+      <sprite>sprites\sprFlameJet</sprite>
     </sprites>
     <sprite>sprites\sprController</sprite>
     <sprite>sprites\sprArrow</sprite>
@@ -177,7 +178,9 @@
       <object>objects\objTeleporter3</object>
     </objects>
     <objects name="Hazards">
+      <object>objects\objHazard</object>
       <object>objects\objSpikes</object>
+      <object>objects\objFlameJet</object>
     </objects>
     <object>objects\objTimer</object>
     <object>objects\objResults</object>
@@ -259,7 +262,7 @@
     <constant name="HUNTER_NOTIFY_VISUAL">1.5</constant>
     <constant name="CAUGHT_RUMBLE_STRENGTH">0.8</constant>
     <constant name="NOTIFY_RUMBLE_STRENGTH">0.15</constant>
-    <constant name="GM_build_date">41936.5354143866</constant>
+    <constant name="GM_build_date">41936.5554817245</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
