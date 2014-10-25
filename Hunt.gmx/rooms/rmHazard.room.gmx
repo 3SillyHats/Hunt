@@ -235,12 +235,51 @@
     <instance objName="objWallBase" x="1200" y="780" name="inst_91DCE35A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1140" y="780" name="inst_7019D956" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWallBase" x="1320" y="780" name="inst_8B01B821" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikes" x="420" y="600" name="inst_C78AE35C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikes" x="960" y="540" name="inst_4672FFA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikes" x="1380" y="120" name="inst_F691E0F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objFlameJet" x="660" y="240" name="inst_9C90760A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objFlameJet" x="840" y="780" name="inst_E69CA60E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objNPC" x="420" y="600" name="inst_160BBB1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="objSpikes" x="360" y="900" name="inst_4672FFA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFlameJet" x="1500" y="840" name="inst_4595EE87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFlameJet" x="660" y="120" name="inst_9C90760A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFlameJet" x="840" y="780" name="inst_E69CA60E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objNPC" x="1260" y="180" name="inst_F10BCF8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1140" y="660" name="inst_8565D543" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1200" y="660" name="inst_E237F7CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1260" y="660" name="inst_5740B7D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1320" y="660" name="inst_7AF55824" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1380" y="660" name="inst_06FE94DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1380" y="600" name="inst_E3639F98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1380" y="480" name="inst_E482C179" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1380" y="540" name="inst_BB48C191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1380" y="420" name="inst_6423C0CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1380" y="360" name="inst_0D17D799" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1380" y="300" name="inst_FEEA5ADC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1260" y="180" name="inst_58CA1C67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1320" y="180" name="inst_23E38062" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1200" y="180" name="inst_37FA9BCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1140" y="300" name="inst_C960C4F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1140" y="360" name="inst_130F51FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1140" y="420" name="inst_E540831E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1080" y="420" name="inst_13D2B589" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="1020" y="540" name="inst_5739A3F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1020" y="600" name="inst_7EA4AB2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1020" y="660" name="inst_69874912" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="1080" y="660" name="inst_47D6BA91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailCorner" x="1020" y="660" name="inst_D6FDD2F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailCorner" x="1380" y="720" name="inst_530D2FB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailCorner" x="1140" y="480" name="inst_61929A7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailCorner" x="1440" y="240" name="inst_CACD95C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="objRailCorner" x="1080" y="420" name="inst_519C2C88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="objRailCorner" x="1200" y="180" name="inst_B3691FBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="objRailStraight" x="300" y="540" name="inst_A3426C50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="360" y="540" name="inst_7B7B96D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="420" y="540" name="inst_9E1B0BCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="480" y="540" name="inst_4C703E14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="540" y="540" name="inst_5222B8CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailStraight" x="600" y="540" name="inst_CCC5E014" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="600" y="480" name="inst_D4B86D41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailStraight" x="600" y="420" name="inst_FB89D667" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailCorner" x="600" y="600" name="inst_7EF6B398" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="objRailEnd" x="240" y="540" name="inst_FB5D654E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailEnd" x="660" y="300" name="inst_6D7BE8C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
