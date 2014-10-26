@@ -1,3 +1,5 @@
+/// spawn(randomise_location)
+
 if (isHunter) {
     boosts = HUNTER_BOOSTS;
 } else {

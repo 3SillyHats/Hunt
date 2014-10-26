@@ -1,3 +1,5 @@
+/// newHunter()
+
 for(i=0; i<global.nPlayers; i++) {
     hunters[i].isNext = false
     hunters[i].isHunter = false
@@ -14,6 +16,7 @@ next = hunters[nextHunter]
 
 next.isNext = true;
 if ( hunter != noone ) {
+    huntCount += 1
     hunter.isHunter = true;
     if hunter.boosts < 1 {
         hunter.boosts = 1;

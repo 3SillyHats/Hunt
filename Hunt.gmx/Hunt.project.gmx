@@ -57,6 +57,12 @@
       <sprite>sprites\sprWallSpeedDiag</sprite>
       <sprite>sprites\sprWallHunter</sprite>
       <sprite>sprites\sprWallHunterDiag</sprite>
+      <sprite>sprites\sprWallBreakable</sprite>
+      <sprite>sprites\sprWallBroken</sprite>
+      <sprite>sprites\sprWallBreakWait</sprite>
+      <sprite>sprites\sprWallBreakableDiag</sprite>
+      <sprite>sprites\sprWallBrokenDiag</sprite>
+      <sprite>sprites\sprWallBreakWaitDiag</sprite>
       <sprite>sprites\sprWallToggleOff</sprite>
       <sprite>sprites\sprWallToggleWait</sprite>
       <sprite>sprites\sprWallToggleOn</sprite>
@@ -103,6 +109,8 @@
     <script>scripts\collide.gml</script>
     <script>scripts\wallClear.gml</script>
     <script>scripts\wallDiagClear.gml</script>
+    <script>scripts\addAdjacent.gml</script>
+    <script>scripts\breakWall.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntMain</font>
@@ -158,6 +166,12 @@
       <object>objects\objWallSpeedDiag</object>
       <object>objects\objWallHunter</object>
       <object>objects\objWallHunterDiag</object>
+      <object>objects\objWallBreakable</object>
+      <object>objects\objWallBroken</object>
+      <object>objects\objWallBreakWait</object>
+      <object>objects\objWallBreakableDiag</object>
+      <object>objects\objWallBrokenDiag</object>
+      <object>objects\objWallBreakWaitDiag</object>
       <object>objects\objWallToggleOff</object>
       <object>objects\objWallToggleWait</object>
       <object>objects\objWallToggleOn</object>
@@ -204,6 +218,7 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
+    <room>rooms\rmBreak</room>
     <room>rooms\rmHazard</room>
     <room>rooms\rmHunterWall</room>
     <room>rooms\rmWrap</room>
@@ -272,7 +287,7 @@
     <constant name="HUNTER_NOTIFY_VISUAL">1.5</constant>
     <constant name="CAUGHT_RUMBLE_STRENGTH">0.8</constant>
     <constant name="NOTIFY_RUMBLE_STRENGTH">0.15</constant>
-    <constant name="GM_build_date">41937.3413015394</constant>
+    <constant name="GM_build_date">41938.2732639699</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>

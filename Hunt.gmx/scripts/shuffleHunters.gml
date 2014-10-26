@@ -1,3 +1,5 @@
+/// shuffleHunters(stop_repeats)
+
 var stopRepeats = argument0;
 
 if (stopRepeats) {

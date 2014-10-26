@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,7 +28,34 @@
             <string>restitution = 0
 frict = 0
 collidesHunter = true
+breakable = false
+passable = false
 debug_colour = c_white
+
+adjacent = ds_list_create()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_destroy(adjacent)
 </string>
           </argument>
         </arguments>
@@ -57,6 +84,14 @@ debug_colour = c_white
     image_blend = c_white
 }
 draw_self();
+
+if (global.debug) {
+    for(var i = 0; i &lt; ds_list_size(adjacent); i++) {
+        var wall = ds_list_find_value(adjacent, i)
+        var dir = radtodeg(arctan2(y - wall.y, wall.x - x))
+        draw_sprite_ext(sprArrow, 0, x+sprite_width/2, y+sprite_height/2, 0.25, 0.25, dir, c_white, 1);
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -1,3 +1,4 @@
+/// collide()
 var t = 1.0
 var iter = 0
 var oldwall = noone
@@ -19,6 +20,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         
         // Check that wall is close enough for collision to occur
         if (id != oldwall and
+            not passable and
             abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
             abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2 and
             ((not other.isHunter) or self.collidesHunter)) {
@@ -272,6 +274,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         
         // Check that wall is close enough for collision to occur
         if (id != oldwall and
+            not passable and
             abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
             abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2 and
             ((not other.isHunter) or self.collidesHunter)) {
@@ -518,17 +521,21 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
     
     if (wall != noone) {
         var dot = normal_x*xvel + normal_y*yvel
-        var perp_dot = normal_y*xvel - normal_x*yvel
-        //show_debug_message("collide")
-        //show_debug_message(dt)
-        //show_debug_message(normal_x)
-        //show_debug_message(normal_y)
         self.normal_x = normal_x
         self.normal_y = normal_y
-        xvel = xvel - dot*normal_x*(1+wall.restitution) - perp_dot*normal_y*wall.frict;
-        yvel = yvel - dot*normal_y*(1+wall.restitution) + perp_dot*normal_x*wall.frict;
+        if(wall.breakable and abs(dot) > 1.5*SPEED_MAX) {
+            breakWall(wall)
+            dot = sign(dot)*SPEED_MAX/2
+            xvel = xvel - dot*normal_x;
+            yvel = yvel - dot*normal_y;
+        } else {
+            var perp_dot = normal_y*xvel - normal_x*yvel
+            xvel = xvel - dot*normal_x*(1+wall.restitution) - perp_dot*normal_y*wall.frict;
+            yvel = yvel - dot*normal_y*(1+wall.restitution) + perp_dot*normal_x*wall.frict;
+        }
+        collided = true
     }
     
-    oldWall = wall
+    oldwall = wall
 }
 
