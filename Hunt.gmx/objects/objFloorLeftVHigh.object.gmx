@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>force_x = -4*ACCELERATION_MAX
-force_y = 0
+            <string>event_inherited()
+speed_x = -30
+speed_y = 0
 </string>
           </argument>
         </arguments>
