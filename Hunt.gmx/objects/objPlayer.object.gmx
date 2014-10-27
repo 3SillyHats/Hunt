@@ -54,12 +54,12 @@ if y &lt; room_height/2 {
     hudY = 925;
 }
 
+controller = -1
 
 spawn(false);
 
 dir = 90;
 moving = false;
-
 </string>
           </argument>
         </arguments>
@@ -148,23 +148,22 @@ if (not global.paused){
         boost_imp *= modifier.boost_mod;
     }
     
-    if(ax!=0){
-        dir = -radtodeg(arctan(ay/ax));
-        if(ax&lt;0){
-            dir += 180;
-        }
-    }else if(ay &gt; 0){
-        dir = -90;
-    }else{
-        dir = 90;
+    force_floor = instance_position(x, y, objFloorForce);
+    var dxvel = 0
+    var dyvel = 0
+    if(force_floor != noone) {
+        dxvel += force_floor.speed_x
+        dyvel += force_floor.speed_y
     }
+    
+    dir = radtodeg(arctan2(-ay,ax))
     
     var norm = sqrt(ax * ax + ay * ay);
     
     if (norm &lt; DEAD_ZONE) {
         moving = false;
-        ax = -frict*xvel;
-        ay = -frict*yvel;
+        ax = -frict*(xvel-dxvel);
+        ay = -frict*(yvel-dyvel);
     } else {
         moving = true;
         if (norm &gt; 1) {
@@ -202,26 +201,20 @@ if (not global.paused){
         yvel = 0;
         invulnerability = INVULNERABLE_DODGE_TIME;
     } else {
-        force_floor = instance_position(x, y, objFloorForce);
-        if(force_floor != noone) {
-            ax += force_floor.force_x
-            ay += force_floor.force_y
-        }
-        
         xvel += ax;
         yvel += ay;
         
-        var spd = sqrt(sqr(xvel) + sqr(yvel))
+        var spd = sqrt(sqr(xvel-dxvel) + sqr(yvel-dyvel))
         if (spd &gt; 0) {
-            var newSpd = spd
-            if (spd &lt; 2*speed_max) {
-                newSpd -= sqr(spd) * acc / (speed_max * speed_max);    
+            var oldSpd = spd
+            if (spd &gt; 2*speed_max) {
+                spd -= 4 * acc;
             } else {
-                newSpd -= 4 * acc;
+                spd -= sqr(spd) * acc / (speed_max * speed_max);    
             }
-            if (newSpd &gt; 0) {
-                xvel *= newSpd/spd
-                yvel *= newSpd/spd
+            if (spd &gt; 0) {
+                xvel = dxvel + (xvel-dxvel)*spd/oldSpd
+                yvel = dyvel + (yvel-dyvel)*spd/oldSpd
             } else {
                 xvel = 0
                 yvel = 0
