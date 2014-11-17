@@ -224,10 +224,14 @@
     <room>rooms\rmWrap</room>
     <room>rooms\rmToggleTime</room>
     <room>rooms\rmToggleBtn</room>
-    <room>rooms\rmTeleporter</room>
     <room>rooms\rmStick1</room>
     <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
+    <rooms name="Teleporter">
+      <room>rooms\rmTeleporter</room>
+      <room>rooms\rmTeleporter2</room>
+      <room>rooms\rmTeleporter3</room>
+    </rooms>
     <rooms name="Ice">
       <room>rooms\rmIce1</room>
       <room>rooms\rmIce2</room>
@@ -287,7 +291,7 @@
     <constant name="HUNTER_NOTIFY_VISUAL">1.5</constant>
     <constant name="CAUGHT_RUMBLE_STRENGTH">0.8</constant>
     <constant name="NOTIFY_RUMBLE_STRENGTH">0.15</constant>
-    <constant name="GM_build_date">41938.2732639699</constant>
+    <constant name="GM_build_date">41953.557542581</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
