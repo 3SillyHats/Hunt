@@ -129,35 +129,71 @@
       <object>objects\objMud</object>
       <object>objects\objSpeed</object>
       <object>objects\objFloorForce</object>
-      <object>objects\objFloorLeftLow</object>
-      <object>objects\objFloorLeftMed</object>
-      <object>objects\objFloorLeftHigh</object>
-      <object>objects\objFloorLeftVHigh</object>
-      <object>objects\objFloorLeftExtrm</object>
-      <object>objects\objFloorRightLow</object>
-      <object>objects\objFloorRightMed</object>
-      <object>objects\objFloorRightHigh</object>
-      <object>objects\objFloorRightVHigh</object>
-      <object>objects\objFloorRightExtrm</object>
-      <object>objects\objFloorUpLow</object>
-      <object>objects\objFloorUpMed</object>
-      <object>objects\objFloorUpHigh</object>
-      <object>objects\objFloorUpVHigh</object>
-      <object>objects\objFloorUpExtrm</object>
-      <object>objects\objFloorDownLow</object>
-      <object>objects\objFloorDownMed</object>
-      <object>objects\objFloorDownHigh</object>
-      <object>objects\objFloorDownVHigh</object>
-      <object>objects\objFloorDownExtrm</object>
+      <objects name="Force Low">
+        <object>objects\objFloorLeftLow</object>
+        <object>objects\objFloorRightLow</object>
+        <object>objects\objFloorUpLow</object>
+        <object>objects\objFloorDownLow</object>
+      </objects>
+      <objects name="Force Med">
+        <object>objects\objFloorLeftMed</object>
+        <object>objects\objFloorRightMed</object>
+        <object>objects\objFloorUpMed</object>
+        <object>objects\objFloorDownMed</object>
+      </objects>
+      <objects name="Force High">
+        <object>objects\objFloorLeftHigh</object>
+        <object>objects\objFloorRightHigh</object>
+        <object>objects\objFloorUpHigh</object>
+        <object>objects\objFloorDownHigh</object>
+      </objects>
+      <objects name="Force Very High">
+        <object>objects\objFloorLeftVHigh</object>
+        <object>objects\objFloorRightVHigh</object>
+        <object>objects\objFloorUpVHigh</object>
+        <object>objects\objFloorDownVHigh</object>
+      </objects>
+      <objects name="Force Extreme">
+        <object>objects\objFloorLeftExtrm</object>
+        <object>objects\objFloorRightExtrm</object>
+        <object>objects\objFloorUpExtrm</object>
+        <object>objects\objFloorDownExtrm</object>
+      </objects>
       <object>objects\objButton</object>
     </objects>
     <objects name="Walls">
+      <objects name="Base">
+        <object>objects\objWallBase</object>
+        <object>objects\objWallSmall</object>
+        <object>objects\objWallBaseDiag</object>
+      </objects>
+      <objects name="Break">
+        <object>objects\objWallBreakable</object>
+        <object>objects\objWallBroken</object>
+        <object>objects\objWallBreakWait</object>
+        <object>objects\objWallBreakableDiag</object>
+        <object>objects\objWallBrokenDiag</object>
+        <object>objects\objWallBreakWaitDiag</object>
+      </objects>
+      <objects name="Toggle">
+        <object>objects\objWallToggleWait</object>
+        <object>objects\objWallToggleOn</object>
+        <object>objects\objWallToggleWaitDiag</object>
+        <object>objects\objWallToggleOnDiag</object>
+        <object>objects\objWallToggleOffDiag</object>
+        <object>objects\objWallToggleOff</object>
+      </objects>
+      <objects name="Button">
+        <object>objects\objWallBtnOff</object>
+        <object>objects\objWallBtnWait</object>
+        <object>objects\objWallBtnOn</object>
+        <object>objects\objWallBtnOffDiag</object>
+        <object>objects\objWallBtnWaitDiag</object>
+        <object>objects\objWallBtnOnDiag</object>
+      </objects>
       <object>objects\objWall</object>
       <object>objects\objWallDiag</object>
       <object>objects\objWallRect</object>
-      <object>objects\objWallBase</object>
-      <object>objects\objWallSmall</object>
-      <object>objects\objWallBaseDiag</object>
       <object>objects\objWallBounce</object>
       <object>objects\objWallBounceDiag</object>
       <object>objects\objWallStick</object>
@@ -166,24 +202,6 @@
       <object>objects\objWallSpeedDiag</object>
       <object>objects\objWallHunter</object>
       <object>objects\objWallHunterDiag</object>
-      <object>objects\objWallBreakable</object>
-      <object>objects\objWallBroken</object>
-      <object>objects\objWallBreakWait</object>
-      <object>objects\objWallBreakableDiag</object>
-      <object>objects\objWallBrokenDiag</object>
-      <object>objects\objWallBreakWaitDiag</object>
-      <object>objects\objWallToggleOff</object>
-      <object>objects\objWallToggleWait</object>
-      <object>objects\objWallToggleOn</object>
-      <object>objects\objWallToggleOffDiag</object>
-      <object>objects\objWallToggleWaitDiag</object>
-      <object>objects\objWallToggleOnDiag</object>
-      <object>objects\objWallBtnOff</object>
-      <object>objects\objWallBtnWait</object>
-      <object>objects\objWallBtnOn</object>
-      <object>objects\objWallBtnOffDiag</object>
-      <object>objects\objWallBtnWaitDiag</object>
-      <object>objects\objWallBtnOnDiag</object>
     </objects>
     <objects name="Pickups">
       <object>objects\objBoost</object>
@@ -223,12 +241,15 @@
     <room>rooms\rmHunterWall</room>
     <room>rooms\rmWrap</room>
     <room>rooms\rmToggleTime</room>
-    <room>rooms\rmToggleBtn</room>
     <room>rooms\rmStick1</room>
     <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
+    <rooms name="ToggleButton">
+      <room>rooms\rmToggleBtn</room>
+    </rooms>
     <rooms name="Teleporter">
       <room>rooms\rmTeleporter</room>
+      <room>rooms\rmTeleporter1</room>
       <room>rooms\rmTeleporter2</room>
       <room>rooms\rmTeleporter3</room>
     </rooms>
@@ -236,17 +257,18 @@
       <room>rooms\rmIce1</room>
       <room>rooms\rmIce2</room>
       <room>rooms\rmIce3</room>
-      <room>rooms\rmIce4</room>
     </rooms>
     <rooms name="Mud">
       <room>rooms\rmMud1</room>
       <room>rooms\rmMud2</room>
       <room>rooms\rmMud3</room>
+      <room>rooms\rmMud4</room>
     </rooms>
     <rooms name="Speed">
       <room>rooms\rmSpeed1</room>
       <room>rooms\rmSpeed2</room>
       <room>rooms\rmSpeed3</room>
+      <room>rooms\rmSpeed4</room>
     </rooms>
     <rooms name="Force">
       <room>rooms\rmForce1</room>
@@ -295,8 +317,8 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41960.2254004977</constant>
-    <constant name="GM_version">'1.0.0.2'</constant>
+    <constant name="GM_build_date">41965.6724972801</constant>
+    <constant name="GM_version">'1'</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
