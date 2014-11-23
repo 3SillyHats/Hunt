@@ -238,7 +238,6 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
-    <room>rooms\rmBreak</room>
     <room>rooms\rmHazard</room>
     <room>rooms\rmWrap</room>
     <room>rooms\rmStick1</room>
@@ -294,6 +293,10 @@
       <room>rooms\rmSpeedWall1</room>
       <room>rooms\rmSpeedWall2</room>
     </rooms>
+    <rooms name="Break">
+      <room>rooms\rmBreak</room>
+      <room>rooms\rmBreak1</room>
+    </rooms>
   </rooms>
   <constants number="39">
     <constant name="ACCELERATION_MAX">1.2</constant>
@@ -333,7 +336,7 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41966.4211157176</constant>
+    <constant name="GM_build_date">41966.4950487268</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
