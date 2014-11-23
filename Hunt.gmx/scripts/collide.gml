@@ -23,7 +23,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
             not passable and
             abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
             abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2 and
-            ((not other.isHunter) or self.collidesHunter)) {
+            (self.collidesHunter or ((not other.isHunter) and (not self.playerInside[other.controller])))) {
             
             debug_colour = c_black
             
@@ -277,7 +277,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
             not passable and
             abs(dx) <= abs(dt*other.xvel)/2 + r + sprite_width/2 and
             abs(dy) <= abs(dt*other.yvel)/2 + r + sprite_height/2 and
-            ((not other.isHunter) or self.collidesHunter)) {
+            (self.collidesHunter or ((not other.isHunter) and (not self.playerInside[other.controller])))) {
             
             debug_colour = c_black
             

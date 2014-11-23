@@ -111,6 +111,8 @@
     <script>scripts\wallDiagClear.gml</script>
     <script>scripts\addAdjacent.gml</script>
     <script>scripts\breakWall.gml</script>
+    <script>scripts\allClear.gml</script>
+    <script>scripts\setPlayerInside.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntMain</font>
@@ -178,10 +180,10 @@
       <objects name="Toggle">
         <object>objects\objWallToggleWait</object>
         <object>objects\objWallToggleOn</object>
+        <object>objects\objWallToggleOff</object>
         <object>objects\objWallToggleWaitDiag</object>
         <object>objects\objWallToggleOnDiag</object>
         <object>objects\objWallToggleOffDiag</object>
-        <object>objects\objWallToggleOff</object>
       </objects>
       <objects name="Button">
         <object>objects\objWallBtnOff</object>
@@ -327,7 +329,7 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41966.214809456</constant>
+    <constant name="GM_build_date">41966.371335</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>

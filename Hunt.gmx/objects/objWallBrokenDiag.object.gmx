@@ -51,11 +51,7 @@ breakHunt = objTimer.huntCount
           <argument>
             <kind>1</kind>
             <string>if(breakHunt != objTimer.huntCount) {
-    if(wallDiagClear()) {
-        instance_change(objWallBreakableDiag,true)
-    } else {
-        instance_change(objWallBreakWaitDiag,true)
-    }
+    instance_change(objWallBreakWaitDiag,true)
 }
 </string>
           </argument>
