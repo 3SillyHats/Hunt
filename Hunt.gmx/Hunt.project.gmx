@@ -238,12 +238,15 @@
     <room>rooms\rmBase</room>
     <room>rooms\rmBreak</room>
     <room>rooms\rmHazard</room>
-    <room>rooms\rmHunterWall</room>
     <room>rooms\rmWrap</room>
     <room>rooms\rmToggleTime</room>
     <room>rooms\rmStick1</room>
     <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
+    <rooms name="HunterWall">
+      <room>rooms\rmHunterWall</room>
+      <room>rooms\rmHunterWall1</room>
+    </rooms>
     <rooms name="ToggleButton">
       <room>rooms\rmToggleBtn</room>
     </rooms>
@@ -275,6 +278,7 @@
       <room>rooms\rmForce2</room>
     </rooms>
     <rooms name="Bounce">
+      <room>rooms\rmBounce</room>
       <room>rooms\rmBounce1</room>
       <room>rooms\rmBounce2</room>
     </rooms>
@@ -317,7 +321,7 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41965.6724972801</constant>
+    <constant name="GM_build_date">41966.0924327083</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
