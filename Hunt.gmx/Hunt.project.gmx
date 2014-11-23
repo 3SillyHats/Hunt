@@ -242,7 +242,6 @@
     <room>rooms\rmHazard</room>
     <room>rooms\rmWrap</room>
     <room>rooms\rmStick1</room>
-    <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
     <rooms name="HunterWall">
       <room>rooms\rmHunterWall</room>
@@ -290,6 +289,11 @@
       <room>rooms\rmBounce1</room>
       <room>rooms\rmBounce2</room>
     </rooms>
+    <rooms name="SpeedWall">
+      <room>rooms\rmSpeedWall</room>
+      <room>rooms\rmSpeedWall1</room>
+      <room>rooms\rmSpeedWall2</room>
+    </rooms>
   </rooms>
   <constants number="39">
     <constant name="ACCELERATION_MAX">1.2</constant>
@@ -329,7 +333,7 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41966.371335</constant>
+    <constant name="GM_build_date">41966.4211157176</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
