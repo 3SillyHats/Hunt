@@ -321,7 +321,7 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41966.0924327083</constant>
+    <constant name="GM_build_date">41966.1745672106</constant>
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>
