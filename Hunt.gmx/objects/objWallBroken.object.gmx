@@ -51,11 +51,7 @@ breakHunt = objTimer.huntCount
           <argument>
             <kind>1</kind>
             <string>if(breakHunt != objTimer.huntCount) {
-    if(wallClear()) {
-        instance_change(objWallBreakable,true)
-    } else {
-        instance_change(objWallBreakWait,true)
-    }
+    instance_change(objWallBreakWait,true)
 }
 </string>
           </argument>

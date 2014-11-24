@@ -111,6 +111,8 @@
     <script>scripts\wallDiagClear.gml</script>
     <script>scripts\addAdjacent.gml</script>
     <script>scripts\breakWall.gml</script>
+    <script>scripts\allClear.gml</script>
+    <script>scripts\setPlayerInside.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntMain</font>
@@ -178,10 +180,10 @@
       <objects name="Toggle">
         <object>objects\objWallToggleWait</object>
         <object>objects\objWallToggleOn</object>
+        <object>objects\objWallToggleOff</object>
         <object>objects\objWallToggleWaitDiag</object>
         <object>objects\objWallToggleOnDiag</object>
         <object>objects\objWallToggleOffDiag</object>
-        <object>objects\objWallToggleOff</object>
       </objects>
       <objects name="Button">
         <object>objects\objWallBtnOff</object>
@@ -236,12 +238,9 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
-    <room>rooms\rmBreak</room>
     <room>rooms\rmHazard</room>
     <room>rooms\rmWrap</room>
-    <room>rooms\rmToggleTime</room>
     <room>rooms\rmStick1</room>
-    <room>rooms\rmSpeedWall1</room>
     <room>rooms\rmDiag1</room>
     <rooms name="HunterWall">
       <room>rooms\rmHunterWall</room>
@@ -249,8 +248,15 @@
       <room>rooms\rmHunterWall2</room>
       <room>rooms\rmHunterWall3</room>
     </rooms>
+    <rooms name="ToggleTime">
+      <room>rooms\rmToggleTime</room>
+      <room>rooms\rmToggleTime1</room>
+      <room>rooms\rmToggleTime2</room>
+    </rooms>
     <rooms name="ToggleButton">
       <room>rooms\rmToggleBtn</room>
+      <room>rooms\rmToggleBtn1</room>
+      <room>rooms\rmToggleBtn2</room>
     </rooms>
     <rooms name="Teleporter">
       <room>rooms\rmTeleporter</room>
@@ -283,6 +289,15 @@
       <room>rooms\rmBounce</room>
       <room>rooms\rmBounce1</room>
       <room>rooms\rmBounce2</room>
+    </rooms>
+    <rooms name="SpeedWall">
+      <room>rooms\rmSpeedWall</room>
+      <room>rooms\rmSpeedWall1</room>
+      <room>rooms\rmSpeedWall2</room>
+    </rooms>
+    <rooms name="Break">
+      <room>rooms\rmBreak</room>
+      <room>rooms\rmBreak1</room>
     </rooms>
   </rooms>
   <constants number="39">
@@ -323,7 +338,8 @@
     <constant name="HANDICAP_BOOSTS_MAX">2</constant>
     <constant name="HANDICAP_DEATHS_THRESHOLD">4</constant>
     <constant name="HANDICAP_KILLS_THRESHOLD">1</constant>
-    <constant name="GM_build_date">41966.3314971412</constant>
+    <constant name="GM_build_date">41966.4950487268</constant>
+
     <constant name="GM_version">'1'</constant>
   </constants>
   <help>

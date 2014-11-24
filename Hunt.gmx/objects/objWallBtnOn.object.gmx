@@ -51,7 +51,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>initialState = 0
+            <string>event_inherited()
+
+initialState = 0
 
 </string>
           </argument>
