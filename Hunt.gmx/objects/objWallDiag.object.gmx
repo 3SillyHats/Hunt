@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>event_inherited()
 
-addAdjacent(instance_position(x, y, objWallDiag))
-addAdjacent(instance_position(x + sprite_width, y, objWallDiag))
-addAdjacent(instance_position(x, y + sprite_height, objWallDiag))
-addAdjacent(instance_position(x + sprite_width, y + sprite_height, objWallDiag))
+checkAdjacent(x, y, objWallDiag)
+checkAdjacent(x + sprite_width, y, objWallDiag)
+checkAdjacent(x, y + sprite_height, objWallDiag)
+checkAdjacent(x + sprite_width, y + sprite_height, objWallDiag)
 
 with(objWallRect) {
     if(place_meeting(x, y, other.id)) {

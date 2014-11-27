@@ -519,6 +519,18 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
         y = y + dt*yvel
     }
     
+    if (x < 0) {
+        x = x + room_width
+    } else if (x > room_width) {
+        x = x - room_width
+    }
+
+    if (y < 0) {
+        y = y + room_height
+    } else if (y > room_height) {
+        y = y - room_height
+    }
+    
     if (wall != noone) {
         var dot = normal_x*xvel + normal_y*yvel
         self.normal_x = normal_x
@@ -538,4 +550,3 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
     
     oldwall = wall
 }
-

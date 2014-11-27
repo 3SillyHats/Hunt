@@ -235,17 +235,6 @@ if (rumble &gt; 0) {
     gamepad_set_vibration(controller, 0, 0);
 }
 
-if (x &lt; 0) {
-    x = x + room_width
-} else if (x &gt; room_width) {
-    x = x - room_width
-}
-
-if (y &lt; 0) {
-    y = y + room_height
-} else if (y &gt; room_height) {
-    y = y - room_height
-}
 </string>
           </argument>
         </arguments>
