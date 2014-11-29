@@ -239,6 +239,10 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
+    <rooms name="Cup 2">
+      <room>rooms\rmCup21</room>
+      <room>rooms\rmCup24</room>
+    </rooms>
     <room>rooms\rmHazard</room>
     <room>rooms\rmWrap</room>
     <room>rooms\rmStick1</room>
@@ -275,6 +279,9 @@
       <room>rooms\rmMud2</room>
       <room>rooms\rmMud3</room>
       <room>rooms\rmMud4</room>
+      <room>rooms\rmMud5</room>
+      <room>rooms\rmMud6</room>
+      <room>rooms\rmMud7</room>
     </rooms>
     <rooms name="Speed">
       <room>rooms\rmSpeed1</room>
