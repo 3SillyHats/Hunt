@@ -239,45 +239,34 @@
     <room>rooms\rmTest</room>
     <room>rooms\rmTemplate</room>
     <room>rooms\rmBase</room>
+    <room>rooms\rmBase2</room>
+    <room>rooms\rmBase3</room>
+    <rooms name="Cup 1">
+      <room>rooms\rmCup11</room>
+    </rooms>
     <rooms name="Cup 2">
       <room>rooms\rmCup21</room>
       <room>rooms\rmCup24</room>
     </rooms>
-    <room>rooms\rmHazard</room>
     <room>rooms\rmWrap</room>
-    <room>rooms\rmStick1</room>
     <room>rooms\rmDiag1</room>
     <rooms name="HunterWall">
-      <room>rooms\rmHunterWall</room>
       <room>rooms\rmHunterWall1</room>
       <room>rooms\rmHunterWall2</room>
       <room>rooms\rmHunterWall3</room>
     </rooms>
     <rooms name="ToggleTime">
-      <room>rooms\rmToggleTime</room>
       <room>rooms\rmToggleTime1</room>
       <room>rooms\rmToggleTime2</room>
     </rooms>
-    <rooms name="ToggleButton">
-      <room>rooms\rmToggleBtn</room>
-      <room>rooms\rmToggleBtn1</room>
-      <room>rooms\rmToggleBtn2</room>
-    </rooms>
     <rooms name="Teleporter">
-      <room>rooms\rmTeleporter</room>
       <room>rooms\rmTeleporter1</room>
       <room>rooms\rmTeleporter2</room>
       <room>rooms\rmTeleporter3</room>
-    </rooms>
-    <rooms name="Ice">
-      <room>rooms\rmIce1</room>
-      <room>rooms\rmIce2</room>
-      <room>rooms\rmIce3</room>
+      <room>rooms\rmTeleporter4</room>
     </rooms>
     <rooms name="Mud">
       <room>rooms\rmMud1</room>
-      <room>rooms\rmMud2</room>
-      <room>rooms\rmMud3</room>
       <room>rooms\rmMud4</room>
       <room>rooms\rmMud5</room>
       <room>rooms\rmMud6</room>
@@ -289,12 +278,7 @@
       <room>rooms\rmSpeed3</room>
       <room>rooms\rmSpeed4</room>
     </rooms>
-    <rooms name="Force">
-      <room>rooms\rmForce1</room>
-      <room>rooms\rmForce2</room>
-    </rooms>
     <rooms name="Bounce">
-      <room>rooms\rmBounce</room>
       <room>rooms\rmBounce1</room>
       <room>rooms\rmBounce2</room>
     </rooms>
