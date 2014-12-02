@@ -114,6 +114,7 @@
     <script>scripts\allClear.gml</script>
     <script>scripts\setPlayerInside.gml</script>
     <script>scripts\checkAdjacent.gml</script>
+    <script>scripts\scaleGame.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntMain</font>
