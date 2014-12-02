@@ -546,6 +546,7 @@ while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
             yvel = yvel - dot*normal_y*(1+wall.restitution) + perp_dot*normal_x*wall.frict;
         }
         collided = true
+        global.bounces[controller]++;
     }
     
     oldwall = wall

@@ -53,6 +53,7 @@ for(i=0; i&lt;global.nPlayers; i++) {
     global.deaths[j] = 0;
     global.dodges[j] = 0;
     global.boosts[j] = 0;
+    global.bounces[j] = 0;
     j++;
 }
 
