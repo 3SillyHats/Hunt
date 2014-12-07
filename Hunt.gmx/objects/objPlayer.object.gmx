@@ -353,9 +353,9 @@ if (invulnerability &lt;= 0.0 or isHunter) {
 
 // Draw self
 if (isHunter or (isNext and objTimer.hunt_remaining &lt; HUNTER_NOTIFY_VISUAL * 1000000 and floor(objTimer.hunt_remaining*5/1000000) mod 2 == 1) ) {
-    sprite_index = sprPlayerAngry;
+    image_index = 1;
 } else {
-    sprite_index = object_get_sprite(object_index);
+    image_index = 0;
 }
 draw_self();
 

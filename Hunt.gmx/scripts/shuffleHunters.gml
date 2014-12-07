@@ -20,4 +20,3 @@ if(stopRepeats) {
         hunters[j] = last;
     }
 }
-

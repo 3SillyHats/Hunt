@@ -60,4 +60,3 @@ if (not firstRound) {
     audio_play_sound(sndMusic, 100, false);
     hunt_remaining = hunt_remaining + HUNT_TIME * 1000000;
 }
-

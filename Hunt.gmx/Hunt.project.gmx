@@ -17,7 +17,6 @@
       <sprite>sprites\sprPlayer2</sprite>
       <sprite>sprites\sprPlayer3</sprite>
       <sprite>sprites\sprPlayer4</sprite>
-      <sprite>sprites\sprPlayerAngry</sprite>
     </sprites>
     <sprites name="Floors">
       <sprite>sprites\sprIce</sprite>
