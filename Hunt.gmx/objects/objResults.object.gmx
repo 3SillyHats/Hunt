@@ -209,24 +209,50 @@ for (j = 0; j &lt; PLAYERS_MAX; j++) {
     // Draw stats
     draw_set_font(fntMain);
     var sh = string_height("M");
-    draw_text(
-        20 + (w + spacing) * i + xmargin, 350 + ymargin,
-        "Kills: " + string(global.kills[j])
+    draw_set_alpha(1);
+    
+    // Draw KDR
+    var kd = global.kills[j] + global.deaths[j];
+    var t = global.kills[j] / kd;
+    draw_set_color(c_red);
+    draw_rectangle(
+        20 + (w + spacing) * i + xmargin + 32,
+        350 + ymargin,
+        20 + (w + spacing) * i + xmargin + 32 + ((w-64) * t),
+        350 + ymargin + 24,
+        false
     );
-    draw_text(
-        20 + (w + spacing) * i + xmargin, sh + 350 + ymargin,
-        "Deaths: " + string(global.deaths[j])
+    draw_set_color(c_black);
+    draw_rectangle(
+        20 + (w + spacing) * i + xmargin + 32 + ((w-64) * t),
+        350 + ymargin,
+        20 + (w + spacing) * i + xmargin + 32 + (w-64),
+        350 + ymargin + 24,
+        false
     );
-    draw_text(
-        20 + (w + spacing) * i + xmargin, (2 * sh) + 350 + ymargin,
-        "Dodges: " + string(global.dodges[j])
-    );
+    
+    // Draw kills and deaths
+    var e = global.events[j];
+    for (k = 0; k &lt; ds_list_size(e); ++k) {
+        if (e[| k] == 0) {
+            draw_set_color(c_black);
+        } else if (e[| k] == 1) {
+            draw_set_color(c_red);
+        }
+        draw_rectangle(
+            20 + (w + spacing) * i + xmargin + 32 * k,
+            sh + 350 + ymargin,
+            20 + (w + spacing) * i + xmargin + 32 * k + 24,
+            sh + 350 + ymargin + 24,
+            false
+        );
+    }
+    
+    // Draw other stats and award
+    draw_set_alpha(1);
+    draw_set_color(c_white);
     draw_text(
         20 + (w + spacing) * i + xmargin, (3 * sh) + 350 + ymargin,
-        "Boosts: " + string(global.boosts[j])
-    );
-    draw_text(
-        20 + (w + spacing) * i + xmargin, (4 * sh) + 350 + ymargin,
         global.awards[j]
     );
     

@@ -261,6 +261,7 @@ if (rumble &gt; 0) {
     if (isHunter and other.invulnerability &lt;= 0.0) {
         rumble = 0.5;
         global.kills[controller]++;
+        ds_list_add(global.events[controller], 1);
         if (boosts &lt; BOOST_MAX) {
             boosts++;
         }
@@ -271,6 +272,7 @@ if (rumble &gt; 0) {
         if (invulnerability &lt;= 0.0) {
             rumble = 0.5;
             global.deaths[controller]++;
+            ds_list_add(global.events[controller], 0);
             dead = true;
             audio_play_sound(sndExplosion, 0, false);
         } else if (dodged &lt;= 0.0) {

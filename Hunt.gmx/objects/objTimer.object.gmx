@@ -54,6 +54,7 @@ for(i=0; i&lt;global.nPlayers; i++) {
     global.dodges[j] = 0;
     global.boosts[j] = 0;
     global.bounces[j] = 0;
+    global.events[j] = ds_list_create();
     j++;
 }
 
