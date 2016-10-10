@@ -38,6 +38,8 @@ dodged = 0;
 teleporting = false; // Whether the player is currently contacing a teleporter
 can_teleport = true; // True unless the player has been in contact with a teleporter since their last teleport
 
+player_radius = 30;
+
 normal_x = 0
 normal_y = 0
 normal_time = 0
@@ -107,21 +109,21 @@ if (dead) {
 
 if (global.kills[controller] &gt;= WIN_THRESHOLD) {
     global.winner = controller;
-    global.paused = true
+    global.paused = true;
 }
 
 if (not teleporting) {
-    can_teleport = true
+    can_teleport = true;
 } else {
-    teleporting = false
+    teleporting = false;
 }
 
 if (not global.paused){
-    var spd2 = sqr(xvel) + sqr(yvel)
+    var spd2 = sqr(xvel) + sqr(yvel);
     if (spd2 &gt; sqr(SPEED_LIMIT)) {
-        var spdMod = sqrt(sqr(SPEED_LIMIT) / spd2)
-        xvel = xvel * spdMod
-        yvel = yvel * spdMod
+        var spdMod = sqrt(sqr(SPEED_LIMIT) / spd2);
+        xvel = xvel * spdMod;
+        yvel = yvel * spdMod;
     }
     collide()
 
@@ -149,17 +151,19 @@ if (not global.paused){
     }
     
     force_floor = instance_position(x, y, objFloorForce);
-    var dxvel = 0
-    var dyvel = 0
+    var dxvel = 0;
+    var dyvel = 0;
     if(force_floor != noone) {
-        dxvel += force_floor.speed_x
-        dyvel += force_floor.speed_y
+        dxvel += force_floor.speed_x;
+        dyvel += force_floor.speed_y;
     }
     
-    dir = radtodeg(arctan2(-ay,ax))
-    
     var norm = sqrt(ax * ax + ay * ay);
-    
+
+    if (norm &gt; 0.2) {
+    //...then the player hasn't moved the stick much
+        dir = radtodeg(arctan2(-ay,ax));
+    }
     if (norm &lt; DEAD_ZONE) {
         moving = false;
         ax = -frict*(xvel-dxvel);
@@ -188,7 +192,7 @@ if (not global.paused){
         part_type_direction(global.part_type_boost,
             (direction + 160) % 360, (direction + 200) % 360, 0, 0
         );
-        var spd = sqrt(sqr(xvel) + sqr(yvel))
+        var spd = sqrt(sqr(xvel) + sqr(yvel));
         part_type_speed(global.part_type_boost, spd/4, spd/2, 0, 0);
         part_emitter_region(global.particles, global.part_emitter_boost,
             x + xvel * 4, x + xvel * 4, y + yvel * 4, y + yvel * 4,
@@ -196,7 +200,7 @@ if (not global.paused){
         );
         part_emitter_burst(global.particles, global.part_emitter_boost, global.part_type_boost, 32);
     } else if (dodge and invulnerability &lt;= 0.0 and not isHunter) {
-        boosts--
+        boosts--;
         xvel = 0;
         yvel = 0;
         invulnerability = INVULNERABLE_DODGE_TIME;
@@ -206,18 +210,18 @@ if (not global.paused){
         
         var spd = sqrt(sqr(xvel-dxvel) + sqr(yvel-dyvel))
         if (spd &gt; 0) {
-            var oldSpd = spd
+            var oldSpd = spd;
             if (spd &gt; 2*speed_max) {
                 spd -= 4 * acc;
             } else {
                 spd -= sqr(spd) * acc / (speed_max * speed_max);    
             }
             if (spd &gt; 0) {
-                xvel = dxvel + (xvel-dxvel)*spd/oldSpd
-                yvel = dyvel + (yvel-dyvel)*spd/oldSpd
+                xvel = dxvel + (xvel-dxvel)*spd/oldSpd;
+                yvel = dyvel + (yvel-dyvel)*spd/oldSpd;
             } else {
-                xvel = 0
-                yvel = 0
+                xvel = 0;
+                yvel = 0;
             }
         }
     }
@@ -357,6 +361,7 @@ if (isHunter or (isNext and objTimer.hunt_remaining &lt; HUNTER_NOTIFY_VISUAL * 
 } else {
     sprite_index = object_get_sprite(object_index);
 }
+image_angle=dir;
 draw_self();
 
 // Draw boosts

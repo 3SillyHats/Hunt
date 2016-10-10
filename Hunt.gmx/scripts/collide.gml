@@ -2,7 +2,7 @@
 var t = 1.0
 var iter = 0
 var oldwall = noone
-var r = other.sprite_width/2
+var r = player_radius; //other.sprite_width/2
 while (sqr(t)*(sqr(xvel)+sqr(yvel)) > 0.01 and iter < 9) {
     iter = iter + 1
     var xold = x
