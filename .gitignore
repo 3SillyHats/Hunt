@@ -213,3 +213,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#Gamemaker generated configs/icons for different devices
+Hunt.gmx/Configs/*
