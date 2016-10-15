@@ -156,7 +156,15 @@ background_blend[0] = make_color_hsv(18, 99, 178);
     }
 }
 
-for (i = 0; i &lt; gamepad_get_device_count(); i++) {
+var gp_num = gamepad_get_device_count();
+var player_num = 0;
+for (var i = 0; i &lt; gp_num; i++) {
+    if (gamepad_is_connected(i)) {
+        ++player_num;
+    }
+}
+
+for (var i = 0; i &lt; player_num; i++) {
     if (not selected[i]) {
         while (avatarTaken[global.players[i]]) {
             global.players[i] = (global.players[i] + 1) % 4;
